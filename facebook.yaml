@@ -28,3 +28,32 @@ credentials:
 login:
   domain: 'www.facebook.com'
   path: '/login.php'
+
+# The js Function Responsible For Password Encryption is Present in this js file Located At : https://static.xx.fbcdn.net/rsrc.php/v3/y4/r/yEB-M5_vVi6.js?_nc_x=Ij3Wp8lg5Kz
+
+# _encryptBeforeSending: function (a) {
+#      var c = this;
+#      a = a.bind(this);
+#      var d = this.loginFormParams && this.loginFormParams.pubKey;
+#      if ((window.crypto || window.msCrypto) && d) {
+#        var e = b('DOM').scry(this.loginForm, 'input[id="pass"]') [0],
+#        f = b('FBBrowserPasswordEncryption'),
+#        g = Math.floor(Date.now() / 1000).toString();
+#        b('promiseDone') (f.encryptPassword(d.keyId, d.publicKey, e.value, g), function (d) {
+#          d = b('DOM').create('input', {
+#            type: 'hidden',
+#            name: 'ep',
+#            value: d
+#          });
+#          c.loginForm.appendChild(d);
+#          e.disabled = !0;
+#          a()
+#        }, function (c) {
+#          var d = '#PWD_BROWSER',
+#          e = 5,
+#          f = b('LoginServicePasswordEncryptDecryptEventTypedLogger');
+#          new f().setError('BrowserEncryptionFailureInLoginFormControllerWWW').setGrowthFlow('Bluebar/main login WWW').setErrorMessage(c.message).setPasswordTag(d).setPasswordEncryptionVersion(e).setPasswordTimestamp(g).logVital();
+#          a()
+#        })
+#      } else a()
+#    },
