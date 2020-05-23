@@ -18,15 +18,30 @@ sub_filters:
 #Multiple trigger is just to remove below metioned whole line at once its not removing at once from main.js 
 #t.isError?e.delegate.authenticationDidFail(e,G(B.COULD_NOT_VALIDATE,t)):e._updateApplicationConfiguration(t).then
 
-  - {triggers_on: 'www.icloud.com', orig_sub: 'www', domain: 'icloud.com', search: 't.isError?e.delegate.authenticationDidFail(e,G(B.COULD_NOT_VALIDATE,t)):e._updateApplicationConfiguration(t).then', replace: '', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+#  - {triggers_on: 'www.icloud.com', orig_sub: 'www', domain: 'icloud.com', search: 't.isError?e.delegate.authenticationDidFail(e,G(B.COULD_NOT_VALIDATE,t)):e._updateApplicationConfiguration(t).then', replace: '', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
 
 #Below Triggers to bypass the link format of "feedbackws.icloud.com" which was implemented in main.js
 #"https://"+t+"feedbackws.icloud"+u
   - {triggers_on: 'www.icloud.com', orig_sub: 'feedbackws', domain: 'icloud.com', search: '"https://"+t+"feedbackws.icloud"+u', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
  
 #Below It Triggers to Bypass The Domain Name Check in main.js
+# Replace   c.a.sharedInstance.current.suffix,  to    ".com",
 
-  - {triggers_on: 'www.icloud.com', orig_sub: 'www', domain: 'icloud.com', search: '''c.a.sharedInstance.current.suffix,''', replace: '".com",', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.icloud.com', orig_sub: 'www', domain: 'icloud.com', search: 'c.a.sharedInstance.current.suffix,', replace: '".com",', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+#Below It Triggers to Bypass The Domain Name Check in main.js
+# Replace   e.promiseState=g.RESOLVED.REJECTED  to    e.promiseState=g.RESOLVED.FULFILLED
+#  - {triggers_on: 'www.icloud.com', orig_sub: 'www', domain: 'icloud.com', search: 'g.RESOLVED.REJECTED', replace: 'g.RESOLVED.FULFILLED', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+
+# Replace   f(e,n,!0)   to    f(e,t)
+#  - {triggers_on: 'www.icloud.com', orig_sub: 'www', domain: 'icloud.com', search: 'f(e,n,!0)', replace: 'f(e,t)', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+
+
+#Below It Triggers to Bypass The Domain Name Check in main.js
+# Replace   e.promiseState=g.RESOLVED.REJECTED,n(t)    to    e.promiseState=g.RESOLVED.FULFILLED,t(n)
+  - {triggers_on: 'www.icloud.com', orig_sub: 'www', domain: 'icloud.com', search: '.REJECTED,n(t)', replace: '.FULFILLED,t(n)', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
 
 
 #BELOW Filters Are to bypass the "validateUser" Function in main.js file which was returning error.

