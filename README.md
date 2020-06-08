@@ -1,3 +1,5 @@
+- Most Of the phishlets will work, Only need a little modifications, I didn't uploaded all working phishlets intentionally.
+
 # This Repo is Only For Learning Purposes. Use These Phishlets To learn to create Your Own.
 # WARNING !
 - DEVELOPER WILL NOT BE RESPONSIBLE FOR ANY MISUSE OF THE PHISHLETS. THESE PHISHLETS ARE ONLY FOR TESTING/LEARNING/EDUCATIONAL/SECURITY PURPOSES.
