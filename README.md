@@ -10,5 +10,3 @@
 - TIP: Always Use Debug Mode in evilginx During Testing. 
 - Not Everything is Working Here, Use these Phishlets to learn and to Play with Evilginx.
 
-
-# Need Help Contact on Telegram https://t.me/its_udy
