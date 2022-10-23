@@ -1,0 +1,113 @@
+
+* {
+    box-sizing: border-box;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    /* background-color: black; */
+  }
+
+body{
+    background-image: url('https://images.pexels.com/photos/333850/pexels-photo-333850.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'); 
+    background-repeat:no-repeat; 
+    background-size: cover;"
+  align-items: center;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.loginbox {
+    width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+  align-items: center;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.logincard
+{
+    display: flex;
+    flex-direction: column;
+    min-width: 330px;
+    width: 20%;
+    height: auto;
+    padding: 25px;
+    box-shadow: 6px 6px 13px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    background: white;
+    z-index: 1;
+    align-items: center;
+    text-align: center;
+    vertical-align: middle;
+    margin-top: 10%;
+    margin-left: 38%;
+}
+
+.form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    width: 400px;
+    margin: 50px auto 10px auto;
+    padding: 30px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 2px 3px 9px 0px #999999b3;
+    text-align: center;
+    height: 450px;
+    z-index: 5;
+
+  }
+
+.logincard img{
+    align-items: center;
+    height: 50px;
+    width: 110px;
+}
+
+.details {
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+.details input {
+    background-color: #f3f3f3;
+    border: none;
+    color: #282828;
+    padding: 15px;
+    text-align: left;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px;
+    width: 72%;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+  
+}
+
+button {
+    width: 80px;
+    height: 40px;
+    background-color: red;
+    padding: 5px;
+    border-radius: 8px;
+    color: white;
+    border-collapse: collapse;
+    border-color: red;
+    font-weight: 500;
+    font-size: 17px;
+}
+
+.err{
+  color: red;
+  font-weight: 500;
+  text-decoration: none;
+  text-transform: uppercase;
+}
