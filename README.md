@@ -1,7 +1,7 @@
-# This Repo is Only For Learning Purposes. Use These Phishlets To learn to create Your Own.
+### This Repo is Only For Learning Purposes. Use These Phishlets To learn and create Your Own.
 
 # Phishlets Developemnt Tips
-- TIP: Always Use Debug Mode in evilginx During Testing 
+- Always Use Debug Mode in evilginx During Testing 
 - Not Everything is Working Here, Use these Phishlets to learn and to Play with Evilginx.
 - Be Creative when it comes to bypassing protection.
 - Javascript Injection can fix a lot of issues and will make your life easier during phishing engagements.
