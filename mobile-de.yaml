@@ -69,16 +69,7 @@ credentials:
     key: 'password'
     search: '(.*)'
     type: 'post'
-
-force_post:
-  - path: '/login'
-    search:
-      - {key: 'username'}
-      - {key: 'password'}
-    force:
-      - {key: 'rememberme', value: 'on'}
-    type: 'post'
-    
+  
 login:
   domain: 'login.mobile.de'
   path: '/a2/login'

