@@ -9,7 +9,7 @@
 
 # Some Less Known Techniques
 
-### Google Recaptcha Bypass
+### Google Recaptcha Bypass by [@Desire](https://twitter.com/Desire50627362)
 - Google recaptcha encodes domain in base64 and includes it in `co` parameter in GET request.
 - For Example in Binance us Login.
   ```
