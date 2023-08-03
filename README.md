@@ -36,6 +36,25 @@
 				}
 ```
 
+### Evilginx3 Easter Egg Patch (X-Evilginx Header)
+- Evilginx3 contains easter egg code which adds a `X-Evilginx` header with each request.
+- This header contains the Attacker Domain name. So it can be used for detection.
+- To remove the Easter egg from evilginx just remove/comment below mentioned lines from the `core/http_proxy.go` file.
+```
+// Line 179
+o_host := req.Host
+
+// Line 330
+req.Header.Set(p.getHomeDir(), o_host)
+
+// Line 512
+req.Header.Set(p.getHomeDir(), o_host)
+
+// Line 1495
+func (p *HttpProxy) getHomeDir() string {
+	return strings.Replace(HOME_DIR, ".e", "X-E", 1) 
+}
+```
 
 ### Evilginx2 Easter Egg Patch (X-Evilginx Header)
 - Evilginx2 contains easter egg code which adds a `X-Evilginx` header with each request.
