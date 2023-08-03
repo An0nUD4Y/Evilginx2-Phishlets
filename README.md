@@ -8,6 +8,18 @@
 
 
 # Some Less Known Techniques
+### Using Evilginx2 Phishlets with Evilginx3
+- There's been some updates regarding how `js_inject` used to work in evilginx2, Check more [here](https://github.com/kgretzky/evilginx2/releases/tag/v3.0.0).
+- To support the evilginx2 phishlets which had `js_inject` , You need to either modify its `trigger_paths` or you can just modify the evilginx3 Source code to support it.
+- To know more [Check this](https://github.com/kgretzky/evilginx2/issues/904#issuecomment-1585787426)
+- Modifying `core\phishlet.go` to allow regex in `trigger_paths` for `js_inject`.
+```
+\\Replace line (line 909)
+re, err := regexp.Compile("^" + d + "$")
+
+\\with line
+re, err := regexp.Compile(d)
+```
 
 ### Google Recaptcha Bypass by [@Desire](https://twitter.com/DWORKWITH)
 - Google recaptcha encodes domain in base64 and includes it in `co` parameter in GET request.
