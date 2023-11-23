@@ -1,4 +1,5 @@
 ### This Repo is Only For Learning Purposes. Use These Phishlets To learn and create Your Own.
+### Use at your own risk ! I have compiled these phishlets from various repositories and private groups.
 
 # Phishlets Developement Tips
 - Always Use Debug Mode in evilginx During Testing 
