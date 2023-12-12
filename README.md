@@ -1,14 +1,31 @@
-### This Repo is Only For Learning Purposes. Use These Phishlets To learn and create Your Own.
-### Use at your own risk ! I have compiled these phishlets from various repositories and private groups.
+> **Note:** This Repo is Only For Learning Purposes. Use phishlets at your own risk.
 
-# Phishlets Developement Tips
+
+## Phishlets Developement Tips
 - Always Use Debug Mode in evilginx During Testing 
 - Not Everything is Working Here, Use these Phishlets to learn and to Play with Evilginx.
 - Be Creative when it comes to bypassing protection.
 - Javascript Injection can fix a lot of issues and will make your life easier during phishing engagements.
 - Make sure to check Evilginx Docs [here](https://help.evilginx.com)
 
-# Some Less Known Techniques
+## Securing Evilginx Infra Tips
+Some tips and suggestions to help secure your Evilginx Infrastructure.
+- Remove IOCs (X-Evilginx header and Default Cert Details)
+- Modify Unauth redirect static contents
+- Modify code to request wildcard certificates for root domain from Let'sEncrypt other than requesting for each subdomains (As mentioned in Kuba's blog) - Check this repo for reference https://github.com/ss23/evilginx2
+- Put evilginx behind a proxy to help against  TLS fingerprinting (JA3 and JA3S)
+- Use cloudflare in between if possible/feasible (You have to configure the SSL Settings correctly, change it to Full in cloudflare settings)
+- Use some known ASN blacklist to avoid getting detected like here (https://github.com/aalex954/evilginx2-TTPs#ip-blacklist)
+- Reduce the Number of proxyhosts in phishlet if possible to reduce content loading time.
+- Host Evilginx at Azure and use their domain (limit proxy host in phishlet to 1 or find a way , may be create multiple azure sub domains and try with that)
+- Add some sub_filters to modify the content of the pages to avoid content based detections, like (Favicon, form title font or style, or anything which seems relevant)
+- Block the feedback/telemetry/logs/analytics subdomains using the phishlet sub_filters which can log the domain or may help later on analysis.
+- See if js-injected is static or dynamic , if static modify the evilginx js-inject code to create dynamic/obfuscated version of your js for each user/target.
+- Make sure to not leak your Evilginx infra IP, Check the DNS history to make sure its not stored anywhere (Analysts may look for older DNS Records of the domain)
+- Be aware of this research : https://catching-transparent-phish.github.io/catching_transparent_phish.pdf , repo - https://catching-transparent-phish.github.io/
+
+
+## Some Less Known Techniques
 ### Using Evilginx2 Phishlets with Evilginx3
 - There's been some updates regarding how `js_inject` used to work in evilginx2, Check more [here](https://github.com/kgretzky/evilginx2/releases/tag/v3.0.0).
 - To support the evilginx2 phishlets which had `js_inject` , You need to either modify its `trigger_paths` or you can just modify the evilginx3 Source code to support it.
@@ -124,7 +141,7 @@ p.cantFindMe(req, e_host)
 
 ```
 
-# Error Resolving
+## Error Resolving
 ### Error-1 : (Failed to start nameserver on port 53)
 METHOD 1 :-
 - Follow These Commands & Then Try Relaunching Evilginx
@@ -148,10 +165,7 @@ sudo kill PID
 - Now Try To Run Evilginx and get SSL certificates
 
 
-# Need any Help ??
-- Regarding phishlets for Penetration testing.
-- Help with phishlet issues or anything.
-- Can Help regarding projects related to Reverse Proxy.
+## Need any Help ??
 - Contact Me on telegram: https://t.me/its_udy (This is the only account belong to me)
 - Please be aware of anyone impersonating my handle ( @an0nud4y is not my telegram handle)
 - You can also contact me on twitter (https://an0nud4y.com)
