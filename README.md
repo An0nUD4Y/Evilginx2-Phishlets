@@ -9,6 +9,8 @@
 - Make sure to check Evilginx Docs [here](https://help.evilginx.com)
 
 ## Securing Evilginx Infra Tips
+> **Note:** Phishing Engagement Infra Setup Guide .. [here](https://an0nud4y.notion.site/Phishing-Red-Team-Engagement-Infra-1c6fba8f2d854a14ba76320284161c5e)
+
 Some tips and suggestions to help secure your Evilginx Infrastructure.
 - Remove IOCs (X-Evilginx header and Default Cert Details)
 - Modify Unauth redirect static contents
