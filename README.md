@@ -170,7 +170,7 @@ sudo kill PID
 ## Need any Help ??
 - Contact Me on telegram: https://t.me/its_udy (This is the only account belong to me)
 - Please be aware of anyone impersonating my handle ( @an0nud4y is not my telegram handle)
-- You can also contact me on twitter (https://an0nud4y.com)
+- You can also contact me on twitter (http://m4lici0u5.com | http://an0nud4y.com)
 
 
 ## WARNING !
